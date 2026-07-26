@@ -33,9 +33,10 @@
     <nav class="nav-links" id="navLinks">
       <a href="#about"><span class="idx">01</span>Sobre mí</a>
       <a href="#stack"><span class="idx">02</span>Stack</a>
-      <a href="#proyectos"><span class="idx">03</span>Proyectos</a>
-      <a href="#formacion"><span class="idx">04</span>Formación</a>
-      <a href="#contacto"><span class="idx">05</span>Contacto</a>
+      <a href="#lab"><span class="idx">03</span>El Lab</a>
+      <a href="#proyectos"><span class="idx">04</span>Proyectos</a>
+      <a href="#formacion"><span class="idx">05</span>Formación</a>
+      <a href="#contacto"><span class="idx">06</span>Contacto</a>
     </nav>
 
     <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
@@ -76,6 +77,7 @@
 
       <div class="hero-cta">
         <a href="#proyectos" class="btn btn-primary">Ver proyectos</a>
+        <button class="btn btn-cv" id="downloadCvBtn">📄 Descargar CV (PDF)</button>
         <a href="#contacto" class="btn btn-ghost">Hablemos</a>
       </div>
     </div>
@@ -95,9 +97,9 @@
       <div class="about-grid">
         <div class="about-text">
           <p>Estudio la <strong>Doble Titulación en DAM y DAW</strong> (Desarrollo de Aplicaciones Multiplataforma y Desarrollo de Aplicaciones Web) en Universae. Me quedan <strong>2 cursos</strong> para terminar la formación.</p>
-          <p>Me interesa el desarrollo web de punta a punta: desde maquetar una interfaz con HTML y CSS hasta conectar la lógica del lado del servidor con una base de datos.
-          <P>Tras varios años de experiencia en soporte IT y telecomunicaciones, estoy reorientando mi carrera hacia el desarrollo de software, aplicando la capacidad analítica y de resolución de problemas adquirida en el ámbito técnico.
-          <P>Busco oportunidades para seguir creciendo como desarrollador y participar en proyectos de aplicaciones web, móviles y experiencias digitales.</P>
+          <p>Me interesa el desarrollo web de punta a punta: desde maquetar una interfaz con HTML y CSS hasta conectar la lógica del lado del servidor con una base de datos.</p>
+          <p>Tras varios años de experiencia en soporte IT y telecomunicaciones, estoy reorientando mi carrera hacia el desarrollo de software, aplicando la capacidad analítica y de resolución de problemas adquirida en el ámbito técnico.</p>
+          <p>Busco oportunidades para seguir creciendo como desarrollador y participar en proyectos de aplicaciones web, móviles y experiencias digitales.</p>
         </div>
 
         <div class="about-stats">
@@ -115,6 +117,24 @@
           </div>
         </div>
       </div>
+
+      <!-- Storytelling: Por qué contratarme -->
+      <div class="storytelling-block">
+        <h3 class="storytelling-title">⚡ Por qué contratarme: El valor de un perfil híbrido</h3>
+        <div class="storytelling-grid">
+          <div class="story-card" data-tilt>
+            <div class="story-icon">🛠️</div>
+            <h4>50% Resolución IT &amp; Clientes</h4>
+            <p>Experiencia real diagnosticando incidencias, configurando redes y tratando con usuarios. Graduado con <strong>Matrícula de Honor en SMR</strong>. Resuelvo problemas técnicos sin atascarme.</p>
+          </div>
+          <div class="story-card" data-tilt>
+            <div class="story-icon">💻</div>
+            <h4>50% Desarrollo Full-Stack</h4>
+            <p>Formación sólida en <strong>DAM + DAW</strong>. Enfoque moderno en maquetación limpia, arquitectura de bases de datos y desarrollo de aplicaciones web y multiplataforma.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -193,46 +213,150 @@
     </div>
   </section>
 
-  <!-- ============ PROYECTOS ============ -->
-  <section class="section" id="proyectos">
+  <!-- ============ EL LAB ============ -->
+  <section class="section" id="lab">
     <div class="section-inner">
-      <p class="section-eyebrow">03 · Proyectos</p>
+      <p class="section-eyebrow">03 · El Lab Interactivo</p>
+      <h2 class="section-title">Demos &amp; Consola CLI</h2>
+      <p class="section-desc" style="color: var(--text-muted); margin-bottom: 36px; max-width: 650px;">
+        Demostración interactiva en tiempo real. Prueba la consola interactiva de línea de comandos o consulta mi base de datos con el simulador SQL.
+      </p>
+
+      <div class="lab-grid">
+
+        <!-- TERMINAL INTERACTIVA -->
+        <div class="terminal-card">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="dot-red"></span>
+              <span class="dot-yellow"></span>
+              <span class="dot-green"></span>
+            </div>
+            <span class="terminal-title">ms@sancho-dev: ~/portfolio</span>
+          </div>
+
+          <div class="terminal-body" id="terminalBody">
+            <div id="terminalOutput">
+              <p class="term-welcome">💡 Bienvenido a la Consola CLI de Marc Sancho. Escribe <span class="term-cmd">help</span> o haz clic en los accesos rápidos para empezar.</p>
+            </div>
+            <div class="terminal-line">
+              <span class="term-prompt">ms@sancho-dev:~$</span>
+              <input type="text" id="terminalInput" placeholder="Escribe un comando... (ej. help)" autocomplete="off">
+            </div>
+          </div>
+
+          <div class="terminal-chips">
+            <span class="chip-label">Comandos rápidos:</span>
+            <button class="term-chip" data-cmd="help">help</button>
+            <button class="term-chip" data-cmd="whoami">whoami</button>
+            <button class="term-chip" data-cmd="stack">stack</button>
+            <button class="term-chip" data-cmd="contacto">contacto</button>
+            <button class="term-chip" data-cmd="matrix">matrix</button>
+            <button class="term-chip" data-cmd="clear">clear</button>
+          </div>
+        </div>
+
+        <!-- SIMULADOR SQL -->
+        <div class="sql-card">
+          <div class="sql-header">
+            <span class="sql-icon">🗄️</span>
+            <span class="sql-title">SQL Query Simulator</span>
+          </div>
+          <div class="sql-body">
+            <p class="sql-instructions">Ejecuta consultas dinámicas sobre mi base de datos académica y laboral:</p>
+            <div class="sql-presets">
+              <button class="sql-preset-btn active" data-query="estudios">SELECT * FROM estudios;</button>
+              <button class="sql-preset-btn" data-query="habilidades">SELECT * FROM habilidades;</button>
+              <button class="sql-preset-btn" data-query="experiencia">SELECT * FROM experiencia_it;</button>
+              <button class="sql-preset-btn" data-query="idiomas">SELECT * FROM idiomas;</button>
+            </div>
+            <div class="sql-console" id="sqlConsole">
+              <span class="sql-kw">SELECT</span> * <span class="sql-kw">FROM</span> <span class="sql-tbl" id="sqlCurrentTable">estudios</span>;
+            </div>
+            <div class="sql-table-wrapper" id="sqlTableWrapper">
+              <!-- La tabla se renderizará dinámicamente con JS -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROYECTOS ============ -->
+  <section class="section section-alt" id="proyectos">
+    <div class="section-inner">
+      <p class="section-eyebrow">04 · Proyectos</p>
       <h2 class="section-title">Proyectos</h2>
 
-      <article class="project-card" data-tilt>
-        <div class="project-media">
-          <div class="project-media-glow" aria-hidden="true"></div>
-          <div class="project-preview-badge">LIVE SITE</div>
-          <p class="project-media-label">martasantattoo.com</p>
-        </div>
-
-        <div class="project-body">
-          <p class="project-tag">Encargo real · En producción</p>
-          <h3 class="project-title">Marta San Tattoo</h3>
-          <p class="project-desc">
-            Web de presentación para un estudio de tatuaje especializado en fine line, en Gandía.
-            Incluye una sección de "sobre mí", una galería de trabajos realizados, los servicios
-            que ofrece y un formulario de contacto para pedir cita. Desplegada en Vercel.
-          </p>
-
-          <ul class="project-highlights">
-            <li>Diseño adaptado a móvil, pensado para llegar desde Instagram</li>
-            <li>Galería de portfolio con los trabajos del estudio</li>
-            <li>Formulario de solicitud de cita con selección de tamaño y zona</li>
-          </ul>
-
-          <div class="project-tags">
-            <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Vercel</span>
+      <div class="projects-grid">
+        <article class="project-card" data-tilt>
+          <div class="project-media">
+            <div class="project-media-glow" aria-hidden="true"></div>
+            <div class="project-preview-badge">LIVE SITE</div>
+            <p class="project-media-label">martasantattoo.com</p>
           </div>
 
-          <div class="project-actions">
-            <a href="https://www.martasantattoo.com/" target="_blank" rel="noopener" class="project-link btn-link">
-              Ver web en vivo <span class="arrow">→</span>
-            </a>
-            <button class="btn-modal-trigger" data-project="marta-san-tattoo">Detalles técnicos</button>
+          <div class="project-body">
+            <p class="project-tag">Encargo real · En producción</p>
+            <h3 class="project-title">Marta San Tattoo</h3>
+            <p class="project-desc">
+              Web de presentación para un estudio de tatuaje especializado en fine line, en Gandía.
+              Incluye una sección de "sobre mí", una galería de trabajos realizados, los servicios
+              que ofrece y un formulario de contacto para pedir cita. Desplegada en Vercel.
+            </p>
+
+            <ul class="project-highlights">
+              <li>Diseño adaptado a móvil, pensado para llegar desde Instagram</li>
+              <li>Galería de portfolio con los trabajos del estudio</li>
+              <li>Formulario de solicitud de cita con selección de tamaño y zona</li>
+            </ul>
+
+            <div class="project-tags">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Vercel</span>
+            </div>
+
+            <div class="project-actions">
+              <a href="https://www.martasantattoo.com/" target="_blank" rel="noopener" class="project-link btn-link">
+                Ver web en vivo <span class="arrow">→</span>
+              </a>
+              <button class="btn-modal-trigger" data-project="marta-san-tattoo">Detalles técnicos</button>
+            </div>
           </div>
-        </div>
-      </article>
+        </article>
+
+        <!-- TARJETA INCUBADORA PRÓXIMO PROYECTO -->
+        <article class="project-card project-card-incubator" data-tilt>
+          <div class="project-media incubator-media">
+            <div class="incubator-icon">🚀</div>
+            <p class="project-media-label">Incubadora de Software</p>
+          </div>
+
+          <div class="project-body">
+            <p class="project-tag">En desarrollo · DAM + DAW</p>
+            <h3 class="project-title">Próxima Aplicación Web / Multiplataforma</h3>
+            <p class="project-desc">
+              Actualmente conceptualizando y diseñando mi próximo proyecto de software combinando Java/PHP en backend con una interfaz web responsive y conectividad a base de datos MySQL.
+            </p>
+
+            <ul class="project-highlights">
+              <li>Arquitectura limpia y modular</li>
+              <li>Integración de API REST &amp; Base de Datos</li>
+              <li>Diseño orientado a la resolución de problemas reales</li>
+            </ul>
+
+            <div class="project-tags">
+              <span>Java</span><span>PHP</span><span>MySQL</span><span>Git</span>
+            </div>
+
+            <div class="project-actions">
+              <a href="https://github.com/SanX18" target="_blank" rel="noopener" class="project-link">
+                Seguir en GitHub <span class="arrow">→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
 
       <div class="project-more">
         <p>Más proyectos en camino a medida que avanzo en la carrera —
@@ -242,9 +366,9 @@
   </section>
 
   <!-- ============ FORMACIÓN ============ -->
-  <section class="section section-alt" id="formacion">
+  <section class="section" id="formacion">
     <div class="section-inner">
-      <p class="section-eyebrow">04 · Formación</p>
+      <p class="section-eyebrow">05 · Formación</p>
       <h2 class="section-title">Formación</h2>
        
 
@@ -303,20 +427,24 @@
   </section>
 
   <!-- ============ CONTACTO ============ -->
-  <section class="section contact-section" id="contacto">
+  <section class="section section-alt contact-section" id="contacto">
     <div class="section-inner">
-      <p class="section-eyebrow">05 · Contacto</p>
+      <p class="section-eyebrow">06 · Contacto</p>
       <h2 class="section-title">Hablemos</h2>
       <p class="contact-lead">¿Buscas a alguien con ganas de aprender y aportar? Escríbeme, estoy disponible para prácticas y primeras oportunidades.</p>
 
       <div class="contact-grid">
-        <button class="contact-email" id="copyEmail" data-email="marcsancho46@gmail.com">
+        <button class="contact-email" id="copyEmail" data-email="marcsancho46@gmail.com" data-tilt>
           <span class="contact-label">Email</span>
           <span class="contact-value">marcsancho46@gmail.com</span>
           <span class="copy-hint" id="copyHint">Clic para copiar</span>
         </button>
 
         <div class="contact-links">
+          <button class="contact-link contact-cv-link" id="downloadCvBtn2" data-tilt>
+            <span class="contact-link-label">📄 Descargar CV (PDF)</span>
+            <span class="arrow">↓</span>
+          </button>
           <a href="https://github.com/SanX18" target="_blank" rel="noopener" class="contact-link" data-tilt>
             <span class="contact-link-label">GitHub</span>
             <span class="arrow">→</span>

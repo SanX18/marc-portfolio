@@ -363,7 +363,7 @@ document.addEventListener('keydown', (e) => {
 // 9. Scroll reveal for sections
 // ============================================
 const revealTargets = document.querySelectorAll(
-  '.about-grid, .stack-cat, .project-card, .timeline-item, .contact-grid'
+  '.about-grid, .stack-cat, .project-card, .timeline-item, .contact-grid, .story-card, .terminal-card, .sql-card'
 );
 
 if ('IntersectionObserver' in window) {
@@ -384,3 +384,195 @@ if ('IntersectionObserver' in window) {
     observer.observe(el);
   });
 }
+
+// ============================================
+// 10. Descarga de CV Handler
+// ============================================
+const cvBtns = [document.getElementById('downloadCvBtn'), document.getElementById('downloadCvBtn2')];
+cvBtns.forEach((btn) => {
+  if (btn) {
+    btn.addEventListener('click', () => {
+      showToast('📄 Preparando CV actualizado... ¡Escríbeme por email para recibirlo al instante!');
+    });
+  }
+});
+
+// ============================================
+// 11. Terminal CLI Engine
+// ============================================
+const terminalInput = document.getElementById('terminalInput');
+const terminalOutput = document.getElementById('terminalOutput');
+const terminalBody = document.getElementById('terminalBody');
+const termChips = document.querySelectorAll('.term-chip');
+
+const commands = {
+  help: () => `
+<div class="term-line-output term-success">📋 Comandos disponibles:</div>
+<div class="term-line-output">  <span class="term-cmd">whoami</span>    - Resumen profesional de Marc Sancho</div>
+<div class="term-line-output">  <span class="term-cmd">stack</span>     - Tecnologías y herramientas principales</div>
+<div class="term-line-output">  <span class="term-cmd">contacto</span>  - Datos de contacto directo</div>
+<div class="term-line-output">  <span class="term-cmd">cv</span>        - Información sobre solicitud de currículum</div>
+<div class="term-line-output">  <span class="term-cmd">matrix</span>    - Modo lluvioso cyberpunk neón</div>
+<div class="term-line-output">  <span class="term-cmd">clear</span>     - Limpiar la pantalla de la terminal</div>
+`,
+  whoami: () => `
+<div class="term-line-output term-highlight">👤 Marc Sancho Pastor</div>
+<div class="term-line-output">🎓 Estudiante de Doble Grado en DAM (Desarrollo Multiplataforma) y DAW (Desarrollo Web).</div>
+<div class="term-line-output">🏆 Matrícula de Honor en Sistemas Microinformáticos y Redes (SMR).</div>
+<div class="term-line-output">📍 Xátiva, Valencia | 🟢 Disponible para incorporación inmediata.</div>
+`,
+  stack: () => `
+<div class="term-line-output term-success">🛠️ Stack Técnico:</div>
+<div class="term-line-output">  • Front-end: HTML5, CSS3 Vanilla, JavaScript ES6+</div>
+<div class="term-line-output">  • Back-end:  PHP, Java, Python</div>
+<div class="term-line-output">  • Datos:     MySQL, SQL Server</div>
+<div class="term-line-output">  • Herramientas: Git, GitHub, GitKraken, WordPress, Soporte IT</div>
+`,
+  contacto: () => `
+<div class="term-line-output term-highlight">📬 Contacto Directo:</div>
+<div class="term-line-output">  • Email: <span class="term-cmd">marcsancho46@gmail.com</span></div>
+<div class="term-line-output">  • GitHub: https://github.com/SanX18</div>
+<div class="term-line-output">  • LinkedIn: Marc Sancho Pastor</div>
+`,
+  cv: () => `
+<div class="term-line-output term-info">📄 Solicitud de CV: Puedes descargarlo o solicitar la versión más reciente enviando un correo a marcsancho46@gmail.com</div>
+`,
+  matrix: () => `
+<div class="term-line-output term-success">💚 Wake up, Neo... La matriz está activa. ¡Explora el portfolio libremente!</div>
+`,
+  clear: () => null
+};
+
+function executeCommand(cmdStr) {
+  const cleanCmd = cmdStr.trim().toLowerCase();
+  if (!cleanCmd) return;
+
+  if (cleanCmd === 'clear') {
+    if (terminalOutput) terminalOutput.innerHTML = '';
+    return;
+  }
+
+  // Imprimir línea de comando ingresada
+  const cmdLine = document.createElement('div');
+  cmdLine.className = 'term-line-output';
+  cmdLine.innerHTML = `<span class="term-prompt">ms@sancho-dev:~$</span> <span class="term-cmd">${cleanCmd}</span>`;
+  terminalOutput.appendChild(cmdLine);
+
+  // Ejecutar comando
+  if (commands[cleanCmd]) {
+    const resultHtml = commands[cleanCmd]();
+    if (resultHtml) {
+      const resultDiv = document.createElement('div');
+      resultDiv.innerHTML = resultHtml;
+      terminalOutput.appendChild(resultDiv);
+    }
+  } else {
+    const errDiv = document.createElement('div');
+    errDiv.className = 'term-line-output term-highlight';
+    errDiv.textContent = `bash: comando no encontrado: ${cleanCmd}. Escribe 'help' para ver opciones.`;
+    terminalOutput.appendChild(errDiv);
+  }
+
+  // Scroll al final
+  if (terminalBody) {
+    terminalBody.scrollTop = terminalBody.scrollHeight;
+  }
+}
+
+if (terminalInput) {
+  terminalInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      executeCommand(terminalInput.value);
+      terminalInput.value = '';
+    }
+  });
+}
+
+termChips.forEach((chip) => {
+  chip.addEventListener('click', () => {
+    const cmd = chip.dataset.cmd;
+    if (terminalInput) terminalInput.value = cmd;
+    executeCommand(cmd);
+    if (terminalInput) terminalInput.value = '';
+  });
+});
+
+// ============================================
+// 12. SQL Simulator Engine
+// ============================================
+const sqlPresets = document.querySelectorAll('.sql-preset-btn');
+const sqlCurrentTable = document.getElementById('sqlCurrentTable');
+const sqlTableWrapper = document.getElementById('sqlTableWrapper');
+
+const dbTables = {
+  estudios: {
+    headers: ['id', 'titulacion', 'centro', 'periodo', 'nota_destacada'],
+    rows: [
+      ['1', 'Doble Grado DAM + DAW', 'Universae', 'Actualidad', 'En curso final'],
+      ['2', 'Grado Medio SMR', 'IES Lluís Simarro', '2019 - 2021', '🏆 Matrícula de Honor'],
+      ['3', 'FP Informática', 'IES Cárcer', '2017 - 2019', 'Aprobado']
+    ]
+  },
+  habilidades: {
+    headers: ['id', 'tecnologia', 'categoria', 'nivel'],
+    rows: [
+      ['1', 'HTML5 & CSS3', 'Front-end', 'Sólido'],
+      ['2', 'JavaScript (ES6+)', 'Front-end', 'Básico / Intermedio'],
+      ['3', 'PHP', 'Back-end', 'Básico'],
+      ['4', 'Java', 'Back-end / Multiplataforma', 'Básico'],
+      ['5', 'MySQL & SQL Server', 'Bases de Datos', 'Medio']
+    ]
+  },
+  experiencia: {
+    headers: ['id', 'rol', 'ambito', 'habilidad_clave'],
+    rows: [
+      ['1', 'Soporte IT & Redes', 'Telecomunicaciones / IT', 'Diagnóstico & Atención Cliente'],
+      ['2', 'Desarrollador Web Freelance', 'Front-end Web', 'Maquetación & Despliegue Vercel']
+    ]
+  },
+  idiomas: {
+    headers: ['id', 'idioma', 'nivel'],
+    rows: [
+      ['1', 'Español', 'Nativo'],
+      ['2', 'Valencià', 'Nativo'],
+      ['3', 'Inglés', 'Medio']
+    ]
+  }
+};
+
+function renderSqlTable(tableName) {
+  const tableData = dbTables[tableName];
+  if (!tableData || !sqlTableWrapper) return;
+
+  if (sqlCurrentTable) sqlCurrentTable.textContent = tableName;
+
+  let html = '<table class="sql-table"><thead><tr>';
+  tableData.headers.forEach((h) => {
+    html += `<th>${h}</th>`;
+  });
+  html += '</tr></thead><tbody>';
+
+  tableData.rows.forEach((row) => {
+    html += '<tr>';
+    row.forEach((cell) => {
+      html += `<td>${cell}</td>`;
+    });
+    html += '</tr>';
+  });
+
+  html += '</tbody></table>';
+  sqlTableWrapper.innerHTML = html;
+}
+
+sqlPresets.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    sqlPresets.forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
+    const query = btn.dataset.query;
+    renderSqlTable(query);
+  });
+});
+
+// Cargar tabla inicial
+renderSqlTable('estudios');
+

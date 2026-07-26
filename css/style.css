@@ -956,3 +956,312 @@ a:focus-visible, button:focus-visible {
   font-weight: bold;
 }
 
+/* ============================================
+   STORYTELLING BLOCK (Por qué contratarme)
+   ============================================ */
+.storytelling-block {
+  margin-top: 50px;
+  padding-top: 40px;
+  border-top: 1px dashed var(--border);
+}
+.storytelling-title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  color: var(--cyan);
+  margin-bottom: 24px;
+}
+.storytelling-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.story-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+.story-card:hover {
+  border-color: var(--pink);
+  box-shadow: 0 0 20px rgba(255, 46, 136, 0.2);
+}
+.story-icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+.story-card h4 {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  color: var(--text);
+  margin: 0 0 10px;
+}
+.story-card p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ============================================
+   BOTÓN DE DESCARGA DE CV
+   ============================================ */
+.btn-cv {
+  background: rgba(0, 245, 255, 0.12);
+  border: 1px solid var(--cyan);
+  color: var(--cyan);
+  font-weight: 700;
+}
+.btn-cv:hover {
+  background: rgba(0, 245, 255, 0.25);
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.4);
+  transform: translateY(-2px);
+}
+.contact-cv-link {
+  background: linear-gradient(90deg, rgba(0, 245, 255, 0.15), rgba(157, 78, 221, 0.2));
+  border-color: var(--cyan);
+  color: var(--cyan);
+  cursor: pointer;
+}
+.contact-cv-link:hover {
+  border-color: var(--pink);
+  color: var(--pink);
+}
+
+/* ============================================
+   EL LAB INTERACTIVO (Terminal & SQL)
+   ============================================ */
+.lab-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+@media (max-width: 960px) {
+  .lab-grid { grid-template-columns: 1fr; }
+}
+
+/* Terminal Cyber */
+.terminal-card {
+  background: #090118;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+.terminal-header {
+  background: #150a35;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.terminal-dots {
+  display: flex;
+  gap: 6px;
+}
+.dot-red { width: 10px; height: 10px; border-radius: 50%; background: #ff5f56; }
+.dot-yellow { width: 10px; height: 10px; border-radius: 50%; background: #ffbd2e; }
+.dot-green { width: 10px; height: 10px; border-radius: 50%; background: #27c93f; }
+.terminal-title {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.terminal-body {
+  padding: 18px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  height: 280px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.term-welcome {
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.term-cmd { color: var(--cyan); font-weight: bold; }
+
+.term-line-output {
+  margin: 4px 0;
+  line-height: 1.5;
+  word-break: break-word;
+}
+.term-success { color: var(--cyan); }
+.term-highlight { color: var(--pink); }
+.term-info { color: var(--text-muted); }
+
+.terminal-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.term-prompt {
+  color: var(--pink);
+  font-weight: bold;
+  white-space: nowrap;
+}
+#terminalInput {
+  background: transparent;
+  border: none;
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  width: 100%;
+  outline: none;
+}
+
+.terminal-chips {
+  padding: 10px 16px;
+  background: #0f0426;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.chip-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+.term-chip {
+  background: rgba(157, 78, 221, 0.2);
+  border: 1px solid var(--purple);
+  color: var(--text);
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-family: var(--font-mono);
+  transition: all 0.2s ease;
+}
+.term-chip:hover {
+  background: var(--pink);
+  color: var(--bg);
+  border-color: var(--pink);
+}
+
+/* SQL Simulator */
+.sql-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.sql-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.sql-icon { font-size: 1.4rem; }
+.sql-title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--text);
+}
+.sql-instructions {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.sql-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.sql-preset-btn {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+.sql-preset-btn:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+.sql-preset-btn.active {
+  background: rgba(0, 245, 255, 0.12);
+  border-color: var(--cyan);
+  color: var(--cyan);
+  box-shadow: 0 0 10px rgba(0, 245, 255, 0.2);
+}
+
+.sql-console {
+  background: #090118;
+  border: 1px solid var(--border);
+  padding: 10px 14px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.sql-kw { color: var(--pink); font-weight: bold; }
+.sql-tbl { color: var(--cyan); font-weight: bold; }
+
+.sql-table-wrapper {
+  overflow-x: auto;
+  max-height: 200px;
+}
+.sql-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+}
+.sql-table th {
+  background: var(--surface-2);
+  color: var(--cyan);
+  font-family: var(--font-heading);
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 2px solid var(--border);
+}
+.sql-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(157, 78, 221, 0.2);
+  color: var(--text-muted);
+}
+.sql-table tr:hover td {
+  background: rgba(255, 46, 136, 0.08);
+  color: var(--text);
+}
+
+/* Tarjeta Incubadora de Proyectos */
+.projects-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.project-card-incubator {
+  border-style: dashed;
+  border-color: var(--purple);
+  background: rgba(28, 16, 70, 0.6);
+}
+.incubator-media {
+  flex-direction: column;
+  gap: 12px;
+}
+.incubator-icon {
+  font-size: 3rem;
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+
