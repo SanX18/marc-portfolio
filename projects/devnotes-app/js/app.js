@@ -39,6 +39,48 @@ const initialCommands = [
     category: "Sistema / IT",
     code: "ipconfig /release && ipconfig /renew",
     description: "Reinicia la dirección IP asignada por DHCP al adaptador de red."
+  },
+  {
+    id: "cmd-6",
+    title: "Deshacer el último commit (sin perder cambios)",
+    category: "Git",
+    code: "git reset --soft HEAD~1",
+    description: "Deshace el último commit pero mantiene los archivos modificados listos para volver a hacer commit."
+  },
+  {
+    id: "cmd-7",
+    title: "Forzar actualización remota (sobrescribir local)",
+    category: "Git",
+    code: "git fetch --all && git reset --hard origin/main",
+    description: "Cuidado: Sobrescribe todos los cambios locales con la versión exacta de la rama principal remota."
+  },
+  {
+    id: "cmd-8",
+    title: "Ver historial en un gráfico resumido",
+    category: "Git",
+    code: "git log --graph --oneline --decorate --all",
+    description: "Muestra el árbol de ramas y commits de forma visual y compacta en la consola."
+  },
+  {
+    id: "cmd-9",
+    title: "Modificar el mensaje del último commit",
+    category: "Git",
+    code: "git commit --amend -m \"Nuevo mensaje\"",
+    description: "Cambia el mensaje del último commit (siempre que no se haya subido al repositorio remoto)."
+  },
+  {
+    id: "cmd-10",
+    title: "Limpiar la caché de Docker",
+    category: "Sistema / IT",
+    code: "docker system prune -a --volumes",
+    description: "Elimina contenedores, redes y volúmenes detenidos para liberar espacio en disco."
+  },
+  {
+    id: "cmd-11",
+    title: "Matar proceso en un puerto (Mac/Linux)",
+    category: "Sistema / IT",
+    code: "kill -9 $(lsof -t -i:3000)",
+    description: "Fuerza el cierre del proceso que esté utilizando el puerto 3000."
   }
 ];
 
