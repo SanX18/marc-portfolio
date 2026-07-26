@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevNotes & IT Dashboard — Marc Sancho</title>
+  <meta name="description" content="Dashboard de productividad para desarrolladores y técnicos IT. Gestor de comandos rápidos, tareas y notas.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">⚡</div>
+        <div class="brand-text">
+          <h2>DevDash<span class="brand-badge">v1.0</span></h2>
+          <p>IT & Dev Workstation</p>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <button class="nav-btn active" data-tab="commandsTab">
+          <span class="nav-icon">💻</span>
+          <span class="nav-label">Comandos Rápidos</span>
+          <span class="badge" id="commandCountBadge">0</span>
+        </button>
+        <button class="nav-btn" data-tab="tasksTab">
+          <span class="nav-icon">📋</span>
+          <span class="nav-label">Task Tracker</span>
+          <span class="badge" id="taskCountBadge">0</span>
+        </button>
+        <button class="nav-btn" data-tab="notesTab">
+          <span class="nav-icon">📝</span>
+          <span class="nav-label">Scratchpad / Notas</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-info">
+          <span class="user-status"></span>
+          <span>ms@sancho-dev</span>
+        </div>
+        <button id="resetDataBtn" class="btn-icon" title="Restablecer datos iniciales">🔄</button>
+      </div>
+    </aside>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+      
+      <!-- HEADER GLOBAL -->
+      <header class="top-header">
+        <div class="search-bar-container">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="globalSearchInput" placeholder="Buscar comando, tarea o nota... (Atajo: Ctrl + K)" autocomplete="off">
+        </div>
+        <div class="header-actions">
+          <button id="quickAddBtn" class="btn btn-primary">+ Nuevo Registro</button>
+        </div>
+      </header>
+
+      <!-- ================= TAB 1: COMANDOS ================= -->
+      <section id="commandsTab" class="tab-content active">
+        <div class="section-header">
+          <div>
+            <h1>Biblioteca de Comandos Rápidos</h1>
+            <p class="subtitle">Guarda tus comandos de Git, SQL, Linux y PowerShell favoritos con copia en 1 clic.</p>
+          </div>
+          <button id="addCommandBtn" class="btn btn-secondary">+ Añadir Comando</button>
+        </div>
+
+        <!-- Filtros por Categoría -->
+        <div class="category-filters" id="commandCategoryFilters">
+          <button class="cat-filter active" data-cat="all">Todos</button>
+          <button class="cat-filter" data-cat="Git">Git</button>
+          <button class="cat-filter" data-cat="SQL">SQL</button>
+          <button class="cat-filter" data-cat="Sistema / IT">Sistema / IT</button>
+          <button class="cat-filter" data-cat="Dev / Web">Dev / Web</button>
+        </div>
+
+        <!-- Grilla de Comandos -->
+        <div class="commands-grid" id="commandsGrid">
+          <!-- Renderizado dinámico vía JavaScript -->
+        </div>
+
+        <!-- Mensaje sin resultados -->
+        <div class="empty-state hidden" id="emptyCommandsState">
+          <div class="empty-icon">📂</div>
+          <h3>No se encontraron comandos</h3>
+          <p>Prueba con otro término de búsqueda o crea un nuevo comando.</p>
+        </div>
+      </section>
+
+      <!-- ================= TAB 2: TAREAS ================= -->
+      <section id="tasksTab" class="tab-content">
+        <div class="section-header">
+          <div>
+            <h1>Task Tracker & Pendientes</h1>
+            <p class="subtitle">Organiza tus proyectos de clase, incidencias IT o desarrollo.</p>
+          </div>
+          <button id="addTaskBtn" class="btn btn-secondary">+ Añadir Tarea</button>
+        </div>
+
+        <!-- Tablero de Tareas -->
+        <div class="tasks-board">
+          <!-- Columna: Pendientes -->
+          <div class="task-column" data-status="pending">
+            <div class="column-header">
+              <span class="status-dot pending"></span>
+              <h3>Pendientes</h3>
+              <span class="column-count" id="pendingCount">0</span>
+            </div>
+            <div class="task-list" id="pendingList">
+              <!-- Render dinámico -->
+            </div>
+          </div>
+
+          <!-- Columna: En Proceso -->
+          <div class="task-column" data-status="in-progress">
+            <div class="column-header">
+              <span class="status-dot in-progress"></span>
+              <h3>En Proceso</h3>
+              <span class="column-count" id="inProgressCount">0</span>
+            </div>
+            <div class="task-list" id="inProgressList">
+              <!-- Render dinámico -->
+            </div>
+          </div>
+
+          <!-- Columna: Completadas -->
+          <div class="task-column" data-status="completed">
+            <div class="column-header">
+              <span class="status-dot completed"></span>
+              <h3>Completadas</h3>
+              <span class="column-count" id="completedCount">0</span>
+            </div>
+            <div class="task-list" id="completedList">
+              <!-- Render dinámico -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= TAB 3: SCRATCHPAD ================= -->
+      <section id="notesTab" class="tab-content">
+        <div class="section-header">
+          <div>
+            <h1>Scratchpad / Bloc de Notas Rápido</h1>
+            <p class="subtitle">Escribe fragmentos de código, esquemas o recordatorios temporales. Guardado automático.</p>
+          </div>
+          <div class="save-status" id="saveStatus">
+            <span class="save-indicator"></span>
+            <span id="saveStatusText">Guardado en disco</span>
+          </div>
+        </div>
+
+        <div class="notes-container">
+          <textarea id="notesArea" placeholder="Escribe aquí tus notas o código sin miedo a perderlo..." spellcheck="false"></textarea>
+          <div class="notes-footer">
+            <span id="charCount">0 caracteres</span>
+            <button id="clearNotesBtn" class="btn-danger-ghost">Limpiar bloc</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ================= MODAL: NUEVO COMANDO ================= -->
+  <div class="modal-overlay hidden" id="commandModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 id="commandModalTitle">Añadir Nuevo Comando</h2>
+        <button class="modal-close" id="closeCommandModalBtn">&times;</button>
+      </div>
+      <form id="commandForm">
+        <div class="form-group">
+          <label for="cmdTitle">Título del comando</label>
+          <input type="text" id="cmdTitle" placeholder="Ej: Ver puertos abiertos en Windows" required>
+        </div>
+        <div class="form-group">
+          <label for="cmdCategory">Categoría</label>
+          <select id="cmdCategory" required>
+            <option value="Git">Git</option>
+            <option value="SQL">SQL</option>
+            <option value="Sistema / IT">Sistema / IT</option>
+            <option value="Dev / Web">Dev / Web</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="cmdCode">Comando (Código)</label>
+          <textarea id="cmdCode" placeholder="Ej: netstat -ano | findstr :8080" rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="cmdDesc">Descripción / Explicación (opcional)</label>
+          <input type="text" id="cmdDesc" placeholder="Ej: Muestra qué proceso está ocupando el puerto 8080">
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-ghost" id="cancelCommandModalBtn">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar Comando</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: NUEVA TAREA ================= -->
+  <div class="modal-overlay hidden" id="taskModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Añadir Nueva Tarea</h2>
+        <button class="modal-close" id="closeTaskModalBtn">&times;</button>
+      </div>
+      <form id="taskForm">
+        <div class="form-group">
+          <label for="taskTitle">Título de la tarea</label>
+          <input type="text" id="taskTitle" placeholder="Ej: Configurar conexión MySQL en Java" required>
+        </div>
+        <div class="form-group">
+          <label for="taskCategory">Módulo / Categoría</label>
+          <input type="text" id="taskCategory" placeholder="Ej: DAM - Acceso a Datos / DAW" required>
+        </div>
+        <div class="form-group">
+          <label for="taskPriority">Prioridad</label>
+          <select id="taskPriority" required>
+            <option value="Alta">🔴 Alta</option>
+            <option value="Media" selected>🟡 Media</option>
+            <option value="Baja">🟢 Baja</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="taskStatus">Estado Inicial</label>
+          <select id="taskStatus" required>
+            <option value="pending">Pendiente</option>
+            <option value="in-progress">En Proceso</option>
+            <option value="completed">Completada</option>
+          </select>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-ghost" id="cancelTaskModalBtn">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar Tarea</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast hidden" id="toastNotification">
+    <span class="toast-icon">✨</span>
+    <span class="toast-message" id="toastMessage">¡Copiado al portapapeles!</span>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
