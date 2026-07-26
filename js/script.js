@@ -576,3 +576,26 @@ sqlPresets.forEach((btn) => {
 // Cargar tabla inicial
 renderSqlTable('estudios');
 
+// ============================================
+// 13. Scroll Reveal Animations (IntersectionObserver)
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+  const revealElements = document.querySelectorAll('.section, .story-card, .project-card, .stack-cat, .stat');
+
+  revealElements.forEach(el => el.classList.add('reveal'));
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('reveal-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  revealElements.forEach(el => revealObserver.observe(el));
+});
+

@@ -1259,9 +1259,42 @@ a:focus-visible, button:focus-visible {
   font-size: 3rem;
   animation: float 3s ease-in-out infinite;
 }
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+
+/* ============================================
+   SCROLL REVEAL & MICRO-ANIMATIONS
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-stagger.reveal-visible > *:nth-child(1) { transition-delay: 0.08s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.reveal-visible > *:nth-child(2) { transition-delay: 0.16s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.reveal-visible > *:nth-child(3) { transition-delay: 0.24s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.reveal-visible > *:nth-child(4) { transition-delay: 0.32s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.reveal-visible > *:nth-child(5) { transition-delay: 0.40s; opacity: 1; transform: translateY(0); }
+
+/* Smooth 3D tilt hover enhancement */
+[data-tilt] {
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, border-color 0.2s ease-out;
+  transform-style: preserve-3d;
+}
+
+[data-tilt]:hover {
+  box-shadow: 0 12px 30px rgba(0, 245, 255, 0.15), 0 0 20px rgba(157, 78, 221, 0.2);
 }
 
 
