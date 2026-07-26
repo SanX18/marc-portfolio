@@ -196,10 +196,10 @@ function renderCommands() {
   } else {
     emptyState.classList.add("hidden");
 
-    filteredCommands.forEach(cmd => {
-      const card = document.createElement("div");
-      card.className = "command-card";
-      card.innerHTML = `
+      filteredCommands.forEach(cmd => {
+        const card = document.createElement("div");
+        card.className = "command-card animate-in";
+        card.innerHTML = `
         <div>
           <div class="cmd-card-header">
             <h3 class="cmd-card-title">${escapeHTML(cmd.title)}</h3>
@@ -267,7 +267,7 @@ function renderTasks() {
     if (!matchesSearch) return;
 
     const card = document.createElement("div");
-    card.className = "task-card";
+    card.className = "task-card animate-in";
 
     let moveButtons = "";
     if (task.status === "pending") {
@@ -429,10 +429,13 @@ function initModals() {
 
 function openModal(modalEl) {
   modalEl.classList.remove("hidden");
+  // Pequeño retardo para que la transición de CSS surta efecto tras quitar el display:none
+  setTimeout(() => modalEl.classList.add("active"), 10);
 }
 
 function closeModal(modalEl) {
-  modalEl.classList.add("hidden");
+  modalEl.classList.remove("active");
+  setTimeout(() => modalEl.classList.add("hidden"), 300);
 }
 
 // 10. BÚSQUEDA GLOBAL
@@ -454,9 +457,8 @@ function initShortcuts() {
       e.preventDefault();
       document.getElementById("globalSearchInput").focus();
     }
-    // Escape para cerrar modales
     if (e.key === "Escape") {
-      document.querySelectorAll(".modal-overlay").forEach(m => m.classList.add("hidden"));
+      document.querySelectorAll(".modal-overlay.active").forEach(m => closeModal(m));
     }
   });
 }
@@ -474,9 +476,11 @@ function showToast(message) {
 
   toastMsg.textContent = message;
   toast.classList.remove("hidden");
+  setTimeout(() => toast.classList.add("show"), 10);
 
   setTimeout(() => {
-    toast.classList.add("hidden");
+    toast.classList.remove("show");
+    setTimeout(() => toast.classList.add("hidden"), 300);
   }, 2600);
 }
 
