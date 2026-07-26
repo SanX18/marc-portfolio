@@ -1,5 +1,5 @@
 // ============================================
-// Mobile nav toggle
+// 1. Mobile Nav Toggle
 // ============================================
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.getElementById('navLinks');
@@ -19,28 +19,348 @@ if (navToggle && navLinks) {
 }
 
 // ============================================
-// Click-to-copy email
+// 2. Scroll Progress & Active Nav Link & Back To Top
 // ============================================
-const copyEmailBtn = document.getElementById('copyEmail');
-const copyHint = document.getElementById('copyHint');
+const scrollProgress = document.getElementById('scrollProgress');
+const backToTopBtn = document.getElementById('backToTop');
+const progressCircle = document.querySelector('.progress-ring-circle');
+const sections = document.querySelectorAll('section[id]');
+const navAnchors = document.querySelectorAll('.nav-links a');
 
-if (copyEmailBtn && copyHint) {
-  const defaultHint = copyHint.textContent;
+const circleRadius = 20;
+const circleCircumference = 2 * Math.PI * circleRadius; // ~125.66
 
-  copyEmailBtn.addEventListener('click', async () => {
-    const email = copyEmailBtn.dataset.email;
-    try {
-      await navigator.clipboard.writeText(email);
-      copyHint.textContent = '¡Copiado!';
-    } catch (err) {
-      copyHint.textContent = email;
+if (progressCircle) {
+  progressCircle.style.strokeDasharray = `${circleCircumference} ${circleCircumference}`;
+  progressCircle.style.strokeDashoffset = circleCircumference;
+}
+
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+  // Actualizar barra superior
+  if (scrollProgress) {
+    scrollProgress.style.width = `${scrollPercent}%`;
+  }
+
+  // Actualizar anillo del botón flotante
+  if (progressCircle) {
+    const offset = circleCircumference - (scrollPercent / 100) * circleCircumference;
+    progressCircle.style.strokeDashoffset = offset;
+  }
+
+  // Visibilidad del botón flotante
+  if (backToTopBtn) {
+    if (scrollTop > 300) {
+      backToTopBtn.classList.add('visible');
+    } else {
+      backToTopBtn.classList.remove('visible');
     }
-    setTimeout(() => { copyHint.textContent = defaultHint; }, 2000);
+  }
+
+  // Destacar sección activa en navegación
+  let currentSec = '';
+  sections.forEach((sec) => {
+    const top = sec.offsetTop - 120;
+    const height = sec.offsetHeight;
+    if (scrollTop >= top && scrollTop < top + height) {
+      currentSec = sec.getAttribute('id');
+    }
+  });
+
+  navAnchors.forEach((a) => {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === `#${currentSec}`) {
+      a.classList.add('active');
+    }
+  });
+});
+
+if (backToTopBtn) {
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
 
 // ============================================
-// Scroll reveal for sections
+// 3. Typewriter Effect en Hero
+// ============================================
+const typewriterEl = document.getElementById('typewriterRole');
+if (typewriterEl) {
+  const roles = [
+    'Desarrollador Web & Multiplataforma',
+    'Estudiante Doble Grado DAM · DAW',
+    'Especialista en Soporte IT & Redes'
+  ];
+  let roleIdx = 0;
+  let charIdx = 0;
+  let isDeleting = false;
+  let typingSpeed = 70;
+
+  function typeStep() {
+    const currentRole = roles[roleIdx];
+    if (isDeleting) {
+      typewriterEl.textContent = currentRole.substring(0, charIdx - 1);
+      charIdx--;
+      typingSpeed = 35;
+    } else {
+      typewriterEl.textContent = currentRole.substring(0, charIdx + 1);
+      charIdx++;
+      typingSpeed = 75;
+    }
+
+    if (!isDeleting && charIdx === currentRole.length) {
+      typingSpeed = 2200; // Pausa al completar la frase
+      isDeleting = true;
+    } else if (isDeleting && charIdx === 0) {
+      isDeleting = false;
+      roleIdx = (roleIdx + 1) % roles.length;
+      typingSpeed = 400;
+    }
+
+    setTimeout(typeStep, typingSpeed);
+  }
+
+  typeStep();
+}
+
+// ============================================
+// 4. Hero Particle Canvas Engine
+// ============================================
+const canvas = document.getElementById('heroCanvas');
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  let particles = [];
+  let mouse = { x: null, y: null, radius: 140 };
+
+  function resizeCanvas() {
+    width = canvas.width = canvas.offsetWidth;
+    height = canvas.height = canvas.offsetHeight;
+    initParticles();
+  }
+
+  window.addEventListener('resize', resizeCanvas);
+  window.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = e.clientX - rect.left;
+    mouse.y = e.clientY - rect.top;
+  });
+
+  window.addEventListener('mouseleave', () => {
+    mouse.x = null;
+    mouse.y = null;
+  });
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.vx = (Math.random() - 0.5) * 0.8;
+      this.vy = (Math.random() - 0.5) * 0.8;
+      this.size = Math.random() * 2 + 1;
+      this.color = Math.random() > 0.5 ? '#00f5ff' : '#ff2e88';
+    }
+
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+
+      if (this.x < 0 || this.x > width) this.vx *= -1;
+      if (this.y < 0 || this.y > height) this.vy *= -1;
+
+      // Interacción con mouse
+      if (mouse.x !== null && mouse.y !== null) {
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < mouse.radius) {
+          const angle = Math.atan2(dy, dx);
+          const force = (mouse.radius - dist) / mouse.radius;
+          this.x -= Math.cos(angle) * force * 2;
+          this.y -= Math.sin(angle) * force * 2;
+        }
+      }
+    }
+
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = this.color;
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = this.color;
+      ctx.fill();
+    }
+  }
+
+  function initParticles() {
+    particles = [];
+    const count = Math.min(Math.floor((width * height) / 14000), 65);
+    for (let i = 0; i < count; i++) {
+      particles.push(new Particle());
+    }
+  }
+
+  function animateCanvas() {
+    ctx.clearRect(0, 0, width, height);
+
+    // Conectar partículas cercanas con líneas
+    for (let a = 0; a < particles.length; a++) {
+      for (let b = a + 1; b < particles.length; b++) {
+        const dx = particles[a].x - particles[b].x;
+        const dy = particles[a].y - particles[b].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 110) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(157, 78, 221, ${1 - dist / 110})`;
+          ctx.lineWidth = 0.6;
+          ctx.moveTo(particles[a].x, particles[a].y);
+          ctx.lineTo(particles[b].x, particles[b].y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    particles.forEach((p) => {
+      p.update();
+      p.draw();
+    });
+
+    requestAnimationFrame(animateCanvas);
+  }
+
+  resizeCanvas();
+  animateCanvas();
+}
+
+// ============================================
+// 5. Stack Category Filter
+// ============================================
+const filterBtns = document.querySelectorAll('.filter-btn');
+const stackCats = document.querySelectorAll('.stack-cat');
+
+filterBtns.forEach((btn) => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach((b) => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filter = btn.dataset.filter;
+
+    stackCats.forEach((cat) => {
+      if (filter === 'all' || cat.dataset.category === filter) {
+        cat.style.display = 'block';
+        setTimeout(() => {
+          cat.style.opacity = '1';
+          cat.style.transform = 'scale(1)';
+        }, 10);
+      } else {
+        cat.style.opacity = '0';
+        cat.style.transform = 'scale(0.9)';
+        setTimeout(() => {
+          cat.style.display = 'none';
+        }, 200);
+      }
+    });
+  });
+});
+
+// ============================================
+// 6. Efecto 3D Tilt en Tarjetas
+// ============================================
+const tiltCards = document.querySelectorAll('[data-tilt]');
+
+tiltCards.forEach((card) => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = ((y - centerY) / centerY) * -8;
+    const rotateY = ((x - centerX) / centerX) * 8;
+
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+  });
+});
+
+// ============================================
+// 7. Toast & Email Copy System
+// ============================================
+const copyEmailBtn = document.getElementById('copyEmail');
+const toastContainer = document.getElementById('toastContainer');
+
+function showToast(message) {
+  if (!toastContainer) return;
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.innerHTML = `<span>✨</span> <span>${message}</span>`;
+  toastContainer.appendChild(toast);
+
+  setTimeout(() => {
+    toast.remove();
+  }, 3000);
+}
+
+if (copyEmailBtn) {
+  copyEmailBtn.addEventListener('click', async () => {
+    const email = copyEmailBtn.dataset.email;
+    try {
+      await navigator.clipboard.writeText(email);
+      showToast(`¡Correo ${email} copiado al portapapeles!`);
+    } catch (err) {
+      showToast(`Correo: ${email}`);
+    }
+  });
+}
+
+// ============================================
+// 8. Modal de Proyectos
+// ============================================
+const projectModal = document.getElementById('projectModal');
+const modalBackdrop = document.getElementById('modalBackdrop');
+const modalClose = document.getElementById('modalClose');
+const modalTriggers = document.querySelectorAll('.btn-modal-trigger');
+
+function openModal() {
+  if (projectModal) {
+    projectModal.classList.add('open');
+    projectModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeModal() {
+  if (projectModal) {
+    projectModal.classList.remove('open');
+    projectModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+}
+
+modalTriggers.forEach((btn) => {
+  btn.addEventListener('click', openModal);
+});
+
+if (modalClose) modalClose.addEventListener('click', closeModal);
+if (modalBackdrop) modalBackdrop.addEventListener('click', closeModal);
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && projectModal && projectModal.classList.contains('open')) {
+    closeModal();
+  }
+});
+
+// ============================================
+// 9. Scroll reveal for sections
 // ============================================
 const revealTargets = document.querySelectorAll(
   '.about-grid, .stack-cat, .project-card, .timeline-item, .contact-grid'
