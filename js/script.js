@@ -365,18 +365,18 @@ const projectDetailsData = {
     btnUrl: 'https://www.martasantattoo.com/'
   },
   'bind-deck': {
-    tag: 'Hardware DIY + Desktop App · ESP32 + 3D CAD',
-    title: 'BindDeck — Macro Pad / Stream Deck DIY',
-    desc: 'Macro Pad físico de accesos directos y control multimedia basado en microcontrolador ESP32 con aplicación de escritorio (Control Center) para la configuración de acciones en tiempo real.',
-    arch: 'Carcasa física y teclas customizadas diseñadas al 100% mediante modelado 3D CAD por Marc Sancho (publicado en MakerWorld). Firmware en C++/Arduino para ESP32, comunicación serie/WebSockets con la App de escritorio (Control Center) y visualización OLED/LCD de estados.',
+    tag: 'Desarrollo de Software & Firmware · Desktop App + ESP32',
+    title: 'BindDeck — Macro Pad & Control Center Desktop App',
+    desc: 'Desarrollo integral del programa de escritorio Control Center y software de control en tiempo real para ejecución de macros, atajos de teclado y control multimedia del sistema operativo.',
+    arch: 'Programación del programa de escritorio (Control Center) para la configuración interactiva de perfiles y asignación dinámica de botones. Firmware embebido en C++/Arduino sobre ESP32 con protocolo de comunicación serie bidireccional de baja latencia, tratamiento de interrupciones del encoder rotatorio y renderizado de interfaz gráfica en pantalla OLED/LCD. Complementado con chasis físico 100% diseñado en 3D CAD.',
     highlights: [
-      '✔ Carcasa y estructura 3D customizadas 100% de elaboración propia en CAD',
-      '✔ Integración hardware ESP32 + Encoder rotatorio + Switches mecánicos',
-      '✔ Control Center App para asignación de macros, binds y perfiles',
-      '✔ Modelo 3D publicado y descargable en MakerWorld'
+      '✔ Desarrollo completo del software de escritorio (Control Center) y lógica de comunicación',
+      '✔ Programación de Firmware embebido C++/Arduino con baja latencia en ESP32',
+      '✔ Protocolo bidireccional Serial / WebSockets para actualización inmediata de estados',
+      '✔ Carcasa y teclas en modelado 3D CAD de diseño 100% propio (MakerWorld)'
     ],
-    btnText: 'Ver Modelo 3D en MakerWorld',
-    btnUrl: 'https://makerworld.com/es/models/3213210-macro-pad-stream-deck-bind-deck-diy-esp32-app#profileId-3637462'
+    btnText: 'Ver Código en GitHub',
+    btnUrl: 'https://github.com/SanX18/BindDeck'
   }
 };
 
