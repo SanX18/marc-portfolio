@@ -443,7 +443,7 @@ const commands = {
 `,
   stack: () => `
 <div class="term-line-output term-success">🛠️ Stack Técnico:</div>
-<div class="term-line-output">  • Front-end: HTML5, CSS3 Vanilla, JavaScript ES6+</div>
+<div class="term-line-output">  • Front-end: HTML5, CSS3 Vanilla, JavaScript ES6+, React (Básico)</div>
 <div class="term-line-output">  • Back-end:  PHP, Java, Python</div>
 <div class="term-line-output">  • Datos:     MySQL, SQL Server</div>
 <div class="term-line-output">  • Herramientas: Git, GitHub, GitKraken, WordPress, Soporte IT</div>
@@ -538,9 +538,10 @@ const dbTables = {
     rows: [
       ['1', 'HTML5 & CSS3', 'Front-end', 'Sólido'],
       ['2', 'JavaScript (ES6+)', 'Front-end', 'Básico / Intermedio'],
-      ['3', 'PHP', 'Back-end', 'Básico'],
-      ['4', 'Java', 'Back-end / Multiplataforma', 'Básico'],
-      ['5', 'MySQL & SQL Server', 'Bases de Datos', 'Medio']
+      ['3', 'React', 'Front-end', 'Básico'],
+      ['4', 'PHP', 'Back-end', 'Básico'],
+      ['5', 'Java', 'Back-end / Multiplataforma', 'Básico'],
+      ['6', 'MySQL & SQL Server', 'Bases de Datos', 'Medio']
     ]
   },
   experiencia: {
