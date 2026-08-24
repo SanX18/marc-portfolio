@@ -39,9 +39,12 @@
       <a href="#contacto"><span class="idx">06</span>Contacto</a>
     </nav>
 
-    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-actions">
+      <button class="sound-toggle" id="soundToggle" title="Activar/Desactivar efectos de sonido synth" aria-label="Toggle Sonido">🔊 FX: OFF</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -49,6 +52,7 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero" id="top">
+    <div class="hero-spotlight" id="heroSpotlight"></div>
     <div class="hero-bg" aria-hidden="true">
       <canvas id="heroCanvas"></canvas>
       <div class="sun"></div>
@@ -289,72 +293,106 @@
       <h2 class="section-title">Proyectos</h2>
 
       <div class="projects-grid">
-        <article class="project-card" data-tilt>
-          <div class="project-media">
-            <img src="img/marta-tattoo.png" alt="Marta San Tattoo" class="project-image">
-            <div class="project-media-glow" aria-hidden="true"></div>
-            <div class="project-preview-badge">LIVE SITE</div>
-            <p class="project-media-label">martasantattoo.com</p>
+        <!-- PROYECTO 1: MARTA SAN TATTOO -->
+        <article class="project-card project-card-browser" data-tilt>
+          <div class="browser-window-header">
+            <div class="browser-dots">
+              <span class="dot-red"></span>
+              <span class="dot-yellow"></span>
+              <span class="dot-green"></span>
+            </div>
+            <div class="browser-address-bar">https://www.martasantattoo.com</div>
+            <div class="browser-speed-badge">⚡ 99/100 Performance</div>
           </div>
 
-          <div class="project-body">
-            <p class="project-tag">Encargo real · En producción</p>
-            <h3 class="project-title">Marta San Tattoo</h3>
-            <p class="project-desc">
-              Web de presentación para un estudio de tatuaje especializado en fine line, en Gandía.
-              Incluye una sección de "sobre mí", una galería de trabajos realizados, los servicios
-              que ofrece y un formulario de contacto para pedir cita. Desplegada en Vercel.
-            </p>
-
-            <ul class="project-highlights">
-              <li>Diseño adaptado a móvil, pensado para llegar desde Instagram</li>
-              <li>Galería de portfolio con los trabajos del estudio</li>
-              <li>Formulario de solicitud de cita con selección de tamaño y zona</li>
-            </ul>
-
-            <div class="project-tags">
-              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Vercel</span>
+          <div class="project-card-inner">
+            <div class="project-media">
+              <img src="img/marta-tattoo.png" alt="Marta San Tattoo" class="project-image">
+              <div class="project-media-glow" aria-hidden="true"></div>
+              <div class="project-preview-badge">LIVE SITE</div>
             </div>
 
-            <div class="project-actions">
-              <a href="https://www.martasantattoo.com/" target="_blank" rel="noopener" class="project-link btn-link">
-                Ver web en vivo <span class="arrow">→</span>
-              </a>
-              <button class="btn-modal-trigger" data-project="marta-san-tattoo">Detalles técnicos</button>
+            <div class="project-body">
+              <p class="project-tag">Encargo real · En producción</p>
+              <h3 class="project-title">Marta San Tattoo</h3>
+              <p class="project-desc">
+                Web de presentación para un estudio de tatuaje especializado en fine line, en Gandía.
+                Incluye una sección de "sobre mí", una galería de trabajos realizados, los servicios
+                que ofrece y un formulario de contacto para pedir cita. Desplegada en Vercel.
+              </p>
+
+              <ul class="project-highlights">
+                <li>Diseño adaptado a móvil, pensado para llegar desde Instagram</li>
+                <li>Galería de portfolio con los trabajos del estudio</li>
+                <li>Formulario de solicitud de cita con selección de tamaño y zona</li>
+              </ul>
+
+              <div class="project-metrics">
+                <span class="metric-pill">⚡ Vercel Edge</span>
+                <span class="metric-pill">📱 100% Mobile Ready</span>
+                <span class="metric-pill">🔒 SSL Securo</span>
+              </div>
+
+              <div class="project-tags">
+                <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Vercel</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="https://www.martasantattoo.com/" target="_blank" rel="noopener" class="project-link btn-link">
+                  Ver web en vivo <span class="arrow">→</span>
+                </a>
+                <button class="btn-modal-trigger" data-project="marta-san-tattoo">Detalles técnicos</button>
+              </div>
             </div>
           </div>
         </article>
 
         <!-- TARJETA PROYECTO DEVNOTES APP -->
-        <article class="project-card" data-tilt>
-          <div class="project-media">
-            <img src="img/devdash.png" alt="DevDash App" class="project-image">
-            <div class="project-media-glow" aria-hidden="true"></div>
-            <div class="project-preview-badge">DESKTOP / WEB APP</div>
-            <p class="project-media-label">DevNotes & IT Dashboard</p>
+        <article class="project-card project-card-browser" data-tilt>
+          <div class="browser-window-header">
+            <div class="browser-dots">
+              <span class="dot-red"></span>
+              <span class="dot-yellow"></span>
+              <span class="dot-green"></span>
+            </div>
+            <div class="browser-address-bar">localhost:8080/devnotes-app</div>
+            <div class="browser-speed-badge">⚡ Interactive App</div>
           </div>
 
-          <div class="project-body">
-            <p class="project-tag">Aplicación Web &amp; Escritorio · DAM + DAW</p>
-            <h3 class="project-title">DevNotes &amp; IT Dashboard</h3>
-            <p class="project-desc">
-              Herramienta de productividad para desarrolladores y técnicos de soporte IT. Incluye gestor de comandos rápidos de consola con copia en 1-clic, tablero Kanban de tareas y bloc de notas con autoguardado local (`localStorage`).
-            </p>
-
-            <ul class="project-highlights">
-              <li>Biblioteca de comandos (Git, SQL, Windows CLI, Python) con filtrado instantáneo</li>
-              <li>Tablero Task Tracker interactivo con gestión de estados y prioridades</li>
-              <li>Almacenamiento persistente en disco y atajos de teclado (`Ctrl + K`)</li>
-            </ul>
-
-            <div class="project-tags">
-              <span>HTML5</span><span>CSS3</span><span>JavaScript (DOM)</span><span>LocalStorage</span>
+          <div class="project-card-inner">
+            <div class="project-media">
+              <img src="img/devdash.png" alt="DevDash App" class="project-image">
+              <div class="project-media-glow" aria-hidden="true"></div>
+              <div class="project-preview-badge">DESKTOP / WEB APP</div>
             </div>
 
-            <div class="project-actions">
-              <a href="projects/devnotes-app/index.html" target="_blank" rel="noopener" class="project-link btn-link">
-                Probar App interactiva <span class="arrow">→</span>
-              </a>
+            <div class="project-body">
+              <p class="project-tag">Aplicación Web &amp; Escritorio · DAM + DAW</p>
+              <h3 class="project-title">DevNotes &amp; IT Dashboard</h3>
+              <p class="project-desc">
+                Herramienta de productividad para desarrolladores y técnicos de soporte IT. Incluye gestor de comandos rápidos de consola con copia en 1-clic, tablero Kanban de tareas y bloc de notas con autoguardado local (`localStorage`).
+              </p>
+
+              <ul class="project-highlights">
+                <li>Biblioteca de comandos (Git, SQL, Windows CLI, Python) con filtrado instantáneo</li>
+                <li>Tablero Task Tracker interactivo con gestión de estados y prioridades</li>
+                <li>Almacenamiento persistente en disco y atajos de teclado (`Ctrl + K`)</li>
+              </ul>
+
+              <div class="project-metrics">
+                <span class="metric-pill">💾 Offline Persistence</span>
+                <span class="metric-pill">⚡ Instant Search</span>
+              </div>
+
+              <div class="project-tags">
+                <span>HTML5</span><span>CSS3</span><span>JavaScript (DOM)</span><span>LocalStorage</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="projects/devnotes-app/index.html" target="_blank" rel="noopener" class="project-link btn-link">
+                  Probar App interactiva <span class="arrow">→</span>
+                </a>
+              </div>
             </div>
           </div>
         </article>
@@ -456,6 +494,19 @@
             <span class="arrow">→</span>
           </a>
         </div>
+      </div>
+
+      <!-- FORMULARIO RÁPIDO DE MENSAJE -->
+      <div class="quick-contact-box">
+        <h3 class="quick-contact-title">✉️ Envía un mensaje directo</h3>
+        <form id="cyberContactForm" class="cyber-form">
+          <div class="form-group-row">
+            <input type="text" id="contactName" placeholder="Tu nombre / Empresa" required autocomplete="off">
+            <input type="email" id="contactEmail" placeholder="Tu correo de contacto" required autocomplete="off">
+          </div>
+          <textarea id="contactMessage" placeholder="Hola Marc, nos gustaría ponernos en contacto contigo para..." rows="4" required></textarea>
+          <button type="submit" class="btn btn-primary btn-submit-cyber">Enviar mensaje <span class="arrow">→</span></button>
+        </form>
       </div>
     </div>
   </section>

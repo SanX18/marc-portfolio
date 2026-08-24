@@ -1335,4 +1335,173 @@ a:focus-visible, button:focus-visible {
   box-shadow: 0 12px 30px rgba(0, 245, 255, 0.15), 0 0 20px rgba(157, 78, 221, 0.2);
 }
 
+/* ============================================
+   NAV ACTIONS & SOUND TOGGLE
+   ============================================ */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.sound-toggle {
+  background: rgba(157, 78, 221, 0.15);
+  border: 1px solid var(--purple);
+  color: var(--cyan);
+  font-size: 0.72rem;
+  font-family: var(--font-heading);
+  padding: 6px 14px;
+  border-radius: 16px;
+  transition: all 0.2s ease;
+  letter-spacing: 0.05em;
+}
+.sound-toggle:hover {
+  border-color: var(--pink);
+  color: var(--pink);
+  box-shadow: 0 0 12px rgba(255, 46, 136, 0.4);
+}
+.sound-toggle.active {
+  background: linear-gradient(90deg, var(--pink), var(--purple));
+  color: #0d0221;
+  font-weight: 700;
+  border-color: transparent;
+  box-shadow: 0 0 14px var(--pink);
+}
+
+/* ============================================
+   HERO SPOTLIGHT AMBIENTAL
+   ============================================ */
+.hero-spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 40%), rgba(0, 245, 255, 0.08), transparent 80%);
+  transition: opacity 0.3s ease;
+}
+
+/* ============================================
+   BROWSER WINDOW MOCKUP & PROJECT METRICS
+   ============================================ */
+.project-card-browser {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.browser-window-header {
+  background: #0f0426;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  gap: 12px;
+}
+.browser-dots {
+  display: flex;
+  gap: 6px;
+}
+.browser-address-bar {
+  background: rgba(13, 2, 33, 0.7);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 4px 16px;
+  border-radius: 12px;
+  flex: 1;
+  max-width: 380px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.browser-speed-badge {
+  font-size: 0.7rem;
+  color: var(--cyan);
+  font-family: var(--font-heading);
+  letter-spacing: 0.05em;
+}
+
+.project-card-inner {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+}
+@media (max-width: 860px) {
+  .project-card-inner { grid-template-columns: 1fr; }
+}
+
+.project-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0;
+}
+.metric-pill {
+  font-size: 0.7rem;
+  background: rgba(0, 245, 255, 0.08);
+  border: 1px solid rgba(0, 245, 255, 0.3);
+  color: var(--cyan);
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+/* ============================================
+   QUICK CONTACT CYBER FORM
+   ============================================ */
+.quick-contact-box {
+  margin-top: 40px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 32px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+.quick-contact-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: var(--cyan);
+  margin: 0 0 20px;
+}
+.cyber-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.form-group-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 650px) {
+  .form-group-row { grid-template-columns: 1fr; }
+}
+
+.cyber-form input, .cyber-form textarea {
+  background: #090118;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 14px 18px;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.cyber-form input:focus, .cyber-form textarea:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 14px rgba(0, 245, 255, 0.3);
+}
+.cyber-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+.btn-submit-cyber {
+  align-self: flex-start;
+  margin-top: 8px;
+}
+
+
 

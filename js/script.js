@@ -619,3 +619,87 @@ document.addEventListener('DOMContentLoaded', () => {
   revealElements.forEach(el => revealObserver.observe(el));
 });
 
+// ============================================
+// 14. Hero Mouse Spotlight Engine
+// ============================================
+const heroSection = document.getElementById('top');
+const heroSpotlight = document.getElementById('heroSpotlight');
+
+if (heroSection && heroSpotlight) {
+  heroSection.addEventListener('mousemove', (e) => {
+    const rect = heroSection.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    heroSpotlight.style.setProperty('--mouse-x', `${x}px`);
+    heroSpotlight.style.setProperty('--mouse-y', `${y}px`);
+  });
+}
+
+// ============================================
+// 15. Web Audio API Synth Sound Engine (Opcional)
+// ============================================
+const soundToggle = document.getElementById('soundToggle');
+let isSoundEnabled = false;
+let audioCtx = null;
+
+function playSynthClick(freq = 800, duration = 0.04) {
+  if (!isSoundEnabled) return;
+  try {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+    gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    osc.start();
+    osc.stop(audioCtx.currentTime + duration);
+  } catch (e) {
+    // Silencioso si no es soportado
+  }
+}
+
+if (soundToggle) {
+  soundToggle.addEventListener('click', () => {
+    isSoundEnabled = !isSoundEnabled;
+    if (isSoundEnabled) {
+      soundToggle.classList.add('active');
+      soundToggle.textContent = '🔊 FX: ON';
+      playSynthClick(1200, 0.08);
+      showToast('🔊 Efectos de sonido synth ACTIVADOS');
+    } else {
+      soundToggle.classList.remove('active');
+      soundToggle.textContent = '🔊 FX: OFF';
+      showToast('🔇 Efectos de sonido synth DESACTIVADOS');
+    }
+  });
+}
+
+// Escuchar clicks en botones para sonido synth
+document.addEventListener('click', (e) => {
+  if (e.target.closest('button, a, .term-chip, .filter-btn, .sql-preset-btn')) {
+    playSynthClick(750, 0.04);
+  }
+});
+
+// ============================================
+// 16. Cyber Form Submit Handler
+// ============================================
+const cyberForm = document.getElementById('cyberContactForm');
+if (cyberForm) {
+  cyberForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('contactName').value;
+    showToast(`✨ ¡Gracias ${name}! Tu mensaje ha sido enviado correctamente.`);
+    cyberForm.reset();
+  });
+}
+
+
