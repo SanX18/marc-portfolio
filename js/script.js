@@ -445,7 +445,167 @@ document.addEventListener('DOMContentLoaded', () => {
     canvasObserver.observe(canvas);
   }
 
-  // 14. REST API Simulator Engine (El Lab)
+  // 14. Terminal CLI Engine (El Lab)
+  const terminalInput = document.getElementById('terminalInput');
+  const terminalOutput = document.getElementById('terminalOutput');
+  const terminalBody = document.getElementById('terminalBody');
+  const termChips = document.querySelectorAll('.term-chip');
+
+  const cliCommands = {
+    help: () => `
+<div class="term-line-output term-success">📋 Comandos disponibles:</div>
+<div class="term-line-output">  <span class="term-cmd">whoami</span>    - Resumen profesional de Marc Sancho</div>
+<div class="term-line-output">  <span class="term-cmd">stack</span>     - Tecnologías y herramientas principales</div>
+<div class="term-line-output">  <span class="term-cmd">contacto</span>  - Datos de contacto directo</div>
+<div class="term-line-output">  <span class="term-cmd">matrix</span>    - Modo lluvioso cyberpunk neón</div>
+<div class="term-line-output">  <span class="term-cmd">clear</span>     - Limpiar la pantalla de la terminal</div>
+`,
+    whoami: () => `
+<div class="term-line-output term-highlight">👤 Marc Sancho Pastor</div>
+<div class="term-line-output">🎓 Estudiante de Doble Grado en DAM (Desarrollo Multiplataforma) y DAW (Desarrollo Web).</div>
+<div class="term-line-output">🏆 Matrícula de Honor en Sistemas Microinformáticos y Redes (SMR).</div>
+<div class="term-line-output">📍 Xátiva, Valencia | 🟢 Disponible para incorporación inmediata.</div>
+`,
+    stack: () => `
+<div class="term-line-output term-success">🛠️ Stack Técnico:</div>
+<div class="term-line-output">  • Front-end: HTML5, CSS3 Vanilla, JavaScript ES6+, React</div>
+<div class="term-line-output">  • Back-end:  PHP, Java, Python</div>
+<div class="term-line-output">  • Datos:     MySQL, SQL Server</div>
+<div class="term-line-output">  • Herramientas: Git, GitHub, GitKraken, WordPress, Soporte IT</div>
+`,
+    contacto: () => `
+<div class="term-line-output term-highlight">📬 Contacto Directo:</div>
+<div class="term-line-output">  • Email: <span class="term-cmd">marcsancho46@gmail.com</span></div>
+<div class="term-line-output">  • GitHub: https://github.com/SanX18</div>
+<div class="term-line-output">  • LinkedIn: Marc Sancho Pastor</div>
+`,
+    matrix: () => `
+<div class="term-line-output term-success">💚 Wake up, Neo... La matriz está activa. ¡Explora el portfolio libremente!</div>
+`,
+    clear: () => null
+  };
+
+  function executeCliCommand(cmdStr) {
+    const cleanCmd = cmdStr.trim().toLowerCase();
+    if (!cleanCmd || !terminalOutput) return;
+
+    if (cleanCmd === 'clear') {
+      terminalOutput.innerHTML = '';
+      return;
+    }
+
+    const cmdLine = document.createElement('div');
+    cmdLine.className = 'term-line-output';
+    cmdLine.innerHTML = `<span class="term-prompt">ms@sancho-dev:~$</span> <span class="term-cmd">${cleanCmd}</span>`;
+    terminalOutput.appendChild(cmdLine);
+
+    if (cliCommands[cleanCmd]) {
+      const resultHtml = cliCommands[cleanCmd]();
+      if (resultHtml) {
+        const resultDiv = document.createElement('div');
+        resultDiv.innerHTML = resultHtml;
+        terminalOutput.appendChild(resultDiv);
+      }
+    } else {
+      const errDiv = document.createElement('div');
+      errDiv.className = 'term-line-output term-highlight';
+      errDiv.textContent = `bash: comando no encontrado: ${cleanCmd}. Escribe 'help' para ver opciones.`;
+      terminalOutput.appendChild(errDiv);
+    }
+
+    if (terminalBody) {
+      terminalBody.scrollTop = terminalBody.scrollHeight;
+    }
+  }
+
+  if (terminalInput) {
+    terminalInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        executeCliCommand(terminalInput.value);
+        terminalInput.value = '';
+      }
+    });
+  }
+
+  termChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const cmd = chip.dataset.cmd;
+      if (terminalInput) terminalInput.value = cmd;
+      executeCliCommand(cmd);
+      if (terminalInput) terminalInput.value = '';
+    });
+  });
+
+  // 15. SQL Simulator Engine
+  const sqlPresets = document.querySelectorAll('.sql-preset-btn');
+  const sqlTableWrapper = document.getElementById('sqlTableWrapper');
+
+  const sqlDbTables = {
+    estudios: {
+      headers: ['id', 'titulacion', 'centro', 'periodo', 'nota'],
+      rows: [
+        ['1', 'Doble Grado DAM + DAW', 'Universae', 'Actualidad', 'En curso final'],
+        ['2', 'Grado Medio SMR', 'IES Lluís Simarro', '2019 - 2021', '🏆 Matrícula de Honor'],
+        ['3', 'FP Informática', 'IES Cárcer', '2017 - 2019', 'Aprobado']
+      ]
+    },
+    habilidades: {
+      headers: ['id', 'tecnologia', 'categoria', 'nivel'],
+      rows: [
+        ['1', 'HTML5 & CSS3', 'Front-end', 'Sólido'],
+        ['2', 'JavaScript (ES6+)', 'Front-end', 'Medio'],
+        ['3', 'React', 'Front-end', 'Básico'],
+        ['4', 'PHP', 'Back-end', 'Básico / Intermedio'],
+        ['5', 'Java', 'Back-end', 'Básico'],
+        ['6', 'MySQL & SQL Server', 'Bases de Datos', 'Medio']
+      ]
+    },
+    experiencia: {
+      headers: ['id', 'rol', 'ambito', 'habilidad_clave'],
+      rows: [
+        ['1', 'Soporte IT & Redes', 'Telecomunicaciones / IT', 'Diagnóstico & Atención Cliente'],
+        ['2', 'Desarrollador Web Freelance', 'Front-end Web', 'Maquetación & Despliegue Vercel']
+      ]
+    },
+    idiomas: {
+      headers: ['id', 'idioma', 'nivel'],
+      rows: [
+        ['1', 'Español', 'Nativo'],
+        ['2', 'Valencià', 'Nativo'],
+        ['3', 'Inglés', 'Medio (B1/B2)']
+      ]
+    }
+  };
+
+  function renderSqlTable(tableName) {
+    const tableData = sqlDbTables[tableName];
+    if (!tableData || !sqlTableWrapper) return;
+
+    let html = '<table class="sql-table"><thead><tr>';
+    tableData.headers.forEach(h => html += `<th>${h}</th>`);
+    html += '</tr></thead><tbody>';
+
+    tableData.rows.forEach(row => {
+      html += '<tr>';
+      row.forEach(cell => html += `<td>${cell}</td>`);
+      html += '</tr>';
+    });
+
+    html += '</tbody></table>';
+    sqlTableWrapper.innerHTML = html;
+  }
+
+  sqlPresets.forEach(btn => {
+    btn.addEventListener('click', () => {
+      sqlPresets.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderSqlTable(btn.dataset.query);
+    });
+  });
+
+  renderSqlTable('estudios');
+
+  // 16. REST API Simulator Engine (El Lab)
   const apiTabs = document.querySelectorAll('.api-tab');
   const jsonOutput = document.getElementById('jsonOutput');
   const apiLatency = document.getElementById('apiLatency');

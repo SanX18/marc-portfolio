@@ -1231,28 +1231,176 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* ============================================
-   EL LAB — REST API PLAYGROUND STYLES
+   EL LAB — CONSOLA CLI, SQL & REST API STYLES
    ============================================ */
-.api-playground-card {
+.lab-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+@media (max-width: 960px) {
+  .lab-grid-container { grid-template-columns: 1fr; }
+}
+
+.lab-card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
   overflow: hidden;
   backdrop-filter: blur(16px);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
 }
 
-.api-card-header {
+.lab-card-header {
   background: #111115;
   padding: 12px 20px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   border-bottom: 1px solid var(--border);
   gap: 16px;
   flex-wrap: wrap;
 }
+.lab-card-title {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
 
+.lab-card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* TERMINAL CLI STYLES */
+.terminal-box {
+  background: #09090c;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  min-height: 150px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.term-welcome { color: var(--text-muted); margin-bottom: 10px; }
+.term-prompt { color: var(--indigo-light); font-weight: bold; margin-right: 6px; }
+.term-cmd { color: #34d399; font-weight: bold; }
+.term-line-output { margin-bottom: 6px; color: var(--text-muted); word-break: break-all; }
+.term-success { color: var(--emerald); }
+.term-highlight { color: #fbbf24; }
+.term-info { color: #60a5fa; }
+
+.terminal-input-row {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+.terminal-input-row input {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  flex: 1;
+  outline: none;
+}
+
+.terminal-quick-chips {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.chip-label { font-size: 0.72rem; font-family: var(--font-mono); color: var(--text-sub); }
+.term-chip {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  transition: var(--transition-fast);
+}
+.term-chip:hover {
+  border-color: var(--indigo);
+  color: var(--indigo-light);
+}
+
+/* SQL SIMULATOR STYLES */
+.sql-simulator-box {
+  background: #09090c;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px;
+}
+.sql-box-header {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.sql-presets {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.sql-preset-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  color: var(--text-sub);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: var(--transition-fast);
+}
+.sql-preset-btn:hover {
+  border-color: var(--border-hover);
+  color: var(--text);
+}
+.sql-preset-btn.active {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: var(--indigo);
+  color: var(--indigo-light);
+}
+
+.sql-table-wrapper {
+  overflow-x: auto;
+  max-height: 160px;
+}
+.sql-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+  font-family: var(--font-sans);
+}
+.sql-table th {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--indigo-light);
+  font-family: var(--font-mono);
+  padding: 6px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.sql-table td {
+  padding: 6px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: var(--text-muted);
+}
+.sql-table tr:hover td {
+  background: rgba(99, 102, 241, 0.08);
+  color: var(--text);
+}
+
+/* REST API PLAYGROUND STYLES */
 .api-tabs {
   display: flex;
   gap: 8px;
@@ -1316,15 +1464,15 @@ button { font-family: inherit; cursor: pointer; }
 .api-meta-item { color: var(--text-sub); }
 
 .api-code-body {
-  padding: 24px;
+  padding: 20px;
   background: #0d0d10;
-  max-height: 380px;
+  max-height: 420px;
   overflow-y: auto;
 }
 
 .json-code {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   line-height: 1.6;
   color: var(--text-muted);
 }
@@ -1332,5 +1480,6 @@ button { font-family: inherit; cursor: pointer; }
 .json-str { color: #34d399; }
 .json-num { color: #fbbf24; }
 .json-bool { color: #f472b6; }
+
 
 

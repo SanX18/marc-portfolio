@@ -291,33 +291,89 @@
     </div>
   </section>
 
-  <!-- ============ EL LAB (REST API PLAYGROUND) ============ -->
+  <!-- ============ EL LAB (CONSOLA CLI + SIMULADOR SQL + REST API) ============ -->
   <section class="section" id="lab">
     <div class="section-inner">
       <div class="section-header">
-        <p class="section-eyebrow">03 · INTERACTIVE DEMOS</p>
-        <h2 class="section-title">El Lab &amp; REST API Simulator</h2>
+        <p class="section-eyebrow">03 · EL LAB INTERACTIVO</p>
+        <h2 class="section-title">Consola CLI, Simulador SQL &amp; REST API</h2>
       </div>
 
-      <div class="api-playground-card">
-        <div class="api-card-header">
-          <div class="api-tabs" id="apiTabs">
-            <button class="api-tab active" data-endpoint="profile">GET /api/v1/profile</button>
-            <button class="api-tab" data-endpoint="stack">GET /api/v1/stack</button>
-            <button class="api-tab" data-endpoint="projects">GET /api/v1/projects</button>
+      <div class="lab-grid-container">
+
+        <!-- TARJETA 1: TERMINAL CLI & SIMULADOR SQL -->
+        <div class="lab-card" data-tilt>
+          <div class="lab-card-header">
+            <div class="browser-dots">
+              <span class="b-dot red"></span>
+              <span class="b-dot yellow"></span>
+              <span class="b-dot green"></span>
+            </div>
+            <span class="lab-card-title">ms@sancho-dev: ~/terminal-cli</span>
           </div>
-          <button class="btn-copy-json" id="copyJsonBtn">📋 Copiar JSON</button>
+
+          <div class="lab-card-body">
+            <!-- Consola Terminal -->
+            <div class="terminal-box" id="terminalBody">
+              <div id="terminalOutput">
+                <p class="term-welcome">💡 Consola CLI de Marc Sancho. Escribe <span class="term-cmd">help</span> o pulsa los accesos rápidos.</p>
+              </div>
+              <div class="terminal-input-row">
+                <span class="term-prompt">ms@sancho-dev:~$</span>
+                <input type="text" id="terminalInput" placeholder="Escribe un comando... (ej. help, stack, whoami)" autocomplete="off">
+              </div>
+            </div>
+
+            <div class="terminal-quick-chips">
+              <span class="chip-label">Comandos:</span>
+              <button class="term-chip" data-cmd="help">help</button>
+              <button class="term-chip" data-cmd="whoami">whoami</button>
+              <button class="term-chip" data-cmd="stack">stack</button>
+              <button class="term-chip" data-cmd="contacto">contacto</button>
+              <button class="term-chip" data-cmd="matrix">matrix</button>
+              <button class="term-chip" data-cmd="clear">clear</button>
+            </div>
+
+            <!-- Simulador SQL integrado -->
+            <div class="sql-simulator-box">
+              <div class="sql-box-header">
+                <span>🗄️ SQL Query Simulator</span>
+              </div>
+              <div class="sql-presets">
+                <button class="sql-preset-btn active" data-query="estudios">SELECT * FROM estudios;</button>
+                <button class="sql-preset-btn" data-query="habilidades">SELECT * FROM habilidades;</button>
+                <button class="sql-preset-btn" data-query="experiencia">SELECT * FROM experiencia_it;</button>
+                <button class="sql-preset-btn" data-query="idiomas">SELECT * FROM idiomas;</button>
+              </div>
+              <div class="sql-table-wrapper" id="sqlTableWrapper">
+                <!-- La tabla se renderizará dinámicamente con JS -->
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="api-response-bar">
-          <span class="status-badge status-200">STATUS: 200 OK</span>
-          <span class="api-meta-item" id="apiLatency">LATENCY: 12ms</span>
-          <span class="api-meta-item">CONTENT-TYPE: application/json</span>
+        <!-- TARJETA 2: REST API PLAYGROUND -->
+        <div class="lab-card" data-tilt>
+          <div class="lab-card-header">
+            <div class="api-tabs" id="apiTabs">
+              <button class="api-tab active" data-endpoint="profile">GET /api/v1/profile</button>
+              <button class="api-tab" data-endpoint="stack">GET /api/v1/stack</button>
+              <button class="api-tab" data-endpoint="projects">GET /api/v1/projects</button>
+            </div>
+            <button class="btn-copy-json" id="copyJsonBtn">📋 Copiar JSON</button>
+          </div>
+
+          <div class="api-response-bar">
+            <span class="status-badge status-200">STATUS: 200 OK</span>
+            <span class="api-meta-item" id="apiLatency">LATENCY: 12ms</span>
+            <span class="api-meta-item">CONTENT-TYPE: application/json</span>
+          </div>
+
+          <div class="api-code-body">
+            <pre class="json-code" id="jsonOutput"><code><!-- Se renderizará dinámicamente con JS --></code></pre>
+          </div>
         </div>
 
-        <div class="api-code-body">
-          <pre class="json-code" id="jsonOutput"><code><!-- Se renderizará dinámicamente con JS --></code></pre>
-        </div>
       </div>
     </div>
   </section>
