@@ -203,7 +203,27 @@ if (canvas) {
     }
   }
 
+  let isCanvasVisible = true;
+  let animId = null;
+
+  if ('IntersectionObserver' in window) {
+    const canvasObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        isCanvasVisible = entry.isIntersecting;
+        if (isCanvasVisible && !animId) {
+          animateCanvas();
+        }
+      });
+    }, { threshold: 0.05 });
+    canvasObserver.observe(canvas);
+  }
+
   function animateCanvas() {
+    if (!isCanvasVisible) {
+      animId = null;
+      return;
+    }
+
     ctx.clearRect(0, 0, width, height);
 
     // Conectar partículas cercanas con líneas
@@ -229,7 +249,7 @@ if (canvas) {
       p.draw();
     });
 
-    requestAnimationFrame(animateCanvas);
+    animId = requestAnimationFrame(animateCanvas);
   }
 
   resizeCanvas();
