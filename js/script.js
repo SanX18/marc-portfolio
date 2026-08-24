@@ -343,19 +343,69 @@ if (copyEmailBtn) {
 }
 
 // ============================================
-// 8. Modal de Proyectos
+// 8. Modal de Proyectos Dinámico
 // ============================================
 const projectModal = document.getElementById('projectModal');
 const modalBackdrop = document.getElementById('modalBackdrop');
 const modalClose = document.getElementById('modalClose');
 const modalTriggers = document.querySelectorAll('.btn-modal-trigger');
 
-function openModal() {
-  if (projectModal) {
-    projectModal.classList.add('open');
-    projectModal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
+const projectDetailsData = {
+  'marta-san-tattoo': {
+    tag: 'Encargo Real · En Producción',
+    title: 'Marta San Tattoo',
+    desc: 'Sitio web corporativo creado a medida para el estudio de tatuajes Marta San Tattoo en Gandía.',
+    arch: 'Maquetación semántica HTML5, estilos CSS3 personalizados con diseño totalmente responsive, animación y manejo del DOM con JavaScript ES6+, desplegado de forma continua en Vercel.',
+    highlights: [
+      '✔ Formulario interactivo de reserva de citas',
+      '✔ Optimizada para dispositivos móviles e Instagram',
+      '✔ Carga ultra rápida (99/100 Performance) y SEO integrado'
+    ],
+    btnText: 'Visitar Sitio Web',
+    btnUrl: 'https://www.martasantattoo.com/'
+  },
+  'bind-deck': {
+    tag: 'Hardware DIY + Desktop App · ESP32 + 3D CAD',
+    title: 'BindDeck — Macro Pad / Stream Deck DIY',
+    desc: 'Macro Pad físico de accesos directos y control multimedia basado en microcontrolador ESP32 con aplicación de escritorio (Control Center) para la configuración de acciones en tiempo real.',
+    arch: 'Carcasa física y teclas customizadas diseñadas al 100% mediante modelado 3D CAD por Marc Sancho (publicado en MakerWorld). Firmware en C++/Arduino para ESP32, comunicación serie/WebSockets con la App de escritorio (Control Center) y visualización OLED/LCD de estados.',
+    highlights: [
+      '✔ Carcasa y estructura 3D customizadas 100% de elaboración propia en CAD',
+      '✔ Integración hardware ESP32 + Encoder rotatorio + Switches mecánicos',
+      '✔ Control Center App para asignación de macros, binds y perfiles',
+      '✔ Modelo 3D publicado y descargable en MakerWorld'
+    ],
+    btnText: 'Ver Modelo 3D en MakerWorld',
+    btnUrl: 'https://makerworld.com/es/models/3213210-macro-pad-stream-deck-bind-deck-diy-esp32-app#profileId-3637462'
   }
+};
+
+function openModal(projectId) {
+  if (!projectModal) return;
+
+  const data = projectDetailsData[projectId] || projectDetailsData['marta-san-tattoo'];
+  const modalTag = document.getElementById('modalTag');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalBody = document.getElementById('modalBody');
+  const modalFooter = document.querySelector('.modal-footer');
+
+  if (modalTag) modalTag.textContent = data.tag;
+  if (modalTitle) modalTitle.textContent = data.title;
+  if (modalBody) {
+    let highlightsHtml = data.highlights.map(h => `<span>${h}</span>`).join('');
+    modalBody.innerHTML = `
+      <p><strong>Descripción detallada:</strong> ${data.desc}</p>
+      <p><strong>Arquitectura &amp; Stack:</strong> ${data.arch}</p>
+      <div class="modal-highlights">${highlightsHtml}</div>
+    `;
+  }
+  if (modalFooter) {
+    modalFooter.innerHTML = `<a href="${data.btnUrl}" target="_blank" rel="noopener" class="btn btn-primary">${data.btnText}</a>`;
+  }
+
+  projectModal.classList.add('open');
+  projectModal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
 }
 
 function closeModal() {
@@ -367,7 +417,10 @@ function closeModal() {
 }
 
 modalTriggers.forEach((btn) => {
-  btn.addEventListener('click', openModal);
+  btn.addEventListener('click', () => {
+    const projectId = btn.dataset.project;
+    openModal(projectId);
+  });
 });
 
 if (modalClose) modalClose.addEventListener('click', closeModal);
