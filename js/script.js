@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.showToast = showToast;
 
-  // 8. CV Download Handler
+  // 8. CV Download / View Handler
   const downloadCvBtns = [
     document.getElementById('downloadCvBtn'),
     document.getElementById('downloadCvBtnNav'),
@@ -199,14 +199,8 @@ document.addEventListener('DOMContentLoaded', () => {
   downloadCvBtns.forEach(btn => {
     if (btn) {
       btn.addEventListener('click', () => {
-        const link = document.createElement('a');
-        link.href = 'cv/CV-Marc-Sancho.pdf';
-        link.download = 'Marc-Sancho-CV.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-
-        showToast('📄 Descarga de CV iniciada. ¡Gracias por tu interés!');
+        window.open('cv/index.html', '_blank');
+        showToast('📄 Abriendo Curriculum Vitae oficial de Marc Sancho...');
       });
     }
   });
