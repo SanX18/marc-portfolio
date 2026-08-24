@@ -345,7 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 13. High-Performance Hero Particle Canvas (60fps with IntersectionObserver Pause)
+  // 13. High-Performance Hero Particle Canvas with Mouse Force-Field Physics
   const canvas = document.getElementById('heroCanvas');
   if (canvas) {
     const ctx = canvas.getContext('2d');
@@ -353,17 +353,33 @@ document.addEventListener('DOMContentLoaded', () => {
     let height = (canvas.height = canvas.offsetHeight);
     let animationFrameId = null;
     let isCanvasVisible = true;
+    let mouse = { x: -1000, y: -1000 };
 
     window.addEventListener('resize', () => {
       width = canvas.width = canvas.offsetWidth;
       height = canvas.height = canvas.offsetHeight;
     });
 
-    const particles = Array.from({ length: 45 }, () => ({
+    const heroEl = document.getElementById('top');
+    if (heroEl) {
+      heroEl.addEventListener('mousemove', (e) => {
+        const rect = heroEl.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+      });
+      heroEl.addEventListener('mouseleave', () => {
+        mouse.x = -1000;
+        mouse.y = -1000;
+      });
+    }
+
+    const particles = Array.from({ length: 48 }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
+      originX: 0,
+      originY: 0,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5,
       radius: Math.random() * 1.8 + 0.8
     }));
 
@@ -373,6 +389,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
+        
+        // Interacción con el ratón (repulsión gravitatoria)
+        const dxMouse = p.x - mouse.x;
+        const dyMouse = p.y - mouse.y;
+        const distMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
+        if (distMouse < 120) {
+          const angle = Math.atan2(dyMouse, dxMouse);
+          const force = (120 - distMouse) / 120;
+          p.x += Math.cos(angle) * force * 3;
+          p.y += Math.sin(angle) * force * 3;
+        }
+
         p.x += p.vx;
         p.y += p.vy;
 
@@ -381,7 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(129, 140, 248, 0.4)';
+        ctx.fillStyle = 'rgba(129, 140, 248, 0.45)';
         ctx.fill();
 
         for (let j = i + 1; j < particles.length; j++) {
@@ -417,8 +445,123 @@ document.addEventListener('DOMContentLoaded', () => {
     canvasObserver.observe(canvas);
   }
 
-  // 14. Scroll Reveal Animations (IntersectionObserver)
-  const revealElements = document.querySelectorAll('.section, .story-bento-card, .bento-stack-card, .project-showcase-card, .timeline-row, .contact-action-card');
+  // 14. REST API Simulator Engine (El Lab)
+  const apiTabs = document.querySelectorAll('.api-tab');
+  const jsonOutput = document.getElementById('jsonOutput');
+  const apiLatency = document.getElementById('apiLatency');
+  const copyJsonBtn = document.getElementById('copyJsonBtn');
+
+  const apiResponsesData = {
+    profile: {
+      status: 200,
+      developer: "Marc Sancho Pastor",
+      role: "Full-Stack Developer & IT Specialist",
+      location: "Xátiva, Valencia, España",
+      education: [
+        { degree: "Doble Grado DAM + DAW", status: "En curso final", school: "Universae" },
+        { degree: "Grado Medio SMR", status: "Graduado con Matrícula de Honor", school: "IES Lluís Simarro" }
+      ],
+      availability: "Inmediata para prácticas e incorporación laboral",
+      contact: {
+        email: "marcsancho46@gmail.com",
+        github: "https://github.com/SanX18",
+        linkedin: "Marc Sancho Pastor"
+      }
+    },
+    stack: {
+      status: 200,
+      categories: {
+        frontend: ["HTML5", "CSS3", "JavaScript ES6+", "React"],
+        backend: ["PHP", "Java", "Python"],
+        databases: ["MySQL", "SQL Server"],
+        it_and_networks: ["Diagnóstico informático", "Redes LAN/WLAN", "Atención al cliente (Matrícula Honor SMR)"],
+        tools: ["Git", "GitHub", "GitKraken", "WordPress"]
+      }
+    },
+    projects: {
+      status: 200,
+      total_featured: 3,
+      items: [
+        {
+          name: "BindDeck — Macro Pad & Control Center",
+          tech: ["C++ / ESP32", "Desktop App", "Serial Communication", "3D CAD"],
+          makerworld_published: true,
+          github: "https://github.com/SanX18/BindDeck"
+        },
+        {
+          name: "Marta San Tattoo",
+          tech: ["HTML5", "CSS3", "JavaScript", "Vercel Edge"],
+          status: "Live in production",
+          url: "https://www.martasantattoo.com/"
+        },
+        {
+          name: "DevNotes & IT Dashboard",
+          tech: ["HTML5", "CSS3", "JavaScript (DOM)", "LocalStorage"],
+          type: "Desktop & Web App"
+        }
+      ]
+    }
+  };
+
+  function highlightJsonSyntax(jsonObj) {
+    const jsonStr = JSON.stringify(jsonObj, null, 2);
+    return jsonStr
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, (match) => {
+        let cls = 'json-num';
+        if (/^"/.test(match)) {
+          if (/:$/.test(match)) {
+            cls = 'json-key';
+          } else {
+            cls = 'json-str';
+          }
+        } else if (/true|false/.test(match)) {
+          cls = 'json-bool';
+        }
+        return `<span class="${cls}">${match}</span>`;
+      });
+  }
+
+  function loadEndpoint(endpointKey) {
+    if (!jsonOutput) return;
+    const data = apiResponsesData[endpointKey] || apiResponsesData['profile'];
+
+    // Simular latencia de servidor
+    const randomLatency = Math.floor(Math.random() * 8) + 10;
+    if (apiLatency) apiLatency.textContent = `LATENCY: ${randomLatency}ms`;
+
+    jsonOutput.innerHTML = `<code>${highlightJsonSyntax(data)}</code>`;
+  }
+
+  apiTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      apiTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const endpoint = tab.dataset.endpoint;
+      loadEndpoint(endpoint);
+    });
+  });
+
+  if (copyJsonBtn) {
+    copyJsonBtn.addEventListener('click', async () => {
+      const activeTab = document.querySelector('.api-tab.active');
+      const endpointKey = activeTab ? activeTab.dataset.endpoint : 'profile';
+      const dataStr = JSON.stringify(apiResponsesData[endpointKey], null, 2);
+
+      try {
+        await navigator.clipboard.writeText(dataStr);
+        showToast('📋 ¡Respuesta JSON copiada al portapapeles!');
+      } catch (err) {
+        showToast('JSON copiado');
+      }
+    });
+  }
+
+  // Cargar endpoint inicial
+  loadEndpoint('profile');
+
+  // 15. Scroll Reveal Animations (IntersectionObserver)
+  const revealElements = document.querySelectorAll('.section, .story-bento-card, .bento-stack-card, .project-showcase-card, .timeline-row, .contact-action-card, .api-playground-card');
   revealElements.forEach(el => el.classList.add('reveal'));
 
   const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -436,4 +579,5 @@ document.addEventListener('DOMContentLoaded', () => {
   revealElements.forEach(el => revealObserver.observe(el));
 
 });
+
 

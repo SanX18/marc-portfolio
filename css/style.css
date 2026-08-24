@@ -1230,3 +1230,107 @@ button { font-family: inherit; cursor: pointer; }
   opacity: 1;
 }
 
+/* ============================================
+   EL LAB — REST API PLAYGROUND STYLES
+   ============================================ */
+.api-playground-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+.api-card-header {
+  background: #111115;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.api-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.api-tab {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: var(--transition-fast);
+}
+.api-tab:hover {
+  border-color: var(--border-hover);
+  color: var(--text);
+}
+.api-tab.active {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: var(--indigo);
+  color: var(--indigo-light);
+  font-weight: 600;
+}
+
+.btn-copy-json {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: var(--transition-fast);
+}
+.btn-copy-json:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  border-color: var(--border-hover);
+}
+
+.api-response-bar {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.status-badge {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+.status-200 { background: rgba(16, 185, 129, 0.15); color: var(--emerald); border: 1px solid rgba(16, 185, 129, 0.3); }
+
+.api-meta-item { color: var(--text-sub); }
+
+.api-code-body {
+  padding: 24px;
+  background: #0d0d10;
+  max-height: 380px;
+  overflow-y: auto;
+}
+
+.json-code {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.json-key { color: #818cf8; }
+.json-str { color: #34d399; }
+.json-num { color: #fbbf24; }
+.json-bool { color: #f472b6; }
+
+

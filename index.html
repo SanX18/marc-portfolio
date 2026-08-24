@@ -31,9 +31,10 @@
     <nav class="nav-links" id="navLinks">
       <a href="#about"><span class="idx">01</span>Sobre mí</a>
       <a href="#stack"><span class="idx">02</span>Stack</a>
-      <a href="#proyectos"><span class="idx">03</span>Proyectos</a>
-      <a href="#formacion"><span class="idx">04</span>Formación</a>
-      <a href="#contacto"><span class="idx">05</span>Contacto</a>
+      <a href="#lab"><span class="idx">03</span>El Lab</a>
+      <a href="#proyectos"><span class="idx">04</span>Proyectos</a>
+      <a href="#formacion"><span class="idx">05</span>Formación</a>
+      <a href="#contacto"><span class="idx">06</span>Contacto</a>
     </nav>
 
     <div class="nav-actions">
@@ -290,11 +291,42 @@
     </div>
   </section>
 
-  <!-- ============ PROYECTOS ============ -->
-  <section class="section" id="proyectos">
+  <!-- ============ EL LAB (REST API PLAYGROUND) ============ -->
+  <section class="section" id="lab">
     <div class="section-inner">
       <div class="section-header">
-        <p class="section-eyebrow">03 · PROYECTOS DESTACADOS</p>
+        <p class="section-eyebrow">03 · INTERACTIVE DEMOS</p>
+        <h2 class="section-title">El Lab &amp; REST API Simulator</h2>
+      </div>
+
+      <div class="api-playground-card">
+        <div class="api-card-header">
+          <div class="api-tabs" id="apiTabs">
+            <button class="api-tab active" data-endpoint="profile">GET /api/v1/profile</button>
+            <button class="api-tab" data-endpoint="stack">GET /api/v1/stack</button>
+            <button class="api-tab" data-endpoint="projects">GET /api/v1/projects</button>
+          </div>
+          <button class="btn-copy-json" id="copyJsonBtn">📋 Copiar JSON</button>
+        </div>
+
+        <div class="api-response-bar">
+          <span class="status-badge status-200">STATUS: 200 OK</span>
+          <span class="api-meta-item" id="apiLatency">LATENCY: 12ms</span>
+          <span class="api-meta-item">CONTENT-TYPE: application/json</span>
+        </div>
+
+        <div class="api-code-body">
+          <pre class="json-code" id="jsonOutput"><code><!-- Se renderizará dinámicamente con JS --></code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROYECTOS ============ -->
+  <section class="section section-alt" id="proyectos">
+    <div class="section-inner">
+      <div class="section-header">
+        <p class="section-eyebrow">04 · PROYECTOS DESTACADOS</p>
         <h2 class="section-title">Trabajos &amp; Desarrollos</h2>
       </div>
 
