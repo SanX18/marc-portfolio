@@ -205,14 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentLang = localStorage.getItem('portfolio_lang') || 'es';
   const langSelect = document.getElementById('langSelect');
 
-  if (langSelect) {
-    langSelect.value = currentLang;
-    langSelect.addEventListener('change', (e) => {
-      setLanguage(e.target.value);
-    });
-  }
-
-  function setLanguage(lang) {
+  function setLanguage(lang, showNotification = true) {
     if (!translations[lang]) return;
     currentLang = lang;
     localStorage.setItem('portfolio_lang', lang);
@@ -221,11 +214,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const dict = translations[lang];
 
-    // Actualizar elementos con data-i18n
+    // Actualizar elementos con data-i18n usando innerHTML para soportar HTML interno (ej. <strong>)
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.dataset.i18n;
-      if (dict[key]) {
-        el.textContent = dict[key];
+      if (dict[key] !== undefined) {
+        el.innerHTML = dict[key];
       }
     });
 
@@ -233,18 +226,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const nameInput = document.getElementById('contactName');
     const emailInput = document.getElementById('contactEmail');
     const msgInput = document.getElementById('contactMessage');
-    if (nameInput) nameInput.placeholder = dict.ph_name;
-    if (emailInput) emailInput.placeholder = dict.ph_email;
-    if (msgInput) msgInput.placeholder = dict.ph_msg;
+    if (nameInput && dict.ph_name) nameInput.placeholder = dict.ph_name;
+    if (emailInput && dict.ph_email) emailInput.placeholder = dict.ph_email;
+    if (msgInput && dict.ph_msg) msgInput.placeholder = dict.ph_msg;
 
     // Reiniciar Typewriter con nuevos roles
     if (window.updateTypewriterRoles) {
       window.updateTypewriterRoles(dict.roles);
     }
 
-    const langNames = { es: 'Español 🇪🇸', va: 'Valencià 🦇', en: 'English 🇬🇧' };
-    showToast(`🌐 Idioma cambiado a ${langNames[lang]}`);
+    if (showNotification && typeof showToast === 'function') {
+      const langNames = { es: 'Español (ES)', va: 'Valencià (VA)', en: 'English (EN)' };
+      showToast(`🌐 Idioma cambiado a ${langNames[lang]}`);
+    }
   }
+
+  if (langSelect) {
+    langSelect.value = currentLang;
+    langSelect.addEventListener('change', (e) => {
+      setLanguage(e.target.value, true);
+    });
+  }
+
+  // Aplicar idioma inicial
+  setLanguage(currentLang, false);
 
   // 1. Mobile Navigation Toggle
   const navToggle = document.getElementById('navToggle');
