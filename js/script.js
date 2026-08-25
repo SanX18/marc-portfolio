@@ -203,21 +203,12 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   let currentLang = localStorage.getItem('portfolio_lang') || 'es';
-  const langSelector = document.getElementById('langSelector');
-  const langBtn = document.getElementById('langBtn');
-  const currentLangLabel = document.getElementById('currentLangLabel');
-  const langOpts = document.querySelectorAll('.lang-opt');
+  const langSelect = document.getElementById('langSelect');
 
-  if (langBtn && langSelector) {
-    langBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isOpen = langSelector.classList.toggle('open');
-      langBtn.setAttribute('aria-expanded', isOpen);
-    });
-
-    document.addEventListener('click', () => {
-      langSelector.classList.remove('open');
-      langBtn.setAttribute('aria-expanded', 'false');
+  if (langSelect) {
+    langSelect.value = currentLang;
+    langSelect.addEventListener('change', (e) => {
+      setLanguage(e.target.value);
     });
   }
 
@@ -226,15 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
     currentLang = lang;
     localStorage.setItem('portfolio_lang', lang);
 
-    if (currentLangLabel) currentLangLabel.textContent = lang.toUpperCase();
-
-    langOpts.forEach(opt => {
-      if (opt.dataset.lang === lang) {
-        opt.classList.add('active');
-      } else {
-        opt.classList.remove('active');
-      }
-    });
+    if (langSelect) langSelect.value = lang;
 
     const dict = translations[lang];
 
@@ -262,13 +245,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const langNames = { es: 'Español 🇪🇸', va: 'Valencià 🦇', en: 'English 🇬🇧' };
     showToast(`🌐 Idioma cambiado a ${langNames[lang]}`);
   }
-
-  langOpts.forEach(opt => {
-    opt.addEventListener('click', () => {
-      setLanguage(opt.dataset.lang);
-      if (langSelector) langSelector.classList.remove('open');
-    });
-  });
 
   // 1. Mobile Navigation Toggle
   const navToggle = document.getElementById('navToggle');

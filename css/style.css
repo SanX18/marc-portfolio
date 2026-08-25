@@ -145,83 +145,45 @@ button { font-family: inherit; cursor: pointer; }
   gap: 12px;
 }
 
-/* LANG SELECTOR DROPDOWN */
-.lang-selector-dropdown {
+/* LANG SELECTOR DROPDOWN STYLES */
+.lang-selector-wrapper {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
-.lang-btn {
+.lang-select {
   background: var(--surface);
   border: 1px solid var(--border);
   color: var(--text);
   font-family: var(--font-mono);
   font-size: 0.78rem;
   font-weight: 600;
-  padding: 6px 12px;
+  padding: 6px 26px 6px 10px;
   border-radius: 6px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23818cf8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
   transition: var(--transition-fast);
 }
-.lang-btn:hover {
+
+.lang-select:hover, .lang-select:focus {
   border-color: var(--indigo-light);
   color: var(--indigo-light);
+  background-color: rgba(99, 102, 241, 0.12);
 }
 
-.lang-arrow {
-  font-size: 0.7rem;
-  transition: transform 0.2s ease;
-}
-.lang-selector-dropdown.open .lang-arrow {
-  transform: rotate(180deg);
-}
-
-.lang-menu {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
+.lang-select option {
   background: #141418;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 6px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  min-width: 140px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-8px);
-  transition: all 0.2s var(--ease-spring);
-  z-index: 120;
-}
-.lang-selector-dropdown.open .lang-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.lang-opt {
-  background: transparent;
-  border: none;
-  color: var(--text-muted);
+  color: #ffffff;
   font-family: var(--font-sans);
-  font-size: 0.82rem;
-  padding: 8px 12px;
-  border-radius: 4px;
-  text-align: left;
-  transition: var(--transition-fast);
-  cursor: pointer;
-}
-.lang-opt:hover {
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--text);
-}
-.lang-opt.active {
-  background: rgba(99, 102, 241, 0.15);
-  color: var(--indigo-light);
-  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 8px;
 }
 
 .btn-cv-sm {

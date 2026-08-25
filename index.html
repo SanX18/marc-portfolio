@@ -29,25 +29,22 @@
     <a href="#top" class="nav-logo">MARC SANCHO<span class="logo-dot">.</span></a>
 
     <nav class="nav-links" id="navLinks">
-      <a href="#about"><span class="idx">01</span>About me</a>
-      <a href="#stack"><span class="idx">02</span>Stack</a>
-      <a href="#lab"><span class="idx">03</span>The Lab</a>
-      <a href="#proyectos"><span class="idx">04</span>Projects</a>
-      <a href="#formacion"><span class="idx">05</span>Education</a>
-      <a href="#contacto"><span class="idx">06</span>Contact</a>
+      <a href="#about"><span class="idx">01</span><span data-i18n="nav_about">Sobre mí</span></a>
+      <a href="#stack"><span class="idx">02</span><span data-i18n="nav_stack">Stack</span></a>
+      <a href="#lab"><span class="idx">03</span><span data-i18n="nav_lab">El Lab</span></a>
+      <a href="#proyectos"><span class="idx">04</span><span data-i18n="nav_projects">Proyectos</span></a>
+      <a href="#formacion"><span class="idx">05</span><span data-i18n="nav_education">Formación</span></a>
+      <a href="#contacto"><span class="idx">06</span><span data-i18n="nav_contact">Contacto</span></a>
     </nav>
 
     <div class="nav-actions">
-      <!-- Selector de Idiomas Desplegable -->
-      <div class="lang-selector-dropdown" id="langSelector">
-        <button class="lang-btn" id="langBtn" aria-label="Cambiar idioma / Select language" aria-expanded="false">
-          🌐 <span id="currentLangLabel">ES</span> <span class="lang-arrow">▾</span>
-        </button>
-        <div class="lang-menu" id="langMenu">
-          <button class="lang-opt active" data-lang="es">🇪🇸 Español (ES)</button>
-          <button class="lang-opt" data-lang="va">🦇 Valencià (VA)</button>
-          <button class="lang-opt" data-lang="en">🇬🇧 English (EN)</button>
-        </div>
+      <!-- Selector de Idiomas Desplegable Robusto -->
+      <div class="lang-selector-wrapper">
+        <select class="lang-select" id="langSelect" aria-label="Cambiar idioma">
+          <option value="es">🇪🇸 ES</option>
+          <option value="va">🦇 VA</option>
+          <option value="en">🇬🇧 EN</option>
+        </select>
       </div>
 
       <button class="btn btn-cv-sm" id="downloadCvBtnNav">📄 CV</button>
@@ -68,35 +65,35 @@
     <div class="hero-content">
       <div class="hero-badge">
         <span class="live-dot"></span>
-        <span>Available for internships and immediate incorporation</span>
+        <span data-i18n="hero_badge">Disponible para prácticas e incorporación inmediata</span>
       </div>
 
-      <h1 class="hero-title">WEB &amp; CROSS-PLATFORM DEVELOPER</h1>
+      <h1 class="hero-title"><span data-i18n="hero_title_1">DESARROLLADOR WEB</span> <span data-i18n="hero_title_2">&amp; MULTIPLATAFORMA</span></h1>
       
       <p class="hero-subtitle">
-        <span id="typewriterRole">Dual Degree Student DAM · DAW</span><span class="typewriter-cursor">|</span>
-        <span class="subtitle-divider">—</span> IT Support Specialist (Honors in SMR)
+        <span id="typewriterRole">Estudiante Doble Grado DAM · DAW</span><span class="typewriter-cursor">|</span>
+        <span class="subtitle-divider" data-i18n="hero_sub_divider">— Especialista en Soporte IT (Matrícula de Honor en SMR)</span>
       </p>
 
       <div class="hero-meta-grid">
         <div class="meta-card">
-          <span class="meta-label">Location</span>
-          <span class="meta-val">Xátiva, Valencia</span>
+          <span class="meta-label" data-i18n="meta_loc_lbl">Ubicación</span>
+          <span class="meta-val" data-i18n="meta_loc_val">Xátiva, Valencia</span>
         </div>
         <div class="meta-card">
-          <span class="meta-label">Specialty</span>
-          <span class="meta-val">Full-Stack &amp; Software Desktop</span>
+          <span class="meta-label" data-i18n="meta_spec_lbl">Especialidad</span>
+          <span class="meta-val" data-i18n="meta_spec_val">Full-Stack &amp; Software Desktop</span>
         </div>
         <div class="meta-card">
-          <span class="meta-label">Education</span>
+          <span class="meta-label" data-i18n="meta_edu_lbl">Formación</span>
           <span class="meta-val">DAM + DAW + SMR</span>
         </div>
       </div>
 
       <div class="hero-cta-group">
-        <a href="#proyectos" class="btn btn-primary">Ver Projects <span class="arrow">→</span></a>
-        <button class="btn btn-secondary" id="downloadCvBtn">📄 Download CV (PDF)</button>
-        <a href="#contacto" class="btn btn-ghost">Let's Talk</a>
+        <a href="#proyectos" class="btn btn-primary" data-i18n="btn_projects">Ver Proyectos →</a>
+        <button class="btn btn-secondary" id="downloadCvBtn" data-i18n="btn_cv">📄 Descargar CV (PDF)</button>
+        <a href="#contacto" class="btn btn-ghost" data-i18n="btn_contact">Hablemos</a>
       </div>
     </div>
   </section>
@@ -105,62 +102,62 @@
   <section class="section" id="about">
     <div class="section-inner">
       <div class="section-header">
-        <p class="section-eyebrow">01 · ABOUT ME</p>
-        <h2 class="section-title">Journey &amp; Approach</h2>
+        <p class="section-eyebrow" data-i18n="eyebrow_about">01 · SOBRE MÍ</p>
+        <h2 class="section-title" data-i18n="title_about">Trayectoria &amp; Enfoque</h2>
       </div>
 
       <div class="about-grid">
         <div class="about-text">
-          <p class="lead-paragraph">
-            Hello! I am <strong>Marc Sancho</strong>. My journey in technology started in the field of microcomputing and networks, where I graduated with <strong>Honors in SMR</strong> (Microcomputer Systems and Networks).
+          <p class="lead-paragraph" data-i18n="about_p1">
+            ¡Hola! Soy Marc Sancho. Mi trayectoria en la tecnología comenzó en el ámbito de la microinformática y las redes, donde me gradué con Matrícula de Honor en SMR (Sistemas Microinformáticos y Redes).
           </p>
-          <p>
-            After several years resolving incidents in real IT support and telecommunications environments, I realized my true passion is <strong>creating the software</strong> that prevents and solves those problems. That is why I am currently studying a Dual Degree in <strong>DAM and DAW</strong> (Cross-Platform and Web Application Development) at Universae.
+          <p data-i18n="about_p2">
+            Tras varios años resolviendo incidencias en entornos reales de soporte IT y telecomunicaciones, comprendí que mi verdadera pasión es crear el software que previene y soluciona esos problemas. Por ello, actualmente estoy cursando el Doble Grado en DAM y DAW (Desarrollo de Aplicaciones Multiplataforma y Web) en Universae.
           </p>
-          <p>
-            I combine strong technical diagnostics with a clean, modern development vision focused on delivering high-performance functional applications.
+          <p data-i18n="about_p3">
+            Combino una solidez técnica en diagnóstico con una visión de desarrollo limpia, moderna y enfocada en entregar aplicaciones funcionales de alto rendimiento.
           </p>
         </div>
 
         <div class="about-stats-grid">
           <div class="stat-card" data-tilt>
             <span class="stat-number">4</span>
-            <span class="stat-title">Official Degrees</span>
+            <span class="stat-title" data-i18n="stat_degrees">Titulaciones Oficiales</span>
             <span class="stat-sub">DAM + DAW, SMR, FPI</span>
           </div>
           <div class="stat-card stat-card-highlight" data-tilt>
             <span class="stat-number">🏆</span>
-            <span class="stat-title">Honors</span>
-            <span class="stat-sub">Vocational Training in SMR</span>
+            <span class="stat-title" data-i18n="stat_honor">Matrícula de Honor</span>
+            <span class="stat-sub" data-i18n="stat_honor_sub">Grado Medio en SMR</span>
           </div>
           <div class="stat-card" data-tilt>
             <span class="stat-number">3</span>
-            <span class="stat-title">Languages</span>
-            <span class="stat-sub">Spanish, Valencian, English</span>
+            <span class="stat-title" data-i18n="stat_langs">Idiomas</span>
+            <span class="stat-sub" data-i18n="stat_langs_sub">Español, Valencià, Inglés</span>
           </div>
         </div>
       </div>
 
       <!-- Storytelling Bento Cards -->
       <div class="storytelling-container">
-        <h3 class="storytelling-heading">⚡ Why hire me: The value of a hybrid profile</h3>
+        <h3 class="storytelling-heading" data-i18n="story_heading">⚡ Por qué contratarme: El valor de un perfil híbrido</h3>
         <div class="storytelling-bento">
           <div class="story-bento-card" data-tilt>
             <div class="story-card-header">
               <span class="story-icon-badge">🛠️</span>
-              <h4>50% IT Resolution &amp; Technical Diagnostics</h4>
+              <h4 data-i18n="story_1_title">50% Resolución IT &amp; Diagnóstico Técnico</h4>
             </div>
-            <p>
-              Real experience in rapid fault detection, network administration, and user support. I know how an OS and a network work from the inside, which allows me to program thinking about the real execution environment.
+            <p data-i18n="story_1_desc">
+              Experiencia real en la detección rápida de averías, administración de redes y atención a usuarios. Sé cómo funciona un sistema operativo y una red por dentro, lo que me permite programar pensando en el entorno de ejecución real.
             </p>
           </div>
           <div class="story-bento-card" data-tilt>
             <div class="story-card-header">
               <span class="story-icon-badge">💻</span>
-              <h4>50% Full-Stack &amp; Software Development</h4>
+              <h4 data-i18n="story_2_title">50% Desarrollo Full-Stack &amp; Software</h4>
             </div>
-            <p>
-              Education sólida en desarrollo web (HTML5, CSS3, JavaScript, React, PHP) y software multiplataforma/escritorio (Java, Python, C++, MySQL). Enfoque en código limpio, modular y centrado en la experiencia de usuario.
+            <p data-i18n="story_2_desc">
+              Formación sólida en desarrollo web (HTML5, CSS3, JavaScript, React, PHP) y software multiplataforma/escritorio (Java, Python, C++, MySQL). Enfoque en código limpio, modular y centrado en la experiencia de usuario.
             </p>
           </div>
         </div>
@@ -173,19 +170,19 @@
   <section class="section section-alt" id="stack">
     <div class="section-inner">
       <div class="section-header">
-        <p class="section-eyebrow">02 · TOOLS &amp; TECHNOLOGIES</p>
-        <h2 class="section-title">Technical Stack</h2>
+        <p class="section-eyebrow" data-i18n="eyebrow_stack">02 · HERRAMIENTAS &amp; TECNOLOGÍAS</p>
+        <h2 class="section-title" data-i18n="title_stack">Stack Técnico</h2>
       </div>
 
       <!-- Filtros por categoría -->
       <div class="stack-filters" id="stackFilters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="frontend">Front-End</button>
-        <button class="filter-btn" data-filter="backend">Back-End</button>
-        <button class="filter-btn" data-filter="datos">Databases</button>
-        <button class="filter-btn" data-filter="soporte">Support &amp; Networks</button>
-        <button class="filter-btn" data-filter="tools">CMS &amp; Git</button>
-        <button class="filter-btn" data-filter="idiomas">Languages</button>
+        <button class="filter-btn active" data-filter="all" data-i18n="filter_all">Todos</button>
+        <button class="filter-btn" data-filter="frontend" data-i18n="filter_frontend">Front-End</button>
+        <button class="filter-btn" data-filter="backend" data-i18n="filter_backend">Back-End</button>
+        <button class="filter-btn" data-filter="datos" data-i18n="filter_datos">Bases de Datos</button>
+        <button class="filter-btn" data-filter="soporte" data-i18n="filter_soporte">Soporte &amp; Redes</button>
+        <button class="filter-btn" data-filter="tools" data-i18n="filter_tools">CMS &amp; Git</button>
+        <button class="filter-btn" data-filter="idiomas" data-i18n="filter_idiomas">Idiomas</button>
       </div>
 
       <!-- Bento Grid Stack -->
@@ -307,8 +304,8 @@
   <section class="section" id="lab">
     <div class="section-inner">
       <div class="section-header">
-        <p class="section-eyebrow">03 · THE INTERACTIVE LAB</p>
-        <h2 class="section-title">CLI Console, SQL Simulator &amp; REST API</h2>
+        <p class="section-eyebrow" data-i18n="eyebrow_lab">03 · EL LAB INTERACTIVO</p>
+        <h2 class="section-title" data-i18n="title_lab">Consola CLI, Simulador SQL &amp; REST API</h2>
       </div>
 
       <div class="lab-grid-container">
@@ -328,16 +325,16 @@
             <!-- Consola Terminal -->
             <div class="terminal-box" id="terminalBody">
               <div id="terminalOutput">
-                <p class="term-welcome">💡 Marc Sancho's CLI Console. Type <span class="term-cmd">help</span> or press the quick access buttons.</p>
+                <p class="term-welcome">💡 Consola CLI de Marc Sancho. Escribe <span class="term-cmd">help</span> o pulsa los accesos rápidos.</p>
               </div>
               <div class="terminal-input-row">
                 <span class="term-prompt">ms@sancho-dev:~$</span>
-                <input type="text" id="terminalInput" placeholder="Type a command... (e.g. help, stack, whoami)" autocomplete="off">
+                <input type="text" id="terminalInput" placeholder="Escribe un comando... (ej. help, stack, whoami)" autocomplete="off">
               </div>
             </div>
 
             <div class="terminal-quick-chips">
-              <span class="chip-label">Commands:</span>
+              <span class="chip-label">Comandos:</span>
               <button class="term-chip" data-cmd="help">help</button>
               <button class="term-chip" data-cmd="whoami">whoami</button>
               <button class="term-chip" data-cmd="stack">stack</button>
@@ -372,7 +369,7 @@
               <button class="api-tab" data-endpoint="stack">GET /api/v1/stack</button>
               <button class="api-tab" data-endpoint="projects">GET /api/v1/projects</button>
             </div>
-            <button class="btn-copy-json" id="copyJsonBtn">📋 Copy JSON</button>
+            <button class="btn-copy-json" id="copyJsonBtn">📋 Copiar JSON</button>
           </div>
 
           <div class="api-response-bar">
@@ -394,8 +391,8 @@
   <section class="section section-alt" id="proyectos">
     <div class="section-inner">
       <div class="section-header">
-        <p class="section-eyebrow">04 · FEATURED PROJECTS</p>
-        <h2 class="section-title">Works &amp; Developments</h2>
+        <p class="section-eyebrow" data-i18n="eyebrow_projects">04 · PROYECTOS DESTACADOS</p>
+        <h2 class="section-title" data-i18n="title_projects">Trabajos &amp; Desarrollos</h2>
       </div>
 
       <div class="projects-list">
@@ -423,13 +420,13 @@
               <h3 class="project-name">BindDeck — Macro Pad &amp; Control Center Desktop App</h3>
               
               <p class="project-description">
-                Desktop application and custom control software for executing complex macros, system commands, and real-time multimedia control. Programmed with low-latency serial communication/protocol linked to an ESP32 microcontroller with dynamic profile management and OLED/LCD status display.
+                Aplicación de escritorio y software de control a medida para ejecución de macros complejas, comandos de sistema y control multimedia en tiempo real. Programado con protocolo serie de baja latencia vinculado a microcontrolador ESP32.
               </p>
 
               <ul class="project-feature-list">
-                <li><strong>Control Center programming:</strong> Desktop app for dynamic key mapping, action assignment, and OS integration.</li>
-                <li><strong>Embedded Firmware development (C++/Arduino):</strong> Interrupt management, rotary encoder, and bidirectional serial protocol on ESP32</li>
-                <li><strong>Custom 3D CAD modeling:</strong> Physical chassis and custom buttons 100% self-designed in CAD (published on MakerWorld)</li>
+                <li><strong>Programación Control Center:</strong> Aplicación Desktop para asignación de teclas y acciones.</li>
+                <li><strong>Firmware C++/Arduino:</strong> Gestión de interrupciones y comunicación serie bidireccional en ESP32.</li>
+                <li><strong>Modelado 3D CAD:</strong> Carcasa y botones 100% diseñados en CAD por Marc Sancho.</li>
               </ul>
 
               <div class="project-metric-row">
@@ -444,12 +441,12 @@
 
               <div class="project-action-buttons">
                 <a href="https://github.com/SanX18/BindDeck" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
-                  View Code on GitHub <span class="arrow">→</span>
+                  Código en GitHub <span class="arrow">→</span>
                 </a>
                 <a href="https://makerworld.com/es/models/3213210-macro-pad-stream-deck-bind-deck-diy-esp32-app#profileId-3637462" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">
-                  MakerWorld 3D Model <span class="arrow">↗</span>
+                  Modelo 3D MakerWorld <span class="arrow">↗</span>
                 </a>
-                <button class="btn btn-ghost btn-sm btn-modal-trigger" data-project="bind-deck">Technical details</button>
+                <button class="btn btn-ghost btn-sm btn-modal-trigger" data-project="bind-deck">Detalles técnicos</button>
               </div>
             </div>
           </div>
@@ -470,25 +467,25 @@
           <div class="project-showcase-content">
             <div class="project-media-box">
               <img src="img/marta-tattoo.png" alt="Marta San Tattoo" class="project-img">
-              <div class="media-overlay-badge">LIVE SITE IN PRODUCTION</div>
+              <div class="media-overlay-badge">WEB EN PRODUCCIÓN</div>
             </div>
 
             <div class="project-details">
-              <span class="project-category-tag">Real Commission · In Production</span>
+              <span class="project-category-tag">Encargo Real · En Producción</span>
               <h3 class="project-name">Marta San Tattoo</h3>
               
               <p class="project-description">
-                Corporate presentation website for a fine line tattoo studio in Gandía. Includes a biography section, a portfolio gallery of completed works, a service catalog, and an interactive form for appointment requests.
+                Sitio web corporativo de presentación para estudio de tatuaje en Gandía. Incluye biografía, galería interactiva de trabajos realizados, catálogo de servicios y formulario de cita previa.
               </p>
 
               <ul class="project-feature-list">
-                <li>Mobile-adapted design, optimized for conversion from Instagram</li>
-                <li>Dynamic gallery of the studio's work portfolio</li>
-                <li>Appointment request form with size and body area selection</li>
+                <li>Diseño adaptado a dispositivos móviles desde Instagram</li>
+                <li>Galería dinámica de portfolio de trabajos</li>
+                <li>Formulario de solicitud de cita con selección de zona del cuerpo</li>
               </ul>
 
               <div class="project-metric-row">
-                <span class="metric-tag">⚡ Vercel Edge Deployment</span>
+                <span class="metric-tag">⚡ Despliegue Vercel Edge</span>
                 <span class="metric-tag">📱 100% Mobile Ready</span>
                 <span class="metric-tag">🔒 SSL &amp; SEO Optimizado</span>
               </div>
@@ -499,9 +496,9 @@
 
               <div class="project-action-buttons">
                 <a href="https://www.martasantattoo.com/" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
-                  View Live Site <span class="arrow">→</span>
+                  Ver Web en Vivo <span class="arrow">→</span>
                 </a>
-                <button class="btn btn-ghost btn-sm btn-modal-trigger" data-project="marta-san-tattoo">Technical details</button>
+                <button class="btn btn-ghost btn-sm btn-modal-trigger" data-project="marta-san-tattoo">Detalles técnicos</button>
               </div>
             </div>
           </div>
@@ -526,22 +523,22 @@
             </div>
 
             <div class="project-details">
-              <span class="project-category-tag">Web &amp; Desktop Application · DAM + DAW</span>
+              <span class="project-category-tag">Aplicación Web &amp; Desktop · DAM + DAW</span>
               <h3 class="project-name">DevNotes &amp; IT Dashboard</h3>
               
               <p class="project-description">
-                Productivity tool for developers and IT support technicians. Includes a fast CLI command manager with 1-click copy, a Kanban task board, and a notepad with local autosave (`localStorage`).
+                Herramienta de productividad para desarrolladores y técnicos IT. Incluye gestor de comandos de consola rápidos en 1-clic, tablero Kanban de tareas y bloc de notas con guardado local.
               </p>
 
               <ul class="project-feature-list">
-                <li>Command library (Git, SQL, Windows CLI, Python) with instant filtering</li>
-                <li>Interactive Task Tracker board with status and priority management</li>
-                <li>Local persistent storage with no dependency on external servers</li>
+                <li>Librería de comandos (Git, SQL, CLI Windows, Python) con filtro instantáneo</li>
+                <li>Tablero Kanban de tareas interactivo</li>
+                <li>Almacenamiento persistente local (`localStorage`)</li>
               </ul>
 
               <div class="project-metric-row">
-                <span class="metric-tag">💾 Offline Persistence</span>
-                <span class="metric-tag">⚡ Instant Search</span>
+                <span class="metric-tag">💾 Persistencia Offline</span>
+                <span class="metric-tag">⚡ Búsqueda Instantánea</span>
               </div>
 
               <div class="project-tech-tags">
@@ -550,7 +547,7 @@
 
               <div class="project-action-buttons">
                 <a href="projects/devnotes-app/index.html" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
-                  Try Interactive App <span class="arrow">→</span>
+                  Probar App Interactiva <span class="arrow">→</span>
                 </a>
               </div>
             </div>
@@ -565,8 +562,8 @@
   <section class="section section-alt" id="formacion">
     <div class="section-inner">
       <div class="section-header">
-        <p class="section-eyebrow">05 · ACADEMIC JOURNEY</p>
-        <h2 class="section-title">Education</h2>
+        <p class="section-eyebrow" data-i18n="eyebrow_education">05 · TRAYECTORIA ACADÉMICA</p>
+        <h2 class="section-title" data-i18n="title_education">Formación</h2>
       </div>
 
       <div class="timeline-container">
@@ -574,20 +571,20 @@
         <div class="timeline-row">
           <div class="timeline-marker active"></div>
           <div class="timeline-body">
-            <span class="timeline-period">Present</span>
-            <h3 class="timeline-heading">Dual Degree DAM + DAW</h3>
-            <p class="timeline-sub">Universae — Cross-Platform and Web Application Development</p>
-            <p class="timeline-desc">Completing the final stage of the official dual degree. Focus on full-stack web development, cross-platform software, databases, and system architecture.</p>
+            <span class="timeline-period">Actualidad</span>
+            <h3 class="timeline-heading">Doble Grado DAM + DAW</h3>
+            <p class="timeline-sub">Universae — Desarrollo de Aplicaciones Multiplataforma y Web</p>
+            <p class="timeline-desc">Cursando la etapa final del doble grado oficial. Especialización en desarrollo web full-stack, software multiplataforma, bases de datos y arquitectura de sistemas.</p>
           </div>
         </div>
 
         <div class="timeline-row">
           <div class="timeline-marker honor"></div>
           <div class="timeline-body">
-            <span class="timeline-period">2019 — 2021 <span class="badge-honor">🏆 Honors</span></span>
-            <h3 class="timeline-heading">Grado Mid en Sistemas Microinformáticos y Redes</h3>
+            <span class="timeline-period">2019 — 2021 <span class="badge-honor">🏆 Matrícula de Honor</span></span>
+            <h3 class="timeline-heading">Grado Medio en Sistemas Microinformáticos y Redes</h3>
             <p class="timeline-sub">IES LLUÍS SIMARRO (Xátiva)</p>
-            <p class="timeline-desc">Graduado con Honors. Especialización en montaje y reparación de equipos, administración de redes locales, seguridad informática y atención a usuarios.</p>
+            <p class="timeline-desc">Graduado con Matrícula de Honor. Especialización en montaje y reparación de equipos, administración de redes locales, seguridad informática y atención a usuarios.</p>
           </div>
         </div>
 
@@ -595,19 +592,19 @@
           <div class="timeline-marker"></div>
           <div class="timeline-body">
             <span class="timeline-period">2017 — 2019</span>
-            <h3 class="timeline-heading">Education Profesional en Informática</h3>
+            <h3 class="timeline-heading">Formación Profesional Inicial en Informática</h3>
             <p class="timeline-place">IES CÁRCER</p>
-            <p class="timeline-desc">Fundamental basis of hardware, equipment assembly, operating systems, and basic programming concepts.</p>
+            <p class="timeline-desc">Bases fundamentales de hardware, montaje de equipos, sistemas operativos y conceptos iniciales de programación.</p>
           </div>
         </div>
 
         <div class="timeline-row">
           <div class="timeline-marker"></div>
           <div class="timeline-body">
-            <span class="timeline-period">Immediate Goal</span>
-            <h3 class="timeline-heading">Company Internships &amp; First Incorporation</h3>
-            <p class="timeline-sub">Seeking Professional Opportunity</p>
-            <p class="timeline-desc">Available for company internships or first incorporation as a junior web or software developer. High capacity for adaptation and continuous learning.</p>
+            <span class="timeline-period">Objetivo Inmediato</span>
+            <h3 class="timeline-heading">Prácticas de Empresa e Incorporación Laboral</h3>
+            <p class="timeline-sub">Búsqueda de Oportunidad Profesional</p>
+            <p class="timeline-desc">Disponible para prácticas en empresa o primera incorporación como desarrollador web o software junior. Alta capacidad de adaptación y aprendizaje continuo.</p>
           </div>
         </div>
 
@@ -619,23 +616,22 @@
   <section class="section contact-section" id="contacto">
     <div class="section-inner">
       <div class="section-header text-center">
-        <p class="section-eyebrow">06 · DIRECT CONTACT</p>
-        <h2 class="section-title">Let's Talk</h2>
-        <p class="contact-lead">Looking for someone with a strong technical foundation, problem-solving skills, and a desire to contribute? Write to me, I am available for immediate incorporation.</p>
+        <p class="section-eyebrow" data-i18n="eyebrow_contact">06 · CONTACTO DIRECTO</p>
+        <h2 class="section-title" data-i18n="title_contact">Hablemos</h2>
+        <p class="contact-lead" data-i18n="contact_lead">¿Buscas a alguien con sólida base técnica, resolución de problemas y ganas de aportar? Escríbeme, estoy disponible para incorporación inmediata.</p>
       </div>
 
       <div class="contact-card-grid">
         
         <button class="contact-action-card" id="copyEmail" data-email="marcsancho46@gmail.com" data-tilt>
-          <span class="action-card-label">EMAIL</span>
+          <span class="action-card-label" data-i18n="action_email_lbl">CORREO ELECTRÓNICO</span>
           <span class="action-card-val">marcsancho46@gmail.com</span>
-          <span class="copy-hint" id="copyHint">Click to copy to clipboard</span>
+          <span class="copy-hint" id="copyHint" data-i18n="copy_hint">Clic para copiar al portapapeles</span>
         </button>
 
         <div class="contact-links-column">
           <button class="contact-link-card" id="downloadCvBtn2" data-tilt>
-            <span>📄 Download Resume in PDF</span>
-            <span class="arrow">↓</span>
+            <span data-i18n="btn_download_cv2">📄 Descargar Currículum en PDF ↓</span>
           </button>
           
           <div class="social-links-row">
@@ -654,14 +650,14 @@
 
       <!-- FORMULARIO DIRECTO -->
       <div class="contact-form-box">
-        <h3 class="form-box-heading">✉️ Send a direct message</h3>
+        <h3 class="form-box-heading" data-i18n="form_heading">✉️ Envía un mensaje directo</h3>
         <form id="cyberContactForm" class="executive-form">
           <div class="form-row">
-            <input type="text" id="contactName" placeholder="Your name or company" required autocomplete="off">
-            <input type="email" id="contactEmail" placeholder="Your contact email" required autocomplete="off">
+            <input type="text" id="contactName" placeholder="Tu nombre o empresa" required autocomplete="off">
+            <input type="email" id="contactEmail" placeholder="Tu email de contacto" required autocomplete="off">
           </div>
-          <textarea id="contactMessage" placeholder="Hi Marc, we would like to contact you to..." rows="4" required></textarea>
-          <button type="submit" class="btn btn-primary">Send Direct Message <span class="arrow">→</span></button>
+          <textarea id="contactMessage" rows="4" placeholder="Hola Marc, nos gustaría contactar contigo para..." required></textarea>
+          <button type="submit" class="btn btn-primary btn-block" data-i18n="btn_send_msg">Enviar Mensaje Directo →</button>
         </form>
       </div>
 
