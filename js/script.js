@@ -202,25 +202,44 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  let currentLang = localStorage.getItem('portfolio_lang') || 'es';
+  let currentLang = 'es';
+  try {
+    currentLang = localStorage.getItem('portfolio_lang') || 'es';
+  } catch (e) {
+    console.warn('[i18n] localStorage no disponible:', e);
+  }
+  
   const langSelect = document.getElementById('langSelect');
 
   function setLanguage(lang, showNotification = true) {
-    if (!translations[lang]) return;
+    console.log('[i18n] setLanguage called with:', lang);
+    if (!translations[lang]) {
+        console.error('[i18n] Translation not found for:', lang);
+        return;
+    }
     currentLang = lang;
-    localStorage.setItem('portfolio_lang', lang);
+    
+    try {
+      localStorage.setItem('portfolio_lang', lang);
+    } catch (e) {
+      console.warn('[i18n] No se pudo guardar en localStorage:', e);
+    }
 
     if (langSelect) langSelect.value = lang;
 
     const dict = translations[lang];
+    console.log('[i18n] Dictionary loaded. Updating elements...');
 
+    let count = 0;
     // Actualizar elementos con data-i18n usando innerHTML para soportar HTML interno (ej. <strong>)
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.dataset.i18n;
       if (dict[key] !== undefined) {
         el.innerHTML = dict[key];
+        count++;
       }
     });
+    console.log(`[i18n] Updated ${count} text elements.`);
 
     // Actualizar inputs placeholders
     const nameInput = document.getElementById('contactName');
@@ -242,10 +261,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (langSelect) {
+    console.log('[i18n] Select found. Current lang:', currentLang);
     langSelect.value = currentLang;
     langSelect.addEventListener('change', (e) => {
+      console.log('[i18n] Select changed to:', e.target.value);
       setLanguage(e.target.value, true);
     });
+  } else {
+    console.error('[i18n] Element #langSelect NOT found in DOM!');
   }
 
   // Aplicar idioma inicial
@@ -453,7 +476,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btn) {
       btn.addEventListener('click', () => {
         window.open('cv/index.html', '_blank');
-        showToast('📄 Opening Marc Sancho's official Resume...');
+        showToast("📄 Opening Marc Sancho's official Resume...");
       });
     }
   });
