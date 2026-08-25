@@ -4,6 +4,272 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  // ============================================
+  // MULTI-LANGUAGE SYSTEM (i18n: ES, VA, EN)
+  // ============================================
+  const translations = {
+    es: {
+      nav_about: "01 Sobre mí",
+      nav_stack: "02 Stack",
+      nav_lab: "03 El Lab",
+      nav_projects: "04 Proyectos",
+      nav_education: "05 Formación",
+      nav_contact: "06 Contacto",
+      hero_badge: "Disponible para prácticas e incorporación inmediata",
+      hero_title_1: "DESARROLLADOR WEB",
+      hero_title_2: "& MULTIPLATAFORMA",
+      hero_sub_divider: "— Especialista en Soporte IT (Matrícula de Honor en SMR)",
+      meta_loc_lbl: "Ubicación",
+      meta_loc_val: "Xátiva, Valencia",
+      meta_spec_lbl: "Especialidad",
+      meta_spec_val: "Full-Stack & Software Desktop",
+      meta_edu_lbl: "Formación",
+      btn_projects: "Ver Proyectos →",
+      btn_cv: "📄 Descargar CV (PDF)",
+      btn_contact: "Hablemos",
+      eyebrow_about: "01 · SOBRE MÍ",
+      title_about: "Trayectoria & Enfoque",
+      stat_degrees: "Titulaciones Oficiales",
+      stat_honor: "Matrícula de Honor",
+      stat_honor_sub: "Grado Medio en SMR",
+      stat_langs: "Idiomas",
+      stat_langs_sub: "Español, Valencià, Inglés",
+      story_heading: "⚡ Por qué contratarme: El valor de un perfil híbrido",
+      story_1_title: "50% Resolución IT & Diagnóstico Técnico",
+      story_1_desc: "Experiencia real en la detección rápida de averías, administración de redes y atención a usuarios. Sé cómo funciona un sistema operativo y una red por dentro, lo que me permite programar pensando en el entorno de ejecución real.",
+      story_2_title: "50% Desarrollo Full-Stack & Software",
+      story_2_desc: "Formación sólida en desarrollo web (HTML5, CSS3, JavaScript, React, PHP) y software multiplataforma/escritorio (Java, Python, C++, MySQL). Enfoque en código limpio, modular y centrado en la experiencia de usuario.",
+      eyebrow_stack: "02 · HERRAMIENTAS & TECNOLOGÍAS",
+      title_stack: "Stack Técnico",
+      filter_all: "Todos",
+      filter_frontend: "Front-End",
+      filter_backend: "Back-End",
+      filter_datos: "Bases de Datos",
+      filter_soporte: "Soporte & Redes",
+      filter_tools: "CMS & Git",
+      filter_idiomas: "Idiomas",
+      eyebrow_lab: "03 · EL LAB INTERACTIVO",
+      title_lab: "Consola CLI, Simulador SQL & REST API",
+      eyebrow_projects: "04 · PROYECTOS DESTACADOS",
+      title_projects: "Trabajos & Desarrollos",
+      eyebrow_education: "05 · TRAYECTORIA ACADÉMICA",
+      title_education: "Formación",
+      eyebrow_contact: "06 · CONTACTO DIRECTO",
+      title_contact: "Hablemos",
+      contact_lead: "¿Buscas a alguien con sólida base técnica, resolución de problemas y ganas de aportar? Escríbeme, estoy disponible para incorporación inmediata.",
+      action_email_lbl: "CORREO ELECTRÓNICO",
+      copy_hint: "Clic para copiar al portapapeles",
+      btn_download_cv2: "📄 Descargar Currículum en PDF ↓",
+      form_heading: "✉️ Envía un mensaje directo",
+      ph_name: "Tu nombre o empresa",
+      ph_email: "Tu email de contacto",
+      ph_msg: "Hola Marc, nos gustaría contactar contigo para...",
+      btn_send_msg: "Enviar Mensaje Directo →",
+      roles: [
+        'Estudiante Doble Grado DAM · DAW',
+        'Matrícula de Honor en SMR (Sistemas)',
+        'Desarrollador Web & Multiplataforma',
+        'Especialista en Soporte & Redes IT'
+      ]
+    },
+    va: {
+      nav_about: "01 Sobre mi",
+      nav_stack: "02 Stack",
+      nav_lab: "03 El Lab",
+      nav_projects: "04 Projectes",
+      nav_education: "05 Formació",
+      nav_contact: "06 Contacte",
+      hero_badge: "Disponible per a pràctiques i incorporació immediata",
+      hero_title_1: "DESENVOLUPADOR WEB",
+      hero_title_2: "I MULTIPLATAFORMA",
+      hero_sub_divider: "— Especialista en Suport IT (Matrícula d'Honor en SMR)",
+      meta_loc_lbl: "Ubicació",
+      meta_loc_val: "Xàtiva, València",
+      meta_spec_lbl: "Especialitat",
+      meta_spec_val: "Full-Stack i Software Desktop",
+      meta_edu_lbl: "Formació",
+      btn_projects: "Veure Projectes →",
+      btn_cv: "📄 Descarregar CV (PDF)",
+      btn_contact: "Parlem",
+      eyebrow_about: "01 · SOBRE MI",
+      title_about: "Trajectòria i Enfocament",
+      stat_degrees: "Titulacions Oficials",
+      stat_honor: "Matrícula d'Honor",
+      stat_honor_sub: "Grau Mitjà en SMR",
+      stat_langs: "Idiomes",
+      stat_langs_sub: "Espanyol, Valencià, Anglès",
+      story_heading: "⚡ Per què contractar-me: El valor d'un perfil híbrid",
+      story_1_title: "50% Resolució IT i Diagnòstic Tècnic",
+      story_1_desc: "Experiència real en la detecció ràpida d'avaries, administració de xarxes i atenció a usuaris. Sé com funciona un sistema operatiu i una xarxa per dins, la qual cosa em permet programar pensant en l'entorn d'execució real.",
+      story_2_title: "50% Desenvolupament Full-Stack i Software",
+      story_2_desc: "Formació sòlida en desenvolupament web (HTML5, CSS3, JavaScript, React, PHP) i software multiplataforma/escriptori (Java, Python, C++, MySQL). Enfocament en codi net, modular i centrat en l'experiència d'usuari.",
+      eyebrow_stack: "02 · EINES I TECNOLOGIES",
+      title_stack: "Stack Tècnic",
+      filter_all: "Tots",
+      filter_frontend: "Front-End",
+      filter_backend: "Back-End",
+      filter_datos: "Bases de Dades",
+      filter_soporte: "Suport i Xarxes",
+      filter_tools: "CMS i Git",
+      filter_idiomas: "Idiomes",
+      eyebrow_lab: "03 · EL LAB INTERACTIU",
+      title_lab: "Consola CLI, Simulador SQL i REST API",
+      eyebrow_projects: "04 · PROJECTES DESTACATS",
+      title_projects: "Treballs i Desenvolupaments",
+      eyebrow_education: "05 · TRAJECTÒRIA ACADÈMICA",
+      title_education: "Formació",
+      eyebrow_contact: "06 · CONTACTE DIRECTE",
+      title_contact: "Parlem",
+      contact_lead: "Busques a algú amb sòlida base tècnica, resolució de problemes i ganes d'aportar? Escriu-me, estic disponible per a incorporació immediata.",
+      action_email_lbl: "CORREU ELECTRÒNIC",
+      copy_hint: "Clic per a copiar al porta-retalls",
+      btn_download_cv2: "📄 Descarregar Currículum en PDF ↓",
+      form_heading: "✉️ Envia un missatge directe",
+      ph_name: "El teu nom o empresa",
+      ph_email: "El teu correu de contacte",
+      ph_msg: "Hola Marc, ens agradaria contactar amb tu per a...",
+      btn_send_msg: "Enviar Missatge Directe →",
+      roles: [
+        'Estudiant Doble Grau DAM · DAW',
+        'Matrícula d\'Honor en SMR (Sistemes)',
+        'Desenvolupador Web i Multiplataforma',
+        'Especialista en Suport i Xarxes IT'
+      ]
+    },
+    en: {
+      nav_about: "01 About me",
+      nav_stack: "02 Stack",
+      nav_lab: "03 The Lab",
+      nav_projects: "04 Projects",
+      nav_education: "05 Education",
+      nav_contact: "06 Contact",
+      hero_badge: "Available for internships and immediate hiring",
+      hero_title_1: "WEB & CROSS-PLATFORM",
+      hero_title_2: "DEVELOPER",
+      hero_sub_divider: "— IT Support Specialist (Honors in SMR)",
+      meta_loc_lbl: "Location",
+      meta_loc_val: "Xátiva, Valencia (Spain)",
+      meta_spec_lbl: "Specialty",
+      meta_spec_val: "Full-Stack & Desktop Software",
+      meta_edu_lbl: "Education",
+      btn_projects: "View Projects →",
+      btn_cv: "📄 Download Resume (PDF)",
+      btn_contact: "Let's Talk",
+      eyebrow_about: "01 · ABOUT ME",
+      title_about: "Career & Focus",
+      stat_degrees: "Official Degrees",
+      stat_honor: "Honors Distinction",
+      stat_honor_sub: "Intermediate Degree in SMR",
+      stat_langs: "Languages",
+      stat_langs_sub: "Spanish, Catalan, English",
+      story_heading: "⚡ Why hire me: The value of a hybrid profile",
+      story_1_title: "50% IT Support & Technical Diagnosis",
+      story_1_desc: "Real-world experience in troubleshooting, network administration, and IT user support. I know how operating systems and networks work internally, allowing me to build software tailored to the real runtime environment.",
+      story_2_title: "50% Full-Stack & Software Development",
+      story_2_desc: "Solid background in web development (HTML5, CSS3, JavaScript, React, PHP) and multiplatform/desktop software (Java, Python, C++, MySQL). Focused on clean, modular code centered on UX.",
+      eyebrow_stack: "02 · TOOLS & TECHNOLOGIES",
+      title_stack: "Technical Stack",
+      filter_all: "All",
+      filter_frontend: "Front-End",
+      filter_backend: "Back-End",
+      filter_datos: "Databases",
+      filter_soporte: "Support & Networks",
+      filter_tools: "CMS & Git",
+      filter_idiomas: "Languages",
+      eyebrow_lab: "03 · THE INTERACTIVE LAB",
+      title_lab: "CLI Console, SQL Simulator & REST API",
+      eyebrow_projects: "04 · FEATURED PROJECTS",
+      title_projects: "Projects & Software",
+      eyebrow_education: "05 · ACADEMIC JOURNEY",
+      title_education: "Education",
+      eyebrow_contact: "06 · DIRECT CONTACT",
+      title_contact: "Let's Talk",
+      contact_lead: "Looking for someone with a solid technical foundation, problem-solving skills, and eagerness to contribute? Contact me, I am available for immediate hiring.",
+      action_email_lbl: "EMAIL ADDRESS",
+      copy_hint: "Click to copy to clipboard",
+      btn_download_cv2: "📄 Download Resume in PDF ↓",
+      form_heading: "✉️ Send a direct message",
+      ph_name: "Your name or company",
+      ph_email: "Your contact email",
+      ph_msg: "Hello Marc, we would like to get in touch with you to...",
+      btn_send_msg: "Send Direct Message →",
+      roles: [
+        'Dual Degree Student DAM · DAW',
+        'Honors Graduate in SMR (Systems)',
+        'Web & Multiplatform Developer',
+        'IT Support & Networks Specialist'
+      ]
+    }
+  };
+
+  let currentLang = localStorage.getItem('portfolio_lang') || 'es';
+  const langSelector = document.getElementById('langSelector');
+  const langBtn = document.getElementById('langBtn');
+  const currentLangLabel = document.getElementById('currentLangLabel');
+  const langOpts = document.querySelectorAll('.lang-opt');
+
+  if (langBtn && langSelector) {
+    langBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = langSelector.classList.toggle('open');
+      langBtn.setAttribute('aria-expanded', isOpen);
+    });
+
+    document.addEventListener('click', () => {
+      langSelector.classList.remove('open');
+      langBtn.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  function setLanguage(lang) {
+    if (!translations[lang]) return;
+    currentLang = lang;
+    localStorage.setItem('portfolio_lang', lang);
+
+    if (currentLangLabel) currentLangLabel.textContent = lang.toUpperCase();
+
+    langOpts.forEach(opt => {
+      if (opt.dataset.lang === lang) {
+        opt.classList.add('active');
+      } else {
+        opt.classList.remove('active');
+      }
+    });
+
+    const dict = translations[lang];
+
+    // Actualizar elementos con data-i18n
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (dict[key]) {
+        el.textContent = dict[key];
+      }
+    });
+
+    // Actualizar inputs placeholders
+    const nameInput = document.getElementById('contactName');
+    const emailInput = document.getElementById('contactEmail');
+    const msgInput = document.getElementById('contactMessage');
+    if (nameInput) nameInput.placeholder = dict.ph_name;
+    if (emailInput) emailInput.placeholder = dict.ph_email;
+    if (msgInput) msgInput.placeholder = dict.ph_msg;
+
+    // Reiniciar Typewriter con nuevos roles
+    if (window.updateTypewriterRoles) {
+      window.updateTypewriterRoles(dict.roles);
+    }
+
+    const langNames = { es: 'Español 🇪🇸', va: 'Valencià 🦇', en: 'English 🇬🇧' };
+    showToast(`🌐 Idioma cambiado a ${langNames[lang]}`);
+  }
+
+  langOpts.forEach(opt => {
+    opt.addEventListener('click', () => {
+      setLanguage(opt.dataset.lang);
+      if (langSelector) langSelector.classList.remove('open');
+    });
+  });
+
   // 1. Mobile Navigation Toggle
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
@@ -90,19 +356,25 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. Typewriter Engine for Hero Role
   const typewriterRole = document.getElementById('typewriterRole');
   if (typewriterRole) {
-    const roles = [
-      'Double Degree Student DAM · DAW',
-      'Graduated with Honors in SMR (Systems)',
-      'Web & Cross-Platform Developer',
-      'IT Support & Networks Specialist'
-    ];
+    let roles = translations[currentLang] ? translations[currentLang].roles : translations.es.roles;
     let roleIdx = 0;
     let charIdx = 0;
     let isDeleting = false;
     let speed = 70;
+    let timerId = null;
+
+    window.updateTypewriterRoles = function(newRoles) {
+      if (!newRoles || !newRoles.length) return;
+      roles = newRoles;
+      roleIdx = 0;
+      charIdx = 0;
+      isDeleting = false;
+      clearTimeout(timerId);
+      type();
+    };
 
     function type() {
-      const currentRole = roles[roleIdx];
+      const currentRole = roles[roleIdx] || roles[0];
 
       if (isDeleting) {
         typewriterRole.textContent = currentRole.substring(0, charIdx - 1);
@@ -117,13 +389,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!isDeleting && charIdx === currentRole.length) {
         speed = 2200; // Pause at full sentence
         isDeleting = true;
-      } else if (isDeleting && charIdx === 0) {
+      } else if (isDeleting && charIdx <= 0) {
         isDeleting = false;
         roleIdx = (roleIdx + 1) % roles.length;
         speed = 400;
       }
 
-      setTimeout(type, speed);
+      timerId = setTimeout(type, speed);
     }
 
     type();
@@ -731,6 +1003,26 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   revealElements.forEach(el => revealObserver.observe(el));
+
+  // Inicializar idioma guardado o por defecto (silencioso al cargar)
+  if (translations[currentLang]) {
+    if (currentLangLabel) currentLangLabel.textContent = currentLang.toUpperCase();
+    langOpts.forEach(opt => {
+      if (opt.dataset.lang === currentLang) opt.classList.add('active');
+      else opt.classList.remove('active');
+    });
+    const dict = translations[currentLang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (dict[key]) el.textContent = dict[key];
+    });
+    const nameInput = document.getElementById('contactName');
+    const emailInput = document.getElementById('contactEmail');
+    const msgInput = document.getElementById('contactMessage');
+    if (nameInput) nameInput.placeholder = dict.ph_name;
+    if (emailInput) emailInput.placeholder = dict.ph_email;
+    if (msgInput) msgInput.placeholder = dict.ph_msg;
+  }
 
 });
 

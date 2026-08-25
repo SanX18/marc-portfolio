@@ -38,8 +38,20 @@
     </nav>
 
     <div class="nav-actions">
+      <!-- Selector de Idiomas Desplegable -->
+      <div class="lang-selector-dropdown" id="langSelector">
+        <button class="lang-btn" id="langBtn" aria-label="Cambiar idioma / Select language" aria-expanded="false">
+          🌐 <span id="currentLangLabel">ES</span> <span class="lang-arrow">▾</span>
+        </button>
+        <div class="lang-menu" id="langMenu">
+          <button class="lang-opt active" data-lang="es">🇪🇸 Español (ES)</button>
+          <button class="lang-opt" data-lang="va">🦇 Valencià (VA)</button>
+          <button class="lang-opt" data-lang="en">🇬🇧 English (EN)</button>
+        </div>
+      </div>
+
       <button class="btn btn-cv-sm" id="downloadCvBtnNav">📄 CV</button>
-      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
