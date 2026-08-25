@@ -91,10 +91,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const typewriterRole = document.getElementById('typewriterRole');
   if (typewriterRole) {
     const roles = [
-      'Estudiante Doble Grado DAM · DAW',
-      'Matrícula de Honor en SMR (Sistemas)',
-      'Desarrollador Web & Multiplataforma',
-      'Especialista en Soporte & Redes IT'
+      'Double Degree Student DAM · DAW',
+      'Graduated with Honors in SMR (Systems)',
+      'Web & Cross-Platform Developer',
+      'IT Support & Networks Specialist'
     ];
     let roleIdx = 0;
     let charIdx = 0;
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btn) {
       btn.addEventListener('click', () => {
         window.open('cv/index.html', '_blank');
-        showToast('📄 Abriendo Curriculum Vitae oficial de Marc Sancho...');
+        showToast('📄 Opening Marc Sancho's official Resume...');
       });
     }
   });
@@ -212,9 +212,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const email = copyEmailBtn.dataset.email || 'marcsancho46@gmail.com';
       try {
         await navigator.clipboard.writeText(email);
-        showToast(`¡Correo ${email} copiado al portapapeles!`);
+        showToast(`Email ${email} copied to clipboard!`);
       } catch (err) {
-        showToast(`Correo: ${email}`);
+        showToast(`Email: ${email}`);
       }
     });
   }
@@ -227,30 +227,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const projectDetailsData = {
     'bind-deck': {
-      tag: 'Desarrollo de Software & Firmware · Desktop App + ESP32',
+      tag: 'Software & Firmware Development · Desktop App + ESP32',
       title: 'BindDeck — Macro Pad & Control Center Desktop App',
-      desc: 'Desarrollo integral del programa de escritorio Control Center y software de control en tiempo real para ejecución de macros, atajos de teclado y control multimedia del sistema operativo.',
-      arch: 'Programación del programa de escritorio (Control Center) para la configuración interactiva de perfiles y asignación dinámica de botones. Firmware embebido en C++/Arduino sobre ESP32 con protocolo de comunicación serie bidireccional de baja latencia, tratamiento de interrupciones del encoder rotatorio y renderizado de interfaz gráfica en pantalla OLED/LCD. Complementado con chasis físico 100% diseñado en 3D CAD.',
+      desc: 'Integral development of the Control Center desktop program and real-time control software for executing macros, keyboard shortcuts, and operating system multimedia control.',
+      arch: 'Programming of the desktop program (Control Center) for interactive profile configuration and dynamic button assignment. Embedded firmware in C++/Arduino on ESP32 with low-latency bidirectional serial communication protocol, rotary encoder interrupt handling, and graphical interface rendering on OLED/LCD screen. Complemented with a 100% 3D CAD designed physical chassis.',
       highlights: [
-        '✔ Desarrollo completo del software de escritorio (Control Center) y lógica de comunicación',
-        '✔ Programación de Firmware embebido C++/Arduino con baja latencia en ESP32',
-        '✔ Protocolo bidireccional Serial / WebSockets para actualización inmediata de estados',
-        '✔ Carcasa y teclas en modelado 3D CAD de diseño 100% propio (MakerWorld)'
+        '✔ Complete development of desktop software (Control Center) and communication logic',
+        '✔ Low-latency embedded C++/Arduino firmware programming on ESP32',
+        '✔ Bidirectional Serial / WebSockets protocol for immediate state updates',
+        '✔ 100% custom designed 3D CAD modeled casing and keys (MakerWorld)'
       ],
-      btnText: 'Ver Código en GitHub',
+      btnText: 'View Code on GitHub',
       btnUrl: 'https://github.com/SanX18/BindDeck'
     },
     'marta-san-tattoo': {
-      tag: 'Encargo Real · En Producción',
+      tag: 'Real Commission · In Production',
       title: 'Marta San Tattoo',
-      desc: 'Sitio web corporativo creado a medida para el estudio de tatuajes Marta San Tattoo en Gandía.',
-      arch: 'Maquetación semántica HTML5, estilos CSS3 personalizados con diseño totalmente responsive, animación y manejo del DOM con JavaScript ES6+, desplegado de forma continua en Vercel Edge.',
+      desc: 'Custom corporate website created for the Marta San Tattoo studio in Gandía.',
+      arch: 'Semantic HTML5 layout, custom CSS3 styles with fully responsive design, animation and DOM manipulation with JavaScript ES6+, continuously deployed on Vercel Edge.',
       highlights: [
-        '✔ Formulario interactivo de reserva de citas',
-        '✔ Optimizada para dispositivos móviles e Instagram',
-        '✔ Carga ultra rápida (99/100 Performance) y SEO integrado'
+        '✔ Interactive appointment booking form',
+        '✔ Optimized for mobile devices and Instagram',
+        '✔ Ultra-fast loading (99/100 Performance) and integrated SEO'
       ],
-      btnText: 'Visitar Sitio Web',
+      btnText: 'Visit Website',
       btnUrl: 'https://www.martasantattoo.com/'
     }
   };
@@ -269,8 +269,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modalBody) {
       let highlightsHtml = data.highlights.map(h => `<span>${h}</span>`).join('');
       modalBody.innerHTML = `
-        <p><strong>Descripción detallada:</strong> ${data.desc}</p>
-        <p><strong>Arquitectura &amp; Stack:</strong> ${data.arch}</p>
+        <p><strong>Detailed description:</strong> ${data.desc}</p>
+        <p><strong>Architecture &amp; Stack:</strong> ${data.arch}</p>
         <div class="modal-highlights">${highlightsHtml}</div>
       `;
     }
@@ -314,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const name = document.getElementById('contactName').value;
-      showToast(`✨ ¡Gracias ${name}! Tu mensaje ha sido registrado correctamente.`);
+      showToast(`✨ Thank you ${name}! Your message has been successfully registered.`);
       contactForm.reset();
     });
   }
@@ -384,7 +384,7 @@ document.addEventListener('DOMContentLoaded', () => {
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
         
-        // Interacción con el ratón (repulsión gravitatoria)
+        // Mouse interaction (gravitational repulsion)
         const dxMouse = p.x - mouse.x;
         const dyMouse = p.y - mouse.y;
         const distMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
@@ -447,34 +447,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const cliCommands = {
     help: () => `
-<div class="term-line-output term-success">📋 Comandos disponibles:</div>
-<div class="term-line-output">  <span class="term-cmd">whoami</span>    - Resumen profesional de Marc Sancho</div>
-<div class="term-line-output">  <span class="term-cmd">stack</span>     - Tecnologías y herramientas principales</div>
-<div class="term-line-output">  <span class="term-cmd">contacto</span>  - Datos de contacto directo</div>
-<div class="term-line-output">  <span class="term-cmd">matrix</span>    - Modo lluvioso cyberpunk neón</div>
-<div class="term-line-output">  <span class="term-cmd">clear</span>     - Limpiar la pantalla de la terminal</div>
+<div class="term-line-output term-success">📋 Available commands:</div>
+<div class="term-line-output">  <span class="term-cmd">whoami</span>    - Marc Sancho's professional summary</div>
+<div class="term-line-output">  <span class="term-cmd">stack</span>     - Main technologies and tools</div>
+<div class="term-line-output">  <span class="term-cmd">contacto</span>  - Direct contact details</div>
+<div class="term-line-output">  <span class="term-cmd">matrix</span>    - Neon cyberpunk rain mode</div>
+<div class="term-line-output">  <span class="term-cmd">clear</span>     - Clear the terminal screen</div>
 `,
     whoami: () => `
 <div class="term-line-output term-highlight">👤 Marc Sancho Pastor</div>
-<div class="term-line-output">🎓 Estudiante de Doble Grado en DAM (Desarrollo Multiplataforma) y DAW (Desarrollo Web).</div>
-<div class="term-line-output">🏆 Matrícula de Honor en Sistemas Microinformáticos y Redes (SMR).</div>
-<div class="term-line-output">📍 Xátiva, Valencia | 🟢 Disponible para incorporación inmediata.</div>
+<div class="term-line-output">🎓 Double Degree Student in DAM (Cross-Platform Development) and DAW (Web Development).</div>
+<div class="term-line-output">🏆 Graduated with Honors in Microcomputer Systems and Networks (SMR).</div>
+<div class="term-line-output">📍 Xátiva, Valencia | 🟢 Available for immediate incorporation.</div>
 `,
     stack: () => `
-<div class="term-line-output term-success">🛠️ Stack Técnico:</div>
+<div class="term-line-output term-success">🛠️ Technical Stack:</div>
 <div class="term-line-output">  • Front-end: HTML5, CSS3 Vanilla, JavaScript ES6+, React</div>
 <div class="term-line-output">  • Back-end:  PHP, Java, Python</div>
-<div class="term-line-output">  • Datos:     MySQL, SQL Server</div>
-<div class="term-line-output">  • Herramientas: Git, GitHub, GitKraken, WordPress, Soporte IT</div>
+<div class="term-line-output">  • Data:      MySQL, SQL Server</div>
+<div class="term-line-output">  • Tools:     Git, GitHub, GitKraken, WordPress, IT Support</div>
 `,
     contacto: () => `
-<div class="term-line-output term-highlight">📬 Contacto Directo:</div>
+<div class="term-line-output term-highlight">📬 Direct Contact:</div>
 <div class="term-line-output">  • Email: <span class="term-cmd">marcsancho46@gmail.com</span></div>
 <div class="term-line-output">  • GitHub: https://github.com/SanX18</div>
 <div class="term-line-output">  • LinkedIn: Marc Sancho Pastor</div>
 `,
     matrix: () => `
-<div class="term-line-output term-success">💚 Wake up, Neo... La matriz está activa. ¡Explora el portfolio libremente!</div>
+<div class="term-line-output term-success">💚 Wake up, Neo... The matrix is active. Explore the portfolio freely!</div>
 `,
     clear: () => null
   };
@@ -535,38 +535,38 @@ document.addEventListener('DOMContentLoaded', () => {
   const sqlTableWrapper = document.getElementById('sqlTableWrapper');
 
   const sqlDbTables = {
-    estudios: {
-      headers: ['id', 'titulacion', 'centro', 'periodo', 'nota'],
+    education: {
+      headers: ['id', 'degree', 'school', 'period', 'grade'],
       rows: [
-        ['1', 'Doble Grado DAM + DAW', 'Universae', 'Actualidad', 'En curso final'],
-        ['2', 'Grado Medio SMR', 'IES Lluís Simarro', '2019 - 2021', '🏆 Matrícula de Honor'],
-        ['3', 'FP Informática', 'IES Cárcer', '2017 - 2019', 'Aprobado']
+        ['1', 'Double Degree DAM + DAW', 'Universae', 'Present', 'Final year'],
+        ['2', 'Intermediate Degree SMR', 'IES Lluís Simarro', '2019 - 2021', '🏆 Graduated with Honors'],
+        ['3', 'IT Vocational Training', 'IES Cárcer', '2017 - 2019', 'Passed']
       ]
     },
-    habilidades: {
-      headers: ['id', 'tecnologia', 'categoria', 'nivel'],
+    skills: {
+      headers: ['id', 'technology', 'category', 'level'],
       rows: [
-        ['1', 'HTML5 & CSS3', 'Front-end', 'Sólido'],
-        ['2', 'JavaScript (ES6+)', 'Front-end', 'Medio'],
-        ['3', 'React', 'Front-end', 'Básico'],
-        ['4', 'PHP', 'Back-end', 'Básico / Intermedio'],
-        ['5', 'Java', 'Back-end', 'Básico'],
-        ['6', 'MySQL & SQL Server', 'Bases de Datos', 'Medio']
+        ['1', 'HTML5 & CSS3', 'Front-end', 'Solid'],
+        ['2', 'JavaScript (ES6+)', 'Front-end', 'Intermediate'],
+        ['3', 'React', 'Front-end', 'Basic'],
+        ['4', 'PHP', 'Back-end', 'Basic / Intermediate'],
+        ['5', 'Java', 'Back-end', 'Basic'],
+        ['6', 'MySQL & SQL Server', 'Databases', 'Intermediate']
       ]
     },
-    experiencia: {
-      headers: ['id', 'rol', 'ambito', 'habilidad_clave'],
+    experience: {
+      headers: ['id', 'role', 'field', 'key_skill'],
       rows: [
-        ['1', 'Soporte IT & Redes', 'Telecomunicaciones / IT', 'Diagnóstico & Atención Cliente'],
-        ['2', 'Desarrollador Web Freelance', 'Front-end Web', 'Maquetación & Despliegue Vercel']
+        ['1', 'IT & Network Support', 'Telecommunications / IT', 'Diagnostics & Customer Service'],
+        ['2', 'Freelance Web Developer', 'Front-end Web', 'Layout & Vercel Deployment']
       ]
     },
-    idiomas: {
-      headers: ['id', 'idioma', 'nivel'],
+    languages: {
+      headers: ['id', 'language', 'level'],
       rows: [
-        ['1', 'Español', 'Nativo'],
-        ['2', 'Valencià', 'Nativo'],
-        ['3', 'Inglés', 'Medio (B1/B2)']
+        ['1', 'Spanish', 'Native'],
+        ['2', 'Valencian', 'Native'],
+        ['3', 'English', 'Intermediate (B1/B2)']
       ]
     }
   };
@@ -597,7 +597,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  renderSqlTable('estudios');
+  renderSqlTable('education');
 
   // 16. REST API Simulator Engine (El Lab)
   const apiTabs = document.querySelectorAll('.api-tab');
@@ -612,10 +612,10 @@ document.addEventListener('DOMContentLoaded', () => {
       role: "Full-Stack Developer & IT Specialist",
       location: "Xátiva, Valencia, España",
       education: [
-        { degree: "Doble Grado DAM + DAW", status: "En curso final", school: "Universae" },
-        { degree: "Grado Medio SMR", status: "Graduado con Matrícula de Honor", school: "IES Lluís Simarro" }
+        { degree: "Doble Grado DAM + DAW", status: "Final year", school: "Universae" },
+        { degree: "Grado Medio SMR", status: "Graduated with Honors", school: "IES Lluís Simarro" }
       ],
-      availability: "Inmediata para prácticas e incorporación laboral",
+      availability: "Immediate for internship and job incorporation",
       contact: {
         email: "marcsancho46@gmail.com",
         github: "https://github.com/SanX18",
@@ -628,7 +628,7 @@ document.addEventListener('DOMContentLoaded', () => {
         frontend: ["HTML5", "CSS3", "JavaScript ES6+", "React"],
         backend: ["PHP", "Java", "Python"],
         databases: ["MySQL", "SQL Server"],
-        it_and_networks: ["Diagnóstico informático", "Redes LAN/WLAN", "Atención al cliente (Matrícula Honor SMR)"],
+        it_and_networks: ["IT Diagnostics", "LAN/WLAN Networks", "Customer Service (SMR Honors)"],
         tools: ["Git", "GitHub", "GitKraken", "WordPress"]
       }
     },
@@ -680,7 +680,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!jsonOutput) return;
     const data = apiResponsesData[endpointKey] || apiResponsesData['profile'];
 
-    // Simular latencia de servidor
+    // Simulate server latency
     const randomLatency = Math.floor(Math.random() * 8) + 10;
     if (apiLatency) apiLatency.textContent = `LATENCY: ${randomLatency}ms`;
 
@@ -704,14 +704,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       try {
         await navigator.clipboard.writeText(dataStr);
-        showToast('📋 ¡Respuesta JSON copiada al portapapeles!');
+        showToast('📋 JSON response copied to clipboard!');
       } catch (err) {
-        showToast('JSON copiado');
+        showToast('JSON copied');
       }
     });
   }
 
-  // Cargar endpoint inicial
+  // Load initial endpoint
   loadEndpoint('profile');
 
   // 15. Scroll Reveal Animations (IntersectionObserver)

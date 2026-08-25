@@ -1,126 +1,126 @@
 /* ==========================================================================
-   DevNotes & IT Dashboard — Lógica Principal en JavaScript
-   Desarrollador: Marc Sancho (DAM + DAW)
+   DevNotes & IT Dashboard — Main JavaScript Logic
+   Developer: Marc Sancho (DAM + DAW)
    ========================================================================== */
 
-// 1. DATOS INICIALES DE EJEMPLO (Seed Data)
+// 1. INITIAL EXAMPLE DATA (Seed Data)
 const initialCommands = [
   {
     id: "cmd-1",
-    title: "Ver procesos escuchando en un puerto (Windows)",
-    category: "Sistema / IT",
+    title: "View processes listening on a port (Windows)",
+    category: "System / IT",
     code: "netstat -ano | findstr :8080",
-    description: "Útil para cuando un servidor web o Java bloquea el puerto 8080."
+    description: "Useful for when a web or Java server blocks port 8080."
   },
   {
     id: "cmd-2",
-    title: "Descartar cambios locales no guardados",
+    title: "Discard unsaved local changes",
     category: "Git",
     code: "git restore . && git clean -fd",
-    description: "Limpia el directorio de trabajo y restaura los archivos modificados."
+    description: "Cleans the working directory and restores modified files."
   },
   {
     id: "cmd-3",
-    title: "Consulta JOIN rápida para relaciones en MySQL",
+    title: "Quick JOIN query for relationships in MySQL",
     category: "SQL",
     code: "SELECT u.nombre, p.titulo FROM usuarios u INNER JOIN proyectos p ON u.id = p.usuario_id;",
-    description: "Plantilla básica de consulta SQL con clave foránea."
+    description: "Basic SQL query template with foreign key."
   },
   {
     id: "cmd-4",
-    title: "Iniciar servidor local rápido de pruebas en Python",
+    title: "Start quick local test server in Python",
     category: "Dev / Web",
     code: "python -m http.server 8000",
-    description: "Abre un servidor HTTP en el puerto 8000 apuntando a la carpeta actual."
+    description: "Opens an HTTP server on port 8000 pointing to the current folder."
   },
   {
     id: "cmd-5",
-    title: "Liberar y renovar IP por consola (Windows)",
-    category: "Sistema / IT",
+    title: "Release and renew IP via console (Windows)",
+    category: "System / IT",
     code: "ipconfig /release && ipconfig /renew",
-    description: "Reinicia la dirección IP asignada por DHCP al adaptador de red."
+    description: "Restarts the IP address assigned by DHCP to the network adapter."
   },
   {
     id: "cmd-6",
-    title: "Deshacer el último commit (sin perder cambios)",
+    title: "Undo the last commit (without losing changes)",
     category: "Git",
     code: "git reset --soft HEAD~1",
-    description: "Deshace el último commit pero mantiene los archivos modificados listos para volver a hacer commit."
+    description: "Undoes the last commit but keeps modified files ready to commit again."
   },
   {
     id: "cmd-7",
-    title: "Forzar actualización remota (sobrescribir local)",
+    title: "Force remote update (overwrite local)",
     category: "Git",
     code: "git fetch --all && git reset --hard origin/main",
-    description: "Cuidado: Sobrescribe todos los cambios locales con la versión exacta de la rama principal remota."
+    description: "Caution: Overwrites all local changes with the exact version of the remote main branch."
   },
   {
     id: "cmd-8",
-    title: "Ver historial en un gráfico resumido",
+    title: "View history in a summary graph",
     category: "Git",
     code: "git log --graph --oneline --decorate --all",
-    description: "Muestra el árbol de ramas y commits de forma visual y compacta en la consola."
+    description: "Shows the branch and commit tree visually and compactly in the console."
   },
   {
     id: "cmd-9",
-    title: "Modificar el mensaje del último commit",
+    title: "Modify the message of the last commit",
     category: "Git",
-    code: "git commit --amend -m \"Nuevo mensaje\"",
-    description: "Cambia el mensaje del último commit (siempre que no se haya subido al repositorio remoto)."
+    code: "git commit --amend -m \"New message\"",
+    description: "Changes the message of the last commit (provided it hasn't been pushed to the remote repository)."
   },
   {
     id: "cmd-10",
-    title: "Limpiar la caché de Docker",
-    category: "Sistema / IT",
+    title: "Clear Docker cache",
+    category: "System / IT",
     code: "docker system prune -a --volumes",
-    description: "Elimina contenedores, redes y volúmenes detenidos para liberar espacio en disco."
+    description: "Removes stopped containers, networks, and volumes to free up disk space."
   },
   {
     id: "cmd-11",
-    title: "Matar proceso en un puerto (Mac/Linux)",
-    category: "Sistema / IT",
+    title: "Kill process on a port (Mac/Linux)",
+    category: "System / IT",
     code: "kill -9 $(lsof -t -i:3000)",
-    description: "Fuerza el cierre del proceso que esté utilizando el puerto 3000."
+    description: "Forces the closure of the process using port 3000."
   }
 ];
 
 const initialTasks = [
   {
     id: "task-1",
-    title: "Revisar arquitectura del patrón MVC en Java (DAM)",
-    category: "DAM - Acceso a Datos",
-    priority: "Alta",
+    title: "Review MVC pattern architecture in Java (DAM)",
+    category: "DAM - Data Access",
+    priority: "High",
     status: "pending"
   },
   {
     id: "task-2",
-    title: "Diseñar interfaz responsive para cliente en DAW",
-    category: "DAW - Diseño Web",
-    priority: "Media",
+    title: "Design responsive interface for client in DAW",
+    category: "DAW - Web Design",
+    priority: "Medium",
     status: "in-progress"
   },
   {
     id: "task-3",
-    title: "Configurar repositorio Git para DevNotes App",
-    category: "Proyectos Personal",
-    priority: "Alta",
+    title: "Configure Git repository for DevNotes App",
+    category: "Personal Projects",
+    priority: "High",
     status: "completed"
   }
 ];
 
 const initialNotes = `// ==========================================
-// BLOC DE NOTAS Y APUNTES RÁPIDOS
+// NOTEPAD AND QUICK NOTES
 // ==========================================
 
-// Ejemplo de función en JS para probar snippets:
-function calcularPorcentaje(total, parte) {
-  return ((parte / total) * 100).toFixed(2) + '%';
+// Example JS function to test snippets:
+function calculatePercentage(total, part) {
+  return ((part / total) * 100).toFixed(2) + '%';
 }
 
-console.log("Progreso del curso:", calcularPorcentaje(20, 5));
+console.log("Course progress:", calculatePercentage(20, 5));
 `;
 
-// 2. ESTADO GLOBAL DE LA APLICACIÓN
+// 2. GLOBAL APPLICATION STATE
 let appState = {
   commands: [],
   tasks: [],
@@ -130,7 +130,7 @@ let appState = {
   searchQuery: ""
 };
 
-// 3. INICIALIZACIÓN DE LA APLICACIÓN
+// 3. APPLICATION INITIALIZATION
 document.addEventListener("DOMContentLoaded", () => {
   initStorage();
   initNavigation();
@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderAll();
 });
 
-// 4. GESTIÓN DE LOCALSTORAGE (Persistencia de datos)
+// 4. LOCALSTORAGE MANAGEMENT (Data persistence)
 function initStorage() {
   const storedCommands = localStorage.getItem("devdash_commands");
   const storedTasks = localStorage.getItem("devdash_tasks");
@@ -170,7 +170,7 @@ function updateBadges() {
   document.getElementById("taskCountBadge").textContent = appState.tasks.length;
 }
 
-// 5. MÓDULO DE NAVEGACIÓN Y PESTAÑAS
+// 5. NAVIGATION AND TABS MODULE
 function initNavigation() {
   const navButtons = document.querySelectorAll(".nav-btn");
   const tabContents = document.querySelectorAll(".tab-content");
@@ -189,21 +189,21 @@ function initNavigation() {
     });
   });
 
-  // Botón de restablecimiento de datos
+  // Reset data button
   document.getElementById("resetDataBtn").addEventListener("click", () => {
-    if (confirm("¿Deseas restablecer los datos de ejemplo iniciales?")) {
+    if (confirm("Do you want to reset the initial example data?")) {
       localStorage.clear();
       appState.commands = [...initialCommands];
       appState.tasks = [...initialTasks];
       appState.notes = initialNotes;
       saveState();
       renderAll();
-      showToast("Datos restablecidos con éxito");
+      showToast("Data reset successfully");
     }
   });
 }
 
-// 6. MÓDULO DE COMANDOS RÁPIDOS
+// 6. QUICK COMMANDS MODULE
 function initCommandsModule() {
   const categoryFilters = document.querySelectorAll(".cat-filter");
 
@@ -224,7 +224,7 @@ function renderCommands() {
 
   grid.innerHTML = "";
 
-  // Filtrado por categoría y búsqueda
+  // Category and search filtering
   const filteredCommands = appState.commands.filter(cmd => {
     const matchesCategory = appState.activeCategory === "all" || cmd.category === appState.activeCategory;
     const q = appState.searchQuery.toLowerCase();
@@ -250,23 +250,23 @@ function renderCommands() {
           ${cmd.description ? `<p class="cmd-desc">${escapeHTML(cmd.description)}</p>` : ''}
           <div class="cmd-code-block">
             <code>${escapeHTML(cmd.code)}</code>
-            <button class="btn-copy" data-code="${escapeAttribute(cmd.code)}">Copiar</button>
+            <button class="btn-copy" data-code="${escapeAttribute(cmd.code)}">Copy</button>
           </div>
         </div>
         <div class="cmd-card-footer">
-          <button class="btn-delete-card" data-id="${cmd.id}">Eliminar</button>
+          <button class="btn-delete-card" data-id="${cmd.id}">Delete</button>
         </div>
       `;
 
-      // Evento de copia al portapapeles
+      // Copy to clipboard event
       card.querySelector(".btn-copy").addEventListener("click", (e) => {
         const codeText = e.target.getAttribute("data-code");
         navigator.clipboard.writeText(codeText).then(() => {
-          showToast("¡Comando copiado al portapapeles!");
+          showToast("Command copied to clipboard!");
         });
       });
 
-      // Evento de eliminación
+      // Delete event
       card.querySelector(".btn-delete-card").addEventListener("click", () => {
         deleteCommand(cmd.id);
       });
@@ -280,12 +280,12 @@ function deleteCommand(id) {
   appState.commands = appState.commands.filter(c => c.id !== id);
   saveState();
   renderCommands();
-  showToast("Comando eliminado");
+  showToast("Command deleted");
 }
 
-// 7. MÓDULO DE TAREAS (Task Tracker)
+// 7. TASKS MODULE (Task Tracker)
 function initTasksModule() {
-  // Los eventos se manejan al renderizar
+  // Events are handled on render
 }
 
 function renderTasks() {
@@ -302,7 +302,7 @@ function renderTasks() {
   let completedCount = 0;
 
   appState.tasks.forEach(task => {
-    // Filtrar por búsqueda global
+    // Filter by global search
     const q = appState.searchQuery.toLowerCase();
     const matchesSearch = !q || task.title.toLowerCase().includes(q) || task.category.toLowerCase().includes(q);
 
@@ -314,16 +314,16 @@ function renderTasks() {
     let moveButtons = "";
     if (task.status === "pending") {
       pendingCount++;
-      moveButtons = `<button class="task-move-btn" onclick="moveTask('${task.id}', 'in-progress')">A En Proceso ➔</button>`;
+      moveButtons = `<button class="task-move-btn" onclick="moveTask('${task.id}', 'in-progress')">To In Progress ➔</button>`;
     } else if (task.status === "in-progress") {
       inProgressCount++;
       moveButtons = `
-        <button class="task-move-btn" onclick="moveTask('${task.id}', 'pending')">⬅ Pendiente</button>
-        <button class="task-move-btn" onclick="moveTask('${task.id}', 'completed')">Completar ✔</button>
+        <button class="task-move-btn" onclick="moveTask('${task.id}', 'pending')">⬅ Pending</button>
+        <button class="task-move-btn" onclick="moveTask('${task.id}', 'completed')">Complete ✔</button>
       `;
     } else if (task.status === "completed") {
       completedCount++;
-      moveButtons = `<button class="task-move-btn" onclick="moveTask('${task.id}', 'in-progress')">⬅ Reabrir</button>`;
+      moveButtons = `<button class="task-move-btn" onclick="moveTask('${task.id}', 'in-progress')">⬅ Reopen</button>`;
     }
 
     card.innerHTML = `
@@ -354,7 +354,7 @@ window.moveTask = function(id, newStatus) {
     task.status = newStatus;
     saveState();
     renderTasks();
-    showToast(`Tarea movida a ${newStatus === 'completed' ? 'Completadas' : newStatus === 'in-progress' ? 'En Proceso' : 'Pendientes'}`);
+    showToast(`Task moved to ${newStatus === 'completed' ? 'Completed' : newStatus === 'in-progress' ? 'In Progress' : 'Pending'}`);
   }
 };
 
@@ -362,10 +362,10 @@ window.deleteTask = function(id) {
   appState.tasks = appState.tasks.filter(t => t.id !== id);
   saveState();
   renderTasks();
-  showToast("Tarea eliminada");
+  showToast("Task deleted");
 };
 
-// 8. MÓDULO DE NOTAS / SCRATCHPAD
+// 8. NOTES / SCRATCHPAD MODULE
 function initNotesModule() {
   const notesArea = document.getElementById("notesArea");
   const charCount = document.getElementById("charCount");
@@ -382,39 +382,39 @@ function initNotesModule() {
     appState.notes = notesArea.value;
     updateNotesCount();
 
-    // Indicador visual de autoguardado
-    saveStatusText.textContent = "Guardando...";
+    // Visual autosave indicator
+    saveStatusText.textContent = "Saving...";
     saveIndicator.classList.add("saving");
 
     clearTimeout(saveTimeout);
     saveTimeout = setTimeout(() => {
       saveState();
-      saveStatusText.textContent = "Guardado en disco";
+      saveStatusText.textContent = "Saved to disk";
       saveIndicator.classList.remove("saving");
     }, 600);
   });
 
   clearBtn.addEventListener("click", () => {
-    if (confirm("¿Estás seguro de vaciar el bloc de notas?")) {
+    if (confirm("Are you sure you want to clear the notepad?")) {
       notesArea.value = "";
       appState.notes = "";
       saveState();
       updateNotesCount();
-      showToast("Bloc de notas limpiado");
+      showToast("Notepad cleared");
     }
   });
 
   function updateNotesCount() {
-    charCount.textContent = `${notesArea.value.length} caracteres`;
+    charCount.textContent = `${notesArea.value.length} characters`;
   }
 }
 
-// 9. GESTIÓN DE MODALES
+// 9. MODALS MANAGEMENT
 function initModals() {
   const commandModal = document.getElementById("commandModal");
   const taskModal = document.getElementById("taskModal");
 
-  // Abrir modales
+  // Open modals
   document.getElementById("addCommandBtn").addEventListener("click", () => openModal(commandModal));
   document.getElementById("addTaskBtn").addEventListener("click", () => openModal(taskModal));
 
@@ -423,14 +423,14 @@ function initModals() {
     else openModal(commandModal);
   });
 
-  // Cerrar modales
+  // Close modals
   document.getElementById("closeCommandModalBtn").addEventListener("click", () => closeModal(commandModal));
   document.getElementById("cancelCommandModalBtn").addEventListener("click", () => closeModal(commandModal));
 
   document.getElementById("closeTaskModalBtn").addEventListener("click", () => closeModal(taskModal));
   document.getElementById("cancelTaskModalBtn").addEventListener("click", () => closeModal(taskModal));
 
-  // Envío Formulario Comando
+  // Command Form Submit
   document.getElementById("commandForm").addEventListener("submit", (e) => {
     e.preventDefault();
     const newCommand = {
@@ -446,10 +446,10 @@ function initModals() {
     renderCommands();
     closeModal(commandModal);
     e.target.reset();
-    showToast("Comando guardado exitosamente");
+    showToast("Command saved successfully");
   });
 
-  // Envío Formulario Tarea
+  // Task Form Submit
   document.getElementById("taskForm").addEventListener("submit", (e) => {
     e.preventDefault();
     const newTask = {
@@ -465,13 +465,13 @@ function initModals() {
     renderTasks();
     closeModal(taskModal);
     e.target.reset();
-    showToast("Tarea creada exitosamente");
+    showToast("Task created successfully");
   });
 }
 
 function openModal(modalEl) {
   modalEl.classList.remove("hidden");
-  // Pequeño retardo para que la transición de CSS surta efecto tras quitar el display:none
+  // Short delay for CSS transition to take effect after removing display:none
   setTimeout(() => modalEl.classList.add("active"), 10);
 }
 
@@ -480,7 +480,7 @@ function closeModal(modalEl) {
   setTimeout(() => modalEl.classList.add("hidden"), 300);
 }
 
-// 10. BÚSQUEDA GLOBAL
+// 10. GLOBAL SEARCH
 function initSearch() {
   const searchInput = document.getElementById("globalSearchInput");
 
@@ -491,10 +491,10 @@ function initSearch() {
   });
 }
 
-// 11. ATAJOS DE TECLADO
+// 11. KEYBOARD SHORTCUTS
 function initShortcuts() {
   document.addEventListener("keydown", (e) => {
-    // Ctrl + K para enfocar la búsqueda
+    // Ctrl + K to focus search
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
       e.preventDefault();
       document.getElementById("globalSearchInput").focus();
@@ -505,7 +505,7 @@ function initShortcuts() {
   });
 }
 
-// 12. AUXILIARES DE RENDERIZADO
+// 12. RENDER HELPERS
 function renderAll() {
   renderCommands();
   renderTasks();

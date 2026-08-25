@@ -756,7 +756,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* ============================================
-   TIMELINE (FORMACIÓN)
+   TIMELINE (EDUCATION)
    ============================================ */
 .timeline-container {
   position: relative;
@@ -1231,7 +1231,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* ============================================
-   EL LAB — CONSOLA CLI, SQL & REST API STYLES
+   THE LAB — CLI CONSOLE, SQL & REST API STYLES
    ============================================ */
 .lab-grid-container {
   display: grid;

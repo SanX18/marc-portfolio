@@ -1,5 +1,83 @@
 # ⚡ DevNotes & IT Dashboard
 
+> **Desktop / Web productivity application for developers and IT support technicians.**
+
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![LocalStorage](https://img.shields.io/badge/LocalStorage-Persist-blue?style=for-the-badge)
+
+---
+
+## 📖 Description
+
+**DevNotes & IT Dashboard** is a tool developed to centralize common console commands, manage development/studies tasks using a Kanban board, and maintain a quick notepad with real-time local autosave.
+
+Designed with the efficiency of **DAM / DAW** students and IT support professionals in mind.
+
+---
+
+## ✨ Main Features
+
+* 💻 **Quick Command Library**:
+  * Commands organized by categories (Git, SQL, System / IT, Web Dev).
+  * 1-click copy to clipboard with dynamic toast notifications.
+  * Modal form to add custom commands.
+
+* 📋 **Task Tracker (Kanban Board)**:
+  * State control: *Pending*, *In Progress*, and *Completed*.
+  * Dynamic column change with a single click.
+  * Priority visual badges (🔴 High, 🟡 Medium, 🟢 Low).
+
+* 📝 **Scratchpad / Notepad**:
+  * Quick text editor for code snippets or reminders.
+  * **Automatic real-time autosave** using the `localStorage` API.
+  * Character counter and save status indicator.
+
+* 🔍 **Global Search and Interactivity**:
+  * Instant real-time text filtering.
+  * Keyboard shortcut: `Ctrl + K` to quickly access the search bar.
+  * `Escape` key to close pop-up windows.
+
+---
+
+## 🛠️ Technologies Used
+
+* **HTML5**: Semantic structure, accessibility, and native modals.
+* **CSS3**: Modular design with CSS Variables, grid system (CSS Grid and Flexbox), micro-interactive animations, and dark theme.
+* **JavaScript (ES6+)**: Modular programming, DOM manipulation, event listeners, `navigator.clipboard`, and application state management.
+* **LocalStorage API**: Local data persistence in the browser/disk.
+
+---
+
+## 🚀 Installation and Local Use
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/SanX18/devnotes-app.git
+   ```
+2. Enter the project directory:
+   ```bash
+   cd devnotes-app
+   ```
+3. Open `index.html` in your preferred web browser or use the *Live Server* extension in VS Code.
+
+---
+
+## 👨‍💻 Author
+
+Developed by **Marc Sancho**  
+Dual Degree Student in **DAM** (Multiplatform Application Development) and **DAW** (Web Application Development).
+
+* **Web Portfolio**: [marc-portfolio](https://github.com/SanX18/marc-portfolio)
+* **GitHub**: [@SanX18](https://github.com/SanX18)
+
+---
+
+## 🇪🇸 Versión en Español / Spanish Version
+
+# ⚡ DevNotes & IT Dashboard
+
 > **Aplicación de productividad de escritorio / web para desarrolladores y técnicos de soporte IT.**
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)

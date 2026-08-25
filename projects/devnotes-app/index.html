@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DevNotes & IT Dashboard — Marc Sancho</title>
-  <meta name="description" content="Dashboard de productividad para desarrolladores y técnicos IT. Gestor de comandos rápidos, tareas y notas.">
+  <meta name="description" content="Productivity dashboard for developers and IT technicians. Manager of quick commands, tasks, and notes.">
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,7 +28,7 @@
       <nav class="nav-menu">
         <button class="nav-btn active" data-tab="commandsTab">
           <span class="nav-icon">💻</span>
-          <span class="nav-label">Comandos Rápidos</span>
+          <span class="nav-label">Quick Commands</span>
           <span class="badge" id="commandCountBadge">0</span>
         </button>
         <button class="nav-btn" data-tab="tasksTab">
@@ -38,7 +38,7 @@
         </button>
         <button class="nav-btn" data-tab="notesTab">
           <span class="nav-icon">📝</span>
-          <span class="nav-label">Scratchpad / Notas</span>
+          <span class="nav-label">Scratchpad / Notes</span>
         </button>
       </nav>
 
@@ -47,7 +47,7 @@
           <span class="user-status"></span>
           <span>ms@sancho-dev</span>
         </div>
-        <button id="resetDataBtn" class="btn-icon" title="Restablecer datos iniciales">🔄</button>
+        <button id="resetDataBtn" class="btn-icon" title="Reset initial data">🔄</button>
       </div>
     </aside>
 
@@ -58,11 +58,11 @@
       <header class="top-header">
         <div class="search-bar-container">
           <span class="search-icon">🔍</span>
-          <input type="text" id="globalSearchInput" placeholder="Buscar comando, tarea o nota... (Atajo: Ctrl + K)" autocomplete="off">
+          <input type="text" id="globalSearchInput" placeholder="Search command, task, or note... (Shortcut: Ctrl + K)" autocomplete="off">
         </div>
         <div class="header-actions">
-          <a href="../../index.html" class="btn btn-ghost">⬅ Volver al Portafolio</a>
-          <button id="quickAddBtn" class="btn btn-primary">+ Nuevo Registro</button>
+          <a href="../../index.html" class="btn btn-ghost">⬅ Back to Portfolio</a>
+          <button id="quickAddBtn" class="btn btn-primary">+ New Entry</button>
         </div>
       </header>
 
@@ -70,18 +70,18 @@
       <section id="commandsTab" class="tab-content active">
         <div class="section-header">
           <div>
-            <h1>Biblioteca de Comandos Rápidos</h1>
-            <p class="subtitle">Guarda tus comandos de Git, SQL, Linux y PowerShell favoritos con copia en 1 clic.</p>
+            <h1>Quick Commands Library</h1>
+            <p class="subtitle">Save your favorite Git, SQL, Linux, and PowerShell commands with 1-click copy.</p>
           </div>
-          <button id="addCommandBtn" class="btn btn-secondary">+ Añadir Comando</button>
+          <button id="addCommandBtn" class="btn btn-secondary">+ Add Command</button>
         </div>
 
         <!-- Filtros por Categoría -->
         <div class="category-filters" id="commandCategoryFilters">
-          <button class="cat-filter active" data-cat="all">Todos</button>
+          <button class="cat-filter active" data-cat="all">All</button>
           <button class="cat-filter" data-cat="Git">Git</button>
           <button class="cat-filter" data-cat="SQL">SQL</button>
-          <button class="cat-filter" data-cat="Sistema / IT">Sistema / IT</button>
+          <button class="cat-filter" data-cat="System / IT">System / IT</button>
           <button class="cat-filter" data-cat="Dev / Web">Dev / Web</button>
         </div>
 
@@ -93,8 +93,8 @@
         <!-- Mensaje sin resultados -->
         <div class="empty-state hidden" id="emptyCommandsState">
           <div class="empty-icon">📂</div>
-          <h3>No se encontraron comandos</h3>
-          <p>Prueba con otro término de búsqueda o crea un nuevo comando.</p>
+          <h3>No commands found</h3>
+          <p>Try another search term or create a new command.</p>
         </div>
       </section>
 
@@ -102,10 +102,10 @@
       <section id="tasksTab" class="tab-content">
         <div class="section-header">
           <div>
-            <h1>Task Tracker & Pendientes</h1>
-            <p class="subtitle">Organiza tus proyectos de clase, incidencias IT o desarrollo.</p>
+            <h1>Task Tracker & To-Dos</h1>
+            <p class="subtitle">Organize your class projects, IT issues, or development tasks.</p>
           </div>
-          <button id="addTaskBtn" class="btn btn-secondary">+ Añadir Tarea</button>
+          <button id="addTaskBtn" class="btn btn-secondary">+ Add Task</button>
         </div>
 
         <!-- Tablero de Tareas -->
@@ -114,7 +114,7 @@
           <div class="task-column" data-status="pending">
             <div class="column-header">
               <span class="status-dot pending"></span>
-              <h3>Pendientes</h3>
+              <h3>Pending</h3>
               <span class="column-count" id="pendingCount">0</span>
             </div>
             <div class="task-list" id="pendingList">
@@ -126,7 +126,7 @@
           <div class="task-column" data-status="in-progress">
             <div class="column-header">
               <span class="status-dot in-progress"></span>
-              <h3>En Proceso</h3>
+              <h3>In Progress</h3>
               <span class="column-count" id="inProgressCount">0</span>
             </div>
             <div class="task-list" id="inProgressList">
@@ -138,7 +138,7 @@
           <div class="task-column" data-status="completed">
             <div class="column-header">
               <span class="status-dot completed"></span>
-              <h3>Completadas</h3>
+              <h3>Completed</h3>
               <span class="column-count" id="completedCount">0</span>
             </div>
             <div class="task-list" id="completedList">
@@ -152,20 +152,20 @@
       <section id="notesTab" class="tab-content">
         <div class="section-header">
           <div>
-            <h1>Scratchpad / Bloc de Notas Rápido</h1>
-            <p class="subtitle">Escribe fragmentos de código, esquemas o recordatorios temporales. Guardado automático.</p>
+            <h1>Scratchpad / Quick Notepad</h1>
+            <p class="subtitle">Write code snippets, schemas, or temporary reminders. Auto-saved.</p>
           </div>
           <div class="save-status" id="saveStatus">
             <span class="save-indicator"></span>
-            <span id="saveStatusText">Guardado en disco</span>
+            <span id="saveStatusText">Saved to disk</span>
           </div>
         </div>
 
         <div class="notes-container">
-          <textarea id="notesArea" placeholder="Escribe aquí tus notas o código sin miedo a perderlo..." spellcheck="false"></textarea>
+          <textarea id="notesArea" placeholder="Write your notes or code here without fear of losing it..." spellcheck="false"></textarea>
           <div class="notes-footer">
-            <span id="charCount">0 caracteres</span>
-            <button id="clearNotesBtn" class="btn-danger-ghost">Limpiar bloc</button>
+            <span id="charCount">0 characters</span>
+            <button id="clearNotesBtn" class="btn-danger-ghost">Clear notepad</button>
           </div>
         </div>
       </section>
@@ -177,34 +177,34 @@
   <div class="modal-overlay hidden" id="commandModal">
     <div class="modal">
       <div class="modal-header">
-        <h2 id="commandModalTitle">Añadir Nuevo Comando</h2>
+        <h2 id="commandModalTitle">Add New Command</h2>
         <button class="modal-close" id="closeCommandModalBtn">&times;</button>
       </div>
       <form id="commandForm">
         <div class="form-group">
-          <label for="cmdTitle">Título del comando</label>
-          <input type="text" id="cmdTitle" placeholder="Ej: Ver puertos abiertos en Windows" required>
+          <label for="cmdTitle">Command title</label>
+          <input type="text" id="cmdTitle" placeholder="Ex: View open ports in Windows" required>
         </div>
         <div class="form-group">
-          <label for="cmdCategory">Categoría</label>
+          <label for="cmdCategory">Category</label>
           <select id="cmdCategory" required>
             <option value="Git">Git</option>
             <option value="SQL">SQL</option>
-            <option value="Sistema / IT">Sistema / IT</option>
+            <option value="System / IT">System / IT</option>
             <option value="Dev / Web">Dev / Web</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="cmdCode">Comando (Código)</label>
-          <textarea id="cmdCode" placeholder="Ej: netstat -ano | findstr :8080" rows="3" required></textarea>
+          <label for="cmdCode">Command (Code)</label>
+          <textarea id="cmdCode" placeholder="Ex: netstat -ano | findstr :8080" rows="3" required></textarea>
         </div>
         <div class="form-group">
-          <label for="cmdDesc">Descripción / Explicación (opcional)</label>
-          <input type="text" id="cmdDesc" placeholder="Ej: Muestra qué proceso está ocupando el puerto 8080">
+          <label for="cmdDesc">Description / Explanation (optional)</label>
+          <input type="text" id="cmdDesc" placeholder="Ex: Shows which process is occupying port 8080">
         </div>
         <div class="modal-actions">
-          <button type="button" class="btn btn-ghost" id="cancelCommandModalBtn">Cancelar</button>
-          <button type="submit" class="btn btn-primary">Guardar Comando</button>
+          <button type="button" class="btn btn-ghost" id="cancelCommandModalBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Command</button>
         </div>
       </form>
     </div>
@@ -214,37 +214,37 @@
   <div class="modal-overlay hidden" id="taskModal">
     <div class="modal">
       <div class="modal-header">
-        <h2>Añadir Nueva Tarea</h2>
+        <h2>Add New Task</h2>
         <button class="modal-close" id="closeTaskModalBtn">&times;</button>
       </div>
       <form id="taskForm">
         <div class="form-group">
-          <label for="taskTitle">Título de la tarea</label>
-          <input type="text" id="taskTitle" placeholder="Ej: Configurar conexión MySQL en Java" required>
+          <label for="taskTitle">Task title</label>
+          <input type="text" id="taskTitle" placeholder="Ex: Configure MySQL connection in Java" required>
         </div>
         <div class="form-group">
-          <label for="taskCategory">Módulo / Categoría</label>
-          <input type="text" id="taskCategory" placeholder="Ej: DAM - Acceso a Datos / DAW" required>
+          <label for="taskCategory">Module / Category</label>
+          <input type="text" id="taskCategory" placeholder="Ex: DAM - Data Access / DAW" required>
         </div>
         <div class="form-group">
-          <label for="taskPriority">Prioridad</label>
+          <label for="taskPriority">Priority</label>
           <select id="taskPriority" required>
-            <option value="Alta">🔴 Alta</option>
-            <option value="Media" selected>🟡 Media</option>
-            <option value="Baja">🟢 Baja</option>
+            <option value="High">🔴 High</option>
+            <option value="Medium" selected>🟡 Medium</option>
+            <option value="Low">🟢 Low</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="taskStatus">Estado Inicial</label>
+          <label for="taskStatus">Initial Status</label>
           <select id="taskStatus" required>
-            <option value="pending">Pendiente</option>
-            <option value="in-progress">En Proceso</option>
-            <option value="completed">Completada</option>
+            <option value="pending">Pending</option>
+            <option value="in-progress">In Progress</option>
+            <option value="completed">Completed</option>
           </select>
         </div>
         <div class="modal-actions">
-          <button type="button" class="btn btn-ghost" id="cancelTaskModalBtn">Cancelar</button>
-          <button type="submit" class="btn btn-primary">Guardar Tarea</button>
+          <button type="button" class="btn btn-ghost" id="cancelTaskModalBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Task</button>
         </div>
       </form>
     </div>
@@ -253,7 +253,7 @@
   <!-- TOAST NOTIFICATION -->
   <div class="toast hidden" id="toastNotification">
     <span class="toast-icon">✨</span>
-    <span class="toast-message" id="toastMessage">¡Copiado al portapapeles!</span>
+    <span class="toast-message" id="toastMessage">Copied to clipboard!</span>
   </div>
 
   <script src="js/app.js"></script>
