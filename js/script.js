@@ -598,8 +598,8 @@ about_p1: "Hola! Sóc Marc Sancho. La meua trajectòria en la tecnologia va come
   downloadCvBtns.forEach(btn => {
     if (btn) {
       btn.addEventListener('click', () => {
-        window.open('cv/index.html', '_blank');
-        showToast("📄 Opening Marc Sancho's official Resume...");
+        window.open('cv/Marc_Sancho_CV.pdf', '_blank');
+        showToast("📄 Descargando CV de Marc Sancho...");
       });
     }
   });
