@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './index.css';
 import Navbar from './components/Navbar.jsx';
 import Hero from './components/Hero.jsx';
@@ -13,7 +13,10 @@ import Footer from './components/Footer.jsx';
 import { initLegacyScript } from './legacyScript.js';
 
 function App() {
+  const initialized = useRef(false);
   useEffect(() => {
+    if (initialized.current) return;
+    initialized.current = true;
     try {
       initLegacyScript();
     } catch (e) {
@@ -60,7 +63,7 @@ function App() {
 {/* Floating Back to Top Button */}
 <button className="back-to-top" id="backToTop" aria-label="Back to top">
   <svg className="progress-ring" width="48" height="48">
-    <circle className="progress-ring-circle" stroke="var(--indigo)" stroke-width="3" fill="transparent" r="20" cx="24" cy="24"/>
+    <circle className="progress-ring-circle" stroke="var(--indigo)" strokeWidth="3" fill="transparent" r="20" cx="24" cy="24"/>
   </svg>
   <span className="arrow-up">↑</span>
 </button>
