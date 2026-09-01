@@ -275,12 +275,13 @@ button { font-family: inherit; cursor: pointer; }
 @keyframes pulse-emerald { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
 .hero-title {
-  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  font-size: clamp(2rem, 7.5vw, 4.5rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.08;
   margin-bottom: 20px;
   color: #ffffff;
+  overflow-wrap: break-word;
 }
 .hero-title-accent {
   background: linear-gradient(135deg, var(--text) 30%, var(--indigo-light) 100%);
@@ -1201,7 +1202,7 @@ button { font-family: inherit; cursor: pointer; }
 @media (max-width: 860px) {
   .about-grid { grid-template-columns: 1fr; }
 }
-@media (max-width: 768px) {
+@media (max-width: 960px) {
   .nav-links {
     position: absolute;
     top: 100%; left: 0; right: 0;
@@ -1216,6 +1217,8 @@ button { font-family: inherit; cursor: pointer; }
   .nav-links.open { max-height: 340px; }
   .nav-links a { padding: 16px 24px; border-top: 1px solid var(--border); }
   .nav-toggle { display: flex; }
+}
+@media (max-width: 768px) {
   .hero { padding-top: 120px; }
 }
 
