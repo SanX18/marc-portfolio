@@ -65,8 +65,11 @@ export default function Lab() {
   };
 
   useEffect(() => {
+    // Se salta el mensaje de bienvenida inicial: solo hace autoscroll
+    // cuando el usuario ejecuta un comando (evita saltar la pagina al Lab al cargar).
+    if (terminalHistory.length <= 1) return;
     if (terminalEndRef.current) {
-      terminalEndRef.current.scrollIntoView({ behavior: 'smooth' });
+      terminalEndRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   }, [terminalHistory]);
 
